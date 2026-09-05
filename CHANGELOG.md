@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.1.0 — First open-source milestone release
+- Freeze the first formal release line at `v0.1.0`.
+- Publish the minimal deterministic reference implementation for declared actors, resources, outcomes, units, and constraints.
+- Preserve explicit `UNKNOWN`, reject invalid references and undeclared units, and keep hard constraints independent from ordinary gains.
+- Include four original synthetic teaching variants and 12 unit tests.
+- Verify on Python 3.11, 3.12, and 3.13 with `ResourceWarning` treated as an error.
+- Publish English and Chinese project overviews and release documentation.
+- License repository code, documentation, original synthetic teaching examples, tests, and repository support files under Apache-2.0 unless a file states otherwise.
+- Keep formal research manuscripts, controlled fixtures, restricted materials, and real-world authorization material outside this release.
+- Reaffirm the interpretation boundary: software results are deterministic checks of declared inputs and constraints, not fairness certification, research validation, or real-world authorization.
+
 ## 0.1.0.dev3 — DEV-3 release candidate
 - Adopt Apache-2.0 as the active repository license for code, documentation, original synthetic teaching examples, tests, and repository support files unless a file states otherwise.
 - Add global project overview in English and Chinese covering purpose, objectives, method, application modes, scope, commercial independence, participation, and maintenance boundaries.
