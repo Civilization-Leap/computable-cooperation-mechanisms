@@ -1,7 +1,7 @@
 # 竞争—合作可计算机制
 ## 最小开源参考实现
 
-**DEV-3 发布候选 / v0.1.0.dev3。公开开源仓库，采用 Apache-2.0。**
+**v0.1.0 发布源码基线。公开开源仓库，采用 Apache-2.0。**
 
 这是一个面向全球后续开发者的小型可运行起点：给定主体、资源、结果和明确约束，计算候选安排相对基线的分项变化，并报告已声明约束是满足、违反还是信息不足。
 
@@ -35,7 +35,7 @@ python -m unittest discover -s tests -v
 
 ## 验证
 
-当前单元测试共 12 项。Pull Request CI 在 Python 3.11、3.12、3.13 上运行测试，把 `ResourceWarning` 当作错误，并实际运行四个教学变体。
+当前单元测试共 12 项。CI 在 Python 3.11、3.12、3.13 上运行测试，把 `ResourceWarning` 当作错误，并实际运行四个教学变体。正式发布工作流会在创建版本标签和 GitHub Release 之前，再对精确发布提交执行一次验证。
 
 ## 范围边界
 
@@ -47,7 +47,7 @@ python -m unittest discover -s tests -v
 
 可以按同一 JSON 合同新增同类场景。新增约束语义必须显式修改代码、测试和文档，不允许静默解释。独立团队可依据 Apache-2.0 分叉与扩展本项目，不需要依赖一个中心持续运营的服务。
 
-详见 [CONTRIBUTING.md](CONTRIBUTING.md) 与 [发布就绪检查表](docs/RELEASE_CHECKLIST.md)。
+详见 [CONTRIBUTING.md](CONTRIBUTING.md)、[发布就绪检查表](docs/RELEASE_CHECKLIST.md) 与 [v0.1.0 发布说明](docs/RELEASE_NOTES_v0.1.0.md)。
 
 ## 许可证与商业使用
 
