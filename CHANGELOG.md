@@ -1,12 +1,13 @@
 # Changelog
 
-## DEV-3 licensing decision — Apache-2.0 adopted
-- Formally adopt the Apache License, Version 2.0 for this repository.
-- Apply one unified license scope to repository code, documentation, original synthetic teaching examples, tests, and implementation-support files unless a file explicitly states otherwise.
-- Permit commercial and independent downstream development subject to Apache-2.0.
-- Clarify that downstream use does not imply project endorsement, fairness certification, research validation, or real-world authorization.
-- Keep research manuscripts, controlled fixtures, restricted materials, and assets outside this repository outside the repository license grant.
-- Remove the obsolete pending-license marker and add `LICENSE_SCOPE.md`.
+## 0.1.0.dev3 — DEV-3 release candidate
+- Adopt Apache-2.0 as the active repository license for code, documentation, original synthetic teaching examples, tests, and repository support files unless a file states otherwise.
+- Add global project overview in English and Chinese covering purpose, objectives, method, application modes, scope, commercial independence, participation, and maintenance boundaries.
+- Add a first-release readiness checklist.
+- Promote English and Chinese README files to the DEV-3 release-candidate entry point.
+- Record Apache-2.0 in package metadata.
+- Use the package version as evaluator output version to reduce version drift.
+- Keep formal research manuscripts, controlled fixtures, restricted materials, and other assets outside this repository out of license scope.
 
 ## 0.1.0.dev2 — DEV-2
 - Close test and CLI file handles; run ResourceWarning as an error in CI.
