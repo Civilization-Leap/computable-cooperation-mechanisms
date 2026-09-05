@@ -3,18 +3,35 @@
 
 **v0.1.0 release source. Public open-source repository under Apache-2.0.**
 
-A small, globally reusable starting point for expressing and recomputing multi-actor mechanism conditions. Given declared actors, resources, outcomes, and constraints, it shows what changes under a candidate arrangement, which declared constraints are satisfied or violated, and what remains unknown.
+Human societies constantly compete, cooperate, form alliances, blocs, and communities. **How many of the mechanisms behind those relationships are explicit enough to inspect, recompute, falsify, and improve?**
 
-The project exists to make mechanism ideas easier to inspect, criticize, recompute, and extend. It does **not** assume cooperation is always preferable, certify fairness, infer motives, predict behavior, create research H/T/L/RUN states, or authorize real-world action.
+This repository is a deliberately small, globally reusable starting point. Given declared actors, resources, outcomes, and constraints, it shows what changes under a candidate arrangement, which declared constraints are satisfied or violated, and what remains unknown.
+
+It does **not** assume cooperation is always preferable, certify fairness, infer motives, predict behavior, create research H/T/L/RUN states, or authorize real-world action.
 
 **Project purpose, objectives, method, application modes, scope, global participation, commercial independence, and maintenance boundaries:** [Project Overview](docs/PROJECT_OVERVIEW.md) · [中文项目总览](docs/PROJECT_OVERVIEW.zh-CN.md)
 
-## Run
+## Try it in five minutes
 
 ```bash
 python -m mechanism_ref examples/shared_equipment_ok.json --out-dir outputs
 python -m unittest discover -s tests -v
 ```
+
+Then change one declared resource, outcome, or hard constraint in a copy of an example and run it again. The useful question is not whether the software says “cooperate”; it is **what changed, what constraint failed, and what remains unknown**.
+
+## Break it, extend it, or reimplement it
+
+We are not asking people to endorse the framework. Useful contributions include:
+
+- a synthetic coordination problem the current representation cannot express;
+- a strong counterexample to a current modeling assumption;
+- a new same-class scenario that requires no scenario-specific core logic;
+- a better explicit representation of uncertainty;
+- an independent implementation in another language;
+- a domain-specific fork that remains independent of this repository.
+
+Start with the open [contribution and research challenges](../../issues), especially issues labeled `good first issue` or `help wanted`. Independent forks and downstream implementations count as successful diffusion even if they never merge back upstream.
 
 ## Current method
 
@@ -47,7 +64,9 @@ The software checks **declared inputs and declared constraints**. It does not pr
 
 Add another JSON case with the same contract. New constraint types require explicit code, tests, and documentation rather than silent interpretation. Independent teams may fork and extend the project under Apache-2.0 without depending on a centrally operated service.
 
-See [CONTRIBUTING.md](CONTRIBUTING.md), the [release-readiness checklist](docs/RELEASE_CHECKLIST.md), and the [v0.1.0 release notes](docs/RELEASE_NOTES_v0.1.0.md).
+See [CONTRIBUTING.md](CONTRIBUTING.md), [Global Outreach Kit](docs/OUTREACH_KIT.md), the [release-readiness checklist](docs/RELEASE_CHECKLIST.md), and the [v0.1.0 release notes](docs/RELEASE_NOTES_v0.1.0.md).
+
+For academic use, GitHub can surface the repository's [`CITATION.cff`](CITATION.cff) citation metadata.
 
 ## License and commercial use
 
