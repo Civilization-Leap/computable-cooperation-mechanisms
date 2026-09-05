@@ -1,4 +1,5 @@
 import hashlib,json,math
+from . import __version__
 class InputError(ValueError): pass
 def loads_strict(s):
  def hook(pairs):
@@ -78,7 +79,7 @@ def evaluate(c):
  for k in sorted(set(bi)&set(ci)):
   b,v=bi[k],ci[k];ds.append({"actor":k[0],"dimension":k[1],"unit":k[2],"baseline":b,"candidate":v,"delta":None if b is None or v is None else float(v)-float(b)})
  raw=json.dumps(c,ensure_ascii=False,sort_keys=True,separators=(",",":"),allow_nan=False).encode()
- return {"software_version":"0.1.0.dev2","case_id":c["case_id"],"input_sha256":hashlib.sha256(raw).hexdigest(),"overall_declared_constraint_status":overall,"checks":checks,"outcome_deltas":ds,"interpretation_boundary":"Deterministic check of declared inputs and constraints only; not a fairness certification, H/T/L/RUN state, or real-world authorization."}
+ return {"software_version":__version__,"case_id":c["case_id"],"input_sha256":hashlib.sha256(raw).hexdigest(),"overall_declared_constraint_status":overall,"checks":checks,"outcome_deltas":ds,"interpretation_boundary":"Deterministic check of declared inputs and constraints only; not a fairness certification, H/T/L/RUN state, or real-world authorization."}
 def report(r):
  s=[f"# Result: {r['case_id']}","",f"**Declared-constraint status:** `{r['overall_declared_constraint_status']}`","",f"Input SHA-256: `{r['input_sha256']}`","","## Constraint checks",""]
  s += [f"- `{x['constraint_id']}` — **{x['status']}** — {x['reason']}" for x in r['checks']]
