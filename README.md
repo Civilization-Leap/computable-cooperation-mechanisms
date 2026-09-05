@@ -1,7 +1,7 @@
 # Computable Competition–Cooperation Mechanisms
 ## Minimal Open Reference Implementation
 
-**DEV-3 release candidate / v0.1.0.dev3. Public open-source repository under Apache-2.0.**
+**v0.1.0 release source. Public open-source repository under Apache-2.0.**
 
 A small, globally reusable starting point for expressing and recomputing multi-actor mechanism conditions. Given declared actors, resources, outcomes, and constraints, it shows what changes under a candidate arrangement, which declared constraints are satisfied or violated, and what remains unknown.
 
@@ -35,7 +35,7 @@ python -m unittest discover -s tests -v
 
 ## Verification
 
-The current unit suite contains 12 tests. Pull-request CI runs them with `ResourceWarning` treated as an error on Python 3.11, 3.12, and 3.13, and executes all four teaching variants.
+The current unit suite contains 12 tests. CI runs them with `ResourceWarning` treated as an error on Python 3.11, 3.12, and 3.13, and executes all four teaching variants. The formal release workflow repeats exact-commit verification before creating a version tag and GitHub Release.
 
 ## Scope boundary
 
@@ -47,7 +47,7 @@ The software checks **declared inputs and declared constraints**. It does not pr
 
 Add another JSON case with the same contract. New constraint types require explicit code, tests, and documentation rather than silent interpretation. Independent teams may fork and extend the project under Apache-2.0 without depending on a centrally operated service.
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) and the [release-readiness checklist](docs/RELEASE_CHECKLIST.md).
+See [CONTRIBUTING.md](CONTRIBUTING.md), the [release-readiness checklist](docs/RELEASE_CHECKLIST.md), and the [v0.1.0 release notes](docs/RELEASE_NOTES_v0.1.0.md).
 
 ## License and commercial use
 
