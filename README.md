@@ -1,6 +1,6 @@
 # Computable Competition–Cooperation Mechanisms — Minimal Reference Implementation
 
-**DEV-2 / v0.1.0.dev2. Public repository, but not yet a formally licensed open-source release.**
+**DEV-2 / v0.1.0.dev2. Public repository. Licensed under Apache-2.0.**
 
 A small, globally reusable starting point for expressing and recomputing multi-actor mechanism conditions. Given declared actors, resources, outcomes and constraints, it shows what changes under a candidate arrangement, which declared constraints are satisfied or violated, and what remains unknown.
 
@@ -36,5 +36,9 @@ This is a teaching/reference implementation, not the formal R1 B2B blind fixture
 ## Extension
 Add another JSON case with the same contract. New constraint types require explicit code and tests rather than silent interpretation.
 
-## License status
-The repository is public, but the final license is still pending approval. Apache-2.0 remains a candidate only. Do not treat repository visibility as a completed open-source license grant.
+## License
+The repository is licensed under the **Apache License, Version 2.0**. Unless a file states otherwise, the license uniformly covers repository code, documentation, original synthetic teaching examples, tests, and implementation-support files authored for this repository. See [`LICENSE`](LICENSE) and [`LICENSE_SCOPE.md`](LICENSE_SCOPE.md).
+
+Commercial and independent downstream use is permitted under Apache-2.0. A downstream product or service remains independently responsible for its claims, deployment, validation, support, and legal obligations. Using this project does not imply project endorsement, fairness certification, research validation, or real-world authorization.
+
+Research manuscripts, controlled research fixtures, restricted materials, and other assets not included in this repository are not licensed merely because this repository is Apache-2.0 licensed.
