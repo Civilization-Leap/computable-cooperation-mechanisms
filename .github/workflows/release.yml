@@ -1,0 +1,91 @@
+name: release
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - RELEASE_VERSION
+      - .github/workflows/release.yml
+
+permissions:
+  contents: write
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify release version agreement
+        run: |
+          python - <<'PY'
+          import pathlib, tomllib
+          import mechanism_ref
+          release = pathlib.Path('RELEASE_VERSION').read_text(encoding='utf-8').strip()
+          project = tomllib.loads(pathlib.Path('pyproject.toml').read_text(encoding='utf-8'))
+          package = project['project']['version']
+          runtime = mechanism_ref.__version__
+          assert release == '0.1.0', (release, '0.1.0')
+          assert package == release, (package, release)
+          assert runtime == release, (runtime, release)
+          print(f'version agreement: {release}')
+          PY
+      - name: Run unit tests with warnings as errors
+        run: python -W error::ResourceWarning -m unittest discover -s tests -v
+      - name: Run teaching examples
+        run: |
+          tmpdir="$(mktemp -d)"
+          python -m mechanism_ref examples/shared_equipment_ok.json --out-dir "$tmpdir"
+          python -m mechanism_ref examples/shared_equipment_third_party_violation.json --out-dir "$tmpdir"
+          python -m mechanism_ref examples/shared_equipment_unknown.json --out-dir "$tmpdir"
+          python -m mechanism_ref examples/shared_equipment_capacity_violation.json --out-dir "$tmpdir"
+      - name: Verify release-boundary files
+        run: |
+          test -f LICENSE
+          test -f LICENSE_SCOPE.md
+          test -f CONTRIBUTING.md
+          test -f docs/RELEASE_NOTES_v0.1.0.md
+          test ! -e LICENSE-PENDING.txt
+          grep -F "deterministic checks of declared inputs and declared constraints only" docs/RELEASE_NOTES_v0.1.0.md
+
+  publish:
+    needs: verify
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Create exact-commit tag and GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          version="$(tr -d '[:space:]' < RELEASE_VERSION)"
+          tag="v${version}"
+
+          if gh release view "$tag" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo "Release $tag already exists; no action needed."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          if git rev-parse "$tag" >/dev/null 2>&1; then
+            tagged="$(git rev-list -n 1 "$tag")"
+            test "$tagged" = "$GITHUB_SHA"
+          else
+            git tag -a "$tag" "$GITHUB_SHA" -m "$tag — First Open-Source Milestone Release"
+            git push origin "$tag"
+          fi
+
+          gh release create "$tag" \
+            --repo "$GITHUB_REPOSITORY" \
+            --title "$tag — First Open-Source Milestone Release" \
+            --notes-file docs/RELEASE_NOTES_v0.1.0.md \
+            --verify-tag
