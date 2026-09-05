@@ -1,20 +1,46 @@
 # Project Overview
 
-## Purpose
+## In one sentence
 
-This project explores how multi-actor competition, cooperation, alliance, bloc, and community relationships can be expressed as explicit, inspectable, and recomputable mechanisms rather than treated only as narrative claims or opaque judgments.
+**We want to move the question of how people compete, cooperate, and build larger forms of coordination from something judged mainly by position, intuition, or slogans toward something whose conditions can be stated clearly, whose costs can be seen, whose alternatives can be compared, whose failures can be found, and whose mechanisms can be improved.**
 
-The immediate goal is deliberately modest: provide a small open reference implementation that lowers the cost for researchers, developers, institutions, and independent teams to test, criticize, replace, and extend mechanism ideas.
+That is also the shared task of participants in this project. The aim is not to prove that one form of cooperation is always right. It is to jointly discover, test, criticize, and improve interaction mechanisms that can help more actors pursue their real interests while reducing avoidable harm, domination, escalation, and cost-shifting to third parties.
 
-The project does **not** assume that cooperation is always preferable, that agreement proves fairness, or that a computable result is automatically legitimate. Failure, conflict, hard constraints, third-party burdens, and insufficient information are first-class outcomes.
+## Shared purpose
+
+Individuals, firms, institutions, states, and communities all have their own interests, capabilities, constraints, information, and risks. Competition will not disappear, and self-interest cannot be removed by moral instruction. But different rules of interaction can lead the same actors toward very different outcomes:
+
+- some competition improves efficiency and innovation;
+- some competition escalates until all sides bear larger losses;
+- some cooperation works only by shifting costs to weaker or third parties;
+- some cooperation creates durable mutual gains without requiring participants to become selfless first;
+- some alliances, blocs, and communities expand coordination capacity while also creating new exclusion, dependency, or systemic risk.
+
+The shared purpose of this project is to **make the mechanisms behind these differences as explicit, inspectable, and recomputable as possible, so people can see earlier what conditions improve a relationship, who actually benefits, who bears the burden, which boundaries ordinary gains cannot override, what remains unknown, and under what conditions an apparent improvement fails.**
+
+If these questions can be expressed and tested more clearly, people have a better chance of finding ways to pursue their interests that are preferable to unbounded confrontation, one-sided domination, or hidden cost transfer.
+
+## Shared goals for participants
+
+Participation does not require prior acceptance of a complete theory. Researchers, developers, domain experts, institutions, and independent teams can all work toward the following shared goals:
+
+1. **Make mechanisms explicit.** Separate actors, interests, capabilities, resources, time conditions, constraints, third-party effects, and unknowns from vague narrative claims.
+2. **See the whole result.** Do not ask only whether the aggregate result looks better; ask who improves, who loses, who is omitted, and which hard boundaries are crossed.
+3. **Compare alternatives.** Evaluate different interaction rules under the same declared conditions instead of presenting only one preferred outcome.
+4. **Search for failure conditions.** Find counterexamples, hidden burdens, unreachable states, boundary cases, and reversal conditions rather than collecting only supportive examples.
+5. **Make judgments recomputable and challengeable.** Wherever possible, let others independently inspect and repeat results from public inputs, rules, and code.
+6. **Enable continued development.** Keep methods, examples, and code open enough for independent teams to improve, replace, fork, or apply them in their own domains.
+7. **Do not turn a research tool into real-world authority.** Software outputs do not automatically become fairness certification, policy decisions, legal conclusions, permissions, prohibitions, or scores of people.
+
+For that reason, a participant does not contribute only by “proving the project right.” **Showing that a mechanism fails, identifying an important reality the current model cannot represent, proposing a better formalization, or building a better independent implementation are equally valid ways of advancing the project.**
 
 ## Core research question
 
 Given actors with different interests, capabilities, information, time horizons, dependencies, and exit options, what changes when the rules of interaction change? Which effects are beneficial, which burdens are transferred, which hard constraints are crossed, what remains unknown, and under what conditions does a claimed improvement fail?
 
-## Objectives
+## Current software objective
 
-The reference implementation aims to make a limited subset of these questions machine-checkable:
+The current software is only one small building block within that wider research purpose. It does not try to solve the full problem. It first makes a limited subset machine-checkable:
 
 - represent actors, baseline arrangements, candidate arrangements, outcomes, resources, and explicit constraints;
 - compare like-for-like outcome dimensions without collapsing them into a universal fairness score;
@@ -53,7 +79,7 @@ A typical workflow is:
 
 ### In scope now
 
-The current release candidate supports a small local Python/JSON workflow for synthetic cases, deterministic comparison, hard-constraint checks, explicit unknowns, machine-readable JSON output, human-readable Markdown reports, and automated tests.
+The current release supports a small local Python/JSON workflow for synthetic cases, deterministic comparison, hard-constraint checks, explicit unknowns, machine-readable JSON output, human-readable Markdown reports, and automated tests.
 
 ### Research directions, not current software claims
 
