@@ -1,0 +1,16 @@
+{
+  "case_id": "TEACH-EQUIP-UNKNOWN",
+  "checks": [
+    {"constraint_id": "R-CAP", "hard": true, "reason": "required value is explicitly unknown or absent", "source": "candidate.allocations.equipment_slots", "status": "UNKNOWN"},
+    {"constraint_id": "THIRD-PARTY", "hard": true, "reason": "0.5 <= 1 is true", "source": "candidate.outcomes:C/reserved_slot_loss/TU", "status": "SATISFIED"}
+  ],
+  "input_sha256": "c049ff5203b3b2b5b5e9bdc6afadd8579f45a76013ef4bf774b5e4dd108a0e92",
+  "interpretation_boundary": "Deterministic check of declared inputs and constraints only; not a fairness certification, H/T/L/RUN state, or real-world authorization.",
+  "outcome_deltas": [
+    {"actor": "A", "baseline": 8, "candidate": 5, "delta": -3.0, "dimension": "ordinary_cost", "unit": "CU"},
+    {"actor": "B", "baseline": 8, "candidate": 5, "delta": -3.0, "dimension": "ordinary_cost", "unit": "CU"},
+    {"actor": "C", "baseline": 0, "candidate": 0.5, "delta": 0.5, "dimension": "reserved_slot_loss", "unit": "TU"}
+  ],
+  "overall_declared_constraint_status": "UNKNOWN",
+  "software_version": "0.1.0.dev1"
+}

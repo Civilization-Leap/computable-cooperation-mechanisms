@@ -1,0 +1,1 @@
+No final public license has been approved for this DEV-1 candidate package. Apache-2.0 remains a candidate only. Do not interpret this placeholder as the final release license.

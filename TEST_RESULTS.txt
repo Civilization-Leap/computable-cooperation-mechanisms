@@ -1,0 +1,18 @@
+test_deterministic (test_core.T.test_deterministic) ... ResourceWarning: unclosed example file handle
+ok
+test_duplicate_key_rejected (test_core.T.test_duplicate_key_rejected) ... ok
+test_hard_not_offset (test_core.T.test_hard_not_offset) ... ResourceWarning: unclosed example file handle
+ok
+test_nan_rejected (test_core.T.test_nan_rejected) ... ok
+test_ok (test_core.T.test_ok) ... ok
+test_unknown (test_core.T.test_unknown) ... ResourceWarning: unclosed example file handle
+ok
+
+----------------------------------------------------------------------
+Ran 6 tests
+
+OK
+
+exit_code=0
+
+DEV-1 note: ResourceWarning is a known code-quality debt scheduled for DEV-2; it did not alter test outcomes.

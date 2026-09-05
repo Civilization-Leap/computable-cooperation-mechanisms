@@ -1,0 +1,10 @@
+[build-system]
+requires=["setuptools>=68"]
+build-backend="setuptools.build_meta"
+[project]
+name="coop-mechanism-ref"
+version="0.1.0.dev1"
+description="Minimal reference implementation for computable competition-cooperation mechanisms"
+requires-python=">=3.11"
+[project.scripts]
+mechanism-ref="mechanism_ref.cli:main"
