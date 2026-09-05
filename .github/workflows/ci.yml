@@ -1,0 +1,28 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Run unit tests with warnings as errors
+        run: python -W error::ResourceWarning -m unittest discover -s tests -v
+      - name: Run teaching examples
+        run: |
+          tmpdir="$(mktemp -d)"
+          python -m mechanism_ref examples/shared_equipment_ok.json --out-dir "$tmpdir"
+          python -m mechanism_ref examples/shared_equipment_third_party_violation.json --out-dir "$tmpdir"
+          python -m mechanism_ref examples/shared_equipment_unknown.json --out-dir "$tmpdir"
+          python -m mechanism_ref examples/shared_equipment_capacity_violation.json --out-dir "$tmpdir"
