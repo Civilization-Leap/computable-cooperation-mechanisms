@@ -2,6 +2,8 @@
 
 This is a small targeting map, not a mass-outreach list. The project should prefer a few high-relevance nodes over broad unsolicited distribution.
 
+**2026-09-08 update:** the institutions below are background discovery nodes. For actual preparation, start with [named researchers and specific papers](RESEARCH_DIALOGUES.md). A center's general inbox is not the default recipient. No message is sent by inclusion in either document.
+
 ## A. Research / collective intelligence
 
 1. **MIT Center for Collective Intelligence** — relevant because its work includes collective intelligence, human–AI teams, supermind design, and online deliberation/agent-based negotiation.

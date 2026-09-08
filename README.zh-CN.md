@@ -13,12 +13,36 @@
 
 ## 五分钟试运行
 
+以下下载方式需要 Git，运行需要 Python 3.11–3.13；计算器和测试都只使用 Python 标准库。**在解压后的仓库目录中运行，无需 `pip install`，也无需 `pip install -e .`。** 从已发布版本开始：
+
 ```bash
+git clone --branch v0.1.0 --depth 1 https://github.com/Civilization-Leap/computable-cooperation-mechanisms.git
+cd computable-cooperation-mechanisms
+python -m mechanism_ref examples/shared_equipment_third_party_violation.json --out-dir outputs
+python -m mechanism_ref examples/shared_equipment_unknown.json --out-dir outputs
 python -m mechanism_ref examples/shared_equipment_ok.json --out-dir outputs
 python -m unittest discover -s tests -v
 ```
 
-然后复制一个示例，改变一项已声明资源、结果或硬约束，再运行一次。真正值得观察的不是程序是否说“应该合作”，而是：**什么发生了变化、哪条约束失败、什么仍然未知。**
+依次输出 `VIOLATED`、`UNKNOWN`、`SATISFIED`。第一份报告同时显示：A/B 各节省 3 CU，但 C 损失 2 TU，超过已声明的 1 TU 上限。打开 `outputs/shared_equipment_third_party_violation.report.md` 即可查看。
+
+做一次具体修改：复制满足约束的示例，把 ID 为 `THIRD-PARTY` 的约束从 `limit: 1` 调低为 `limit: 0.25`，保留 C 的损失 `0.5`。结果就会变成 `VIOLATED`，A/B 的节省保持相同。[精确复制修改命令、报告位置与全部四例](docs/FIVE_MINUTE_WALKTHROUGH.md)。取得源码后，运行无需账号、API 密钥、模型下载或托管服务。
+
+可直接查看已发布的 [v0.1.0 Release](https://github.com/Civilization-Leap/computable-cooperation-mechanisms/releases/tag/v0.1.0) 和[源码 tag](https://github.com/Civilization-Leap/computable-cooperation-mechanisms/tree/v0.1.0)。
+
+## 双方都获益，谁还在付出代价？
+
+在共享设备的两份教学输入中，A、B 的成本都从 8 降至 5 CU，节省完全相同。但 C 的预留时段损失从 0.5 变为 2 TU，越过已声明的 1 TU 上限，结果便从 `SATISFIED` 变为 `VIOLATED`。相同的双方收益，可以伴随不同的约束结果。
+
+这是**合成输入下对已声明规则的可复算演示**，不是真实收益测量或新的实证发现。[查看对照与边界](docs/SHARED_EQUIPMENT_COMPARISON.md)，或[指出当前表示无法表达的问题](https://github.com/Civilization-Leap/computable-cooperation-mechanisms/issues/5)。
+
+## 独立实现挑战｜Independent Implementation Challenge
+
+**用另一种语言复现公开语义，欢迎建立独立仓库。** 从 [Issue #8](https://github.com/Civilization-Leap/computable-cooperation-mechanisms/issues/8) 开始。
+
+对熟悉所选语言和 JSON 工具的开发者，最小四例语义实现可先按 **8–16 小时**安排；包含非法输入检查、差异说明与可复现命令的版本，可按**合计 16–32 小时**安排。这是尚未经参与者实测的规划估计；与 Python 完全一致的输入哈希可能需要额外工作。
+
+范围包括解析、校验、可比差值、独立硬约束检查、未知保留与确定性输出。[工作量拆分、预期结果和提交格式](docs/INDEPENDENT_IMPLEMENTATION.md)。提供仓库链接与发现的差异即可，不要求合并回上游或承担持续服务。
 
 ## 请尝试击破、扩展或独立重写它
 

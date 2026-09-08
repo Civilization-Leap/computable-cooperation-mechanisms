@@ -13,12 +13,36 @@ It does **not** assume cooperation is always preferable, certify fairness, infer
 
 ## Try it in five minutes
 
+Requires Git for this download route and Python 3.11–3.13 to run; the evaluator and tests use only the Python standard library. **No `pip install` or `pip install -e .` is needed when running from the extracted repository directory.** Start from the published release:
+
 ```bash
+git clone --branch v0.1.0 --depth 1 https://github.com/Civilization-Leap/computable-cooperation-mechanisms.git
+cd computable-cooperation-mechanisms
+python -m mechanism_ref examples/shared_equipment_third_party_violation.json --out-dir outputs
+python -m mechanism_ref examples/shared_equipment_unknown.json --out-dir outputs
 python -m mechanism_ref examples/shared_equipment_ok.json --out-dir outputs
 python -m unittest discover -s tests -v
 ```
 
-Then change one declared resource, outcome, or hard constraint in a copy of an example and run it again. The useful question is not whether the software says “cooperate”; it is **what changed, what constraint failed, and what remains unknown**.
+The runs print `VIOLATED`, `UNKNOWN`, and `SATISFIED`. In the first report, A/B each save 3 CU but C loses 2 TU against a declared maximum of 1 TU. Open `outputs/shared_equipment_third_party_violation.report.md` to see both facts together.
+
+For one controlled change, copy the satisfied example and lower the constraint with ID `THIRD-PARTY` from `limit: 1` to `limit: 0.25`; leave C's loss at `0.5`. The result changes to `VIOLATED` while A/B savings remain identical. [Exact copy-and-edit command, output files, and all four cases](docs/FIVE_MINUTE_WALKTHROUGH.md). No account, API key, model download, or hosted service is needed after obtaining the source.
+
+The published [v0.1.0 Release](https://github.com/Civilization-Leap/computable-cooperation-mechanisms/releases/tag/v0.1.0) and [source tag](https://github.com/Civilization-Leap/computable-cooperation-mechanisms/tree/v0.1.0) can also be opened directly.
+
+## Both sides gain. Who else pays?
+
+In the shared-equipment teaching pair, A and B each reduce their declared cost from 8 to 5 CU. Their savings are identical in both candidates. Yet C's reserved-slot loss changes from 0.5 to 2 TU, crossing the declared limit of 1 TU: `SATISFIED` becomes `VIOLATED`. The same gains can coexist with different constraint results.
+
+These are **synthetic inputs and a reproducible illustration of the declared rule**, not measured benefits or a new empirical finding. [Inspect the comparison and its limits](docs/SHARED_EQUIPMENT_COMPARISON.md), or [challenge what the representation cannot express](https://github.com/Civilization-Leap/computable-cooperation-mechanisms/issues/5).
+
+## Independent Implementation Challenge
+
+**Reproduce the public semantics in another language. A separate repository is welcome.** Start with [Issue #8](https://github.com/Civilization-Leap/computable-cooperation-mechanisms/issues/8).
+
+For a developer familiar with their chosen language and JSON tooling, budget **8–16 focused hours for a minimal four-case semantic implementation**, or **16–32 hours total** to include malformed-input checks, a documented comparison, and a reproducible command. These are planning estimates, not observed completion times; exact Python-compatible hashing may require more work.
+
+The task covers parsing, validation, comparable deltas, independent hard checks, explicit unknowns, and deterministic output. [Scope, effort breakdown, expected results, and submission format](docs/INDEPENDENT_IMPLEMENTATION.md). Bring back a repository link and differences you found; no upstream merge or ongoing service commitment is required.
 
 ## Break it, extend it, or reimplement it
 
