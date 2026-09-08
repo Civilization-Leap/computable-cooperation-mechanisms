@@ -1,0 +1,13 @@
+{
+  "python": "3.12.13",
+  "evidence_type": "local synthetic recomputation",
+  "source_case": "examples/shared_equipment_ok.json",
+  "only_changed_input_field": "constraints[THIRD-PARTY].limit",
+  "outcome_deltas_unchanged": true,
+  "report_changed_line_numbers": [
+    3,
+    5,
+    10
+  ],
+  "note": "The original free-text description still says <= 1 TU; it is retained to change only one input field. Evaluation uses operator and limit. Threshold authorship/consent is not represented."
+}

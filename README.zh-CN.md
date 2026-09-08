@@ -1,7 +1,9 @@
 # 竞争—合作可计算机制
 ## 最小开源参考实现
 
-**v0.1.0 发布源码基线。公开开源仓库，采用 Apache-2.0。**
+**当前已发布版本：v0.1.0。本分支另含未发布的 CLI 与文档增补。采用 Apache-2.0。**
+
+**处境未变，判定翻转。** A、B 各节省 3 CU，C 损失 0.5 TU。只把 C 的损失上限从 0.5 调到 0.49，结果便由 `SATISFIED` 变为 `VIOLATED`，所有主体差值保持相同。计算可以准确执行一条保护线，却不能因此证明这条线画得正当。[阈值扫描、完整报告对照与中英文短稿](docs/THRESHOLD_SENSITIVITY.md)。
 
 人类社会每天都在竞争、合作、结盟、形成阵营与共同体。**这些关系背后的机制，有多少能够被明确表达、检查、复算、证伪和改进？**
 
@@ -13,12 +15,36 @@
 
 ## 五分钟试运行
 
+以下下载方式需要 Git，运行需要 Python 3.11–3.13；计算器和测试都只使用 Python 标准库。**在解压后的仓库目录中运行，无需 `pip install`，也无需 `pip install -e .`。** 从已发布版本开始：
+
 ```bash
+git clone --branch v0.1.0 --depth 1 https://github.com/Civilization-Leap/computable-cooperation-mechanisms.git
+cd computable-cooperation-mechanisms
+python -m mechanism_ref examples/shared_equipment_third_party_violation.json --out-dir outputs
+python -m mechanism_ref examples/shared_equipment_unknown.json --out-dir outputs
 python -m mechanism_ref examples/shared_equipment_ok.json --out-dir outputs
 python -m unittest discover -s tests -v
 ```
 
-然后复制一个示例，改变一项已声明资源、结果或硬约束，再运行一次。真正值得观察的不是程序是否说“应该合作”，而是：**什么发生了变化、哪条约束失败、什么仍然未知。**
+依次输出 `VIOLATED`、`UNKNOWN`、`SATISFIED`。第一份报告同时显示：A/B 各节省 3 CU，但 C 损失 2 TU，超过已声明的 1 TU 上限。打开 `outputs/shared_equipment_third_party_violation.report.md` 即可查看。
+
+做一次具体修改：复制满足约束的示例，把 ID 为 `THIRD-PARTY` 的约束从 `limit: 1` 调低为 `limit: 0.25`，保留 C 的损失 `0.5`。结果就会变成 `VIOLATED`，A/B 的节省保持相同。[精确复制修改命令、报告位置与全部四例](docs/FIVE_MINUTE_WALKTHROUGH.md)。取得源码后，运行无需账号、API 密钥、模型下载或托管服务。
+
+可直接查看已发布的 [v0.1.0 Release](https://github.com/Civilization-Leap/computable-cooperation-mechanisms/releases/tag/v0.1.0) 和[源码 tag](https://github.com/Civilization-Leap/computable-cooperation-mechanisms/tree/v0.1.0)。
+
+## 双方都获益，谁还在付出代价？
+
+在共享设备的两份教学输入中，A、B 的成本都从 8 降至 5 CU，节省完全相同。但 C 的预留时段损失从 0.5 变为 2 TU，越过已声明的 1 TU 上限，结果便从 `SATISFIED` 变为 `VIOLATED`。相同的双方收益，可以伴随不同的约束结果。
+
+这是**合成输入下对已声明规则的可复算演示**，不是真实收益测量或新的实证发现。[查看对照与边界](docs/SHARED_EQUIPMENT_COMPARISON.md)，或[指出当前表示无法表达的问题](https://github.com/Civilization-Leap/computable-cooperation-mechanisms/issues/5)。
+
+## 独立实现挑战｜Independent Implementation Challenge
+
+**用另一种语言复现公开语义，欢迎建立独立仓库。** 从 [Issue #8](https://github.com/Civilization-Leap/computable-cooperation-mechanisms/issues/8) 开始。
+
+对熟悉所选语言和 JSON 工具的开发者，最小四例语义实现可先按 **8–16 小时**安排；包含非法输入检查、差异说明与可复现命令的版本，可按**合计 16–32 小时**安排。这是尚未经参与者实测的规划估计；与 Python 完全一致的输入哈希可能需要额外工作。
+
+范围包括解析、校验、可比差值、独立硬约束检查、未知保留与确定性输出。[工作量拆分、预期结果和提交格式](docs/INDEPENDENT_IMPLEMENTATION.md)。提供仓库链接与发现的差异即可，不要求合并回上游或承担持续服务。
 
 ## 请尝试击破、扩展或独立重写它
 
@@ -40,6 +66,7 @@ python -m unittest discover -s tests -v
 - 硬约束独立检查，普通收益不能抵销第三方硬约束；
 - 明确 `UNKNOWN` 不补零；
 - 非法引用、未声明单位等输入错误直接拒绝，不伪装成 `UNKNOWN`；
+- 未支持的顶层字段直接拒绝：添加 `id` 会报 `unsupported fields: ['id']`；案例标识字段应为 `case_id`；
 - 计算具确定性，并验证不会修改原始输入；
 - 输出包含输入复算哈希和解释边界。
 
@@ -50,9 +77,15 @@ python -m unittest discover -s tests -v
 3. `shared_equipment_unknown.json`：当前资源被明确标记为未知，因此相应硬检查保持 `UNKNOWN`；
 4. `shared_equipment_capacity_violation.json`：同类场景扩展，仅通过更换输入触发资源容量违反，不在内核中写场景特判。
 
+## 可选 CI 门禁（未发布）
+
+默认退出码 0 表示报告生成成功，包括违反和未知结果。本开发分支新增 `--fail-on-violation`：总体硬约束违反时返回 1；新增 `--fail-on-unknown`：总体未知时返回 3。CI 若要求只有 SATISFIED 才继续，应**同时使用两项**。有效输入先写完报告再返回门禁退出码；输入错误仍返回 2。[退出码表与命令](docs/CLI_EXIT_CODES.md)。已发布的 v0.1.0 tag 尚无这两项参数。
+
 ## 验证
 
-当前单元测试共 12 项。CI 在 Python 3.11、3.12、3.13 上运行测试，把 `ResourceWarning` 当作错误，并实际运行四个教学变体。正式发布工作流会在创建版本标签和 GitHub Release 之前，再对精确发布提交执行一次验证。
+冻结的 v0.1.0 含原始 12 项测试；本候选共 18 项，即原始 12 项、5 项 CLI 子进程测试及 1 项阈值扫描测试。CI 在 Python 3.11、3.12、3.13 上运行测试，把 `ResourceWarning` 当作错误，并实际运行四个教学变体。正式发布工作流会在创建版本标签和 GitHub Release 之前，再对精确发布提交执行一次验证。
+
+用户报告已在 **Python 3.12.3** 独立复现：13 个原始源码／元数据文件哈希一致、原始 12 项测试在 ResourceWarning 作为错误时通过、四例通过且无需 pip。此处明确保留“用户报告”的证据来源，与本地 Python 3.12.13 重验及 CI 分列。[证据记录与范围](docs/THRESHOLD_SENSITIVITY.md#reproduction-provenance)。
 
 ## 范围边界
 
@@ -64,7 +97,15 @@ python -m unittest discover -s tests -v
 
 可以按同一 JSON 合同新增同类场景。新增约束语义必须显式修改代码、测试和文档，不允许静默解释。独立团队可依据 Apache-2.0 分叉与扩展本项目，不需要依赖一个中心持续运营的服务。
 
-详见 [CONTRIBUTING.md](CONTRIBUTING.md)、[全球传播复用包](docs/OUTREACH_KIT.md)、[发布就绪检查表](docs/RELEASE_CHECKLIST.md) 与 [v0.1.0 发布说明](docs/RELEASE_NOTES_v0.1.0.md)。学术使用可直接采用仓库中的 [`CITATION.cff`](CITATION.cff) 引用元数据。
+详见 [CONTRIBUTING.md](CONTRIBUTING.md)、[全球传播复用包](docs/OUTREACH_KIT.md)、[发布就绪检查表](docs/RELEASE_CHECKLIST.md) 与 [v0.1.0 发布说明](docs/RELEASE_NOTES_v0.1.0.md)。
+
+## 引用已归档版本
+
+**v0.1.0 归档**的版本 DOI 为 [10.5281/zenodo.22656544](https://doi.org/10.5281/zenodo.22656544)；[全版本 DOI](https://doi.org/10.5281/zenodo.22656543) 对应整个版本族。引用具体复现结果时使用版本 DOI。
+
+归档的 34 个文件与 v0.1.0 标签内容逐字节一致。本分支新增的 CLI 门禁、阈值扫描脚本和后续文档不属于该归档。Zenodo 的版本 `0.1.0`、署名 `Zijunfu` 均已核验正确。[归档核验及元数据更正记录](docs/ZENODO_ARCHIVE.md)。
+
+可采用仓库中的 [`CITATION.cff`](CITATION.cff) 引用元数据。
 
 ## 许可证与商业使用
 

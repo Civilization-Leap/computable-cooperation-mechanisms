@@ -1,0 +1,49 @@
+{
+  "case_id": "TEACH-EQUIP-OK",
+  "checks": [
+    {
+      "constraint_id": "R-CAP",
+      "hard": true,
+      "reason": "9 <= 10 is true",
+      "source": "candidate.allocations.equipment_slots",
+      "status": "SATISFIED"
+    },
+    {
+      "constraint_id": "THIRD-PARTY",
+      "hard": true,
+      "reason": "0.5 <= 0.25 is false",
+      "source": "candidate.outcomes:C/reserved_slot_loss/TU",
+      "status": "VIOLATED"
+    }
+  ],
+  "input_sha256": "0db3b7f0d28dc35eb2efb1744f68b0e81f9190a40023353cc3490172e3e3238d",
+  "interpretation_boundary": "Deterministic check of declared inputs and constraints only; not a fairness certification, H/T/L/RUN state, or real-world authorization.",
+  "outcome_deltas": [
+    {
+      "actor": "A",
+      "baseline": 8,
+      "candidate": 5,
+      "delta": -3.0,
+      "dimension": "ordinary_cost",
+      "unit": "CU"
+    },
+    {
+      "actor": "B",
+      "baseline": 8,
+      "candidate": 5,
+      "delta": -3.0,
+      "dimension": "ordinary_cost",
+      "unit": "CU"
+    },
+    {
+      "actor": "C",
+      "baseline": 0,
+      "candidate": 0.5,
+      "delta": 0.5,
+      "dimension": "reserved_slot_loss",
+      "unit": "TU"
+    }
+  ],
+  "overall_declared_constraint_status": "VIOLATED",
+  "software_version": "0.1.0"
+}
