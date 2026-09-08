@@ -12,9 +12,9 @@ The introduction discusses withholding private information to avoid exploitation
 
 Conversation question: when an opponent-model benchmark proposes an agreement, what information would be needed for a separate third-party protection check, and when would preserving a value as unknown be inadequate? Ask for one counterexample to the interface, not validation of the entire framework.
 
-## Mark Klein — utility-bearing constraints versus non-compensable checks
+## Takayuki Ito — utility-bearing constraints versus non-compensable checks
 
-[MIT CCI biographical source](https://cci.mit.edu/klein-old/bio/) is an older profile; confirm the current individual contact before use. Paper: Ito, Hattori and Klein, [Multi-issue Negotiation Protocol for Agents: Exploring Nonlinear Utility Spaces](https://www.agent.soc.i.kyoto-u.ac.jp/~ito/papers/itota-ijcai2007.pdf), IJCAI 2007, especially §2 and the proposed bidding protocol.
+[Current Kyoto University faculty listing](https://www.soc.i.kyoto-u.ac.jp/en/faculty_list/index.html). Paper: Ito, Hattori and Klein, [Multi-issue Negotiation Protocol for Agents: Exploring Nonlinear Utility Spaces](https://www.agent.soc.i.kyoto-u.ac.jp/~ito/papers/itota-ijcai2007.pdf), IJCAI 2007, especially §2 and the proposed bidding protocol.
 
 The model represents nonlinear utilities with constraints carrying utility values; a mediator searches combinations of bids for social welfare. The comparison to our project is a difference in task and semantics: a declared hard threshold produces an independent check result, and ordinary outcome gains do not offset it. This is not evidence that the paper lacks feasibility restrictions or that the distinction is novel.
 
@@ -46,4 +46,4 @@ Conversation question: when moving beyond a naming game, which affected-party ou
 
 ## Common follow-through
 
-Attach one [five-minute trial link](https://github.com/Civilization-Leap/computable-cooperation-mechanisms#try-it-in-five-minutes), then the [synthetic comparison](SHARED_EQUIPMENT_COMPARISON.md) only if it helps the particular question. Keep one paper-specific question per message. Five candidates do not imply five simultaneous sends or a measured advantage over other outreach methods. Actual sending requires the user's authorization of the recipients and messages.
+Attach one [five-minute trial link](https://github.com/Civilization-Leap/computable-cooperation-mechanisms#try-it-in-five-minutes), then the [synthetic comparison](SHARED_EQUIPMENT_COMPARISON.md) only if it helps the particular question. Keep one paper-specific question per message. Five candidates do not imply five simultaneous sends or a measured advantage over other outreach methods. The current individualized preparation package is [RESEARCH_OUTREACH_WAVE1.md](RESEARCH_OUTREACH_WAVE1.md); neither document marks a message as sent.
