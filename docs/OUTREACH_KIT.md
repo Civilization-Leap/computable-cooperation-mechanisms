@@ -18,7 +18,7 @@ Repository: https://github.com/Civilization-Leap/computable-cooperation-mechanis
 
 ## Result-led developer entry
 
-Lead with the [shared-equipment comparison](SHARED_EQUIPMENT_COMPARISON.md): A and B can obtain the same declared savings while a separately declared third-party check changes from satisfied to violated. The English and Chinese short texts on that page are reusable on channels that permit assisted writing. Link directly to the [five-minute walkthrough](FIVE_MINUTE_WALKTHROUGH.md).
+Lead with the [threshold-sensitivity experiment](THRESHOLD_SENSITIVITY.md): all three outcome deltas stay fixed while changing only the declared ceiling flips the hard-check result. That page contains English/Chinese copy and complete report comparison images. The status, input hash, and check reason change; do not claim the reports differ only in status or that C was proven to have been excluded from rule-setting. These texts are reusable on channels that permit assisted writing. The [original teaching-case comparison](SHARED_EQUIPMENT_COMPARISON.md) remains available as a separate experiment that changes C's loss instead of the threshold. Link directly to the [five-minute walkthrough](FIVE_MINUTE_WALKTHROUGH.md).
 
 The result is a synthetic demonstration of chosen semantics. Do not describe it as a new empirical finding, a prediction of the benefits of cooperation, or a comparison with a competing solver that was never run.
 
@@ -32,7 +32,8 @@ Useful facts for the author's own account:
 
 - Python standard-library implementation; Git + Python 3.11–3.13 needed; no model or API required.
 - Four variants of one synthetic domain, not four validated application domains.
-- Same A/B gains in two candidates; different C losses and hard-check results.
+- In the threshold sweep, all A/B/C outcomes stay fixed; only the declared ceiling changes. The separate original pair changes C's loss instead.
+- The record does not establish who selected the threshold or whether C participated.
 - A missing affected actor or omitted protection will not be discovered automatically.
 - Unknown values remain explicit; this is not probabilistic uncertainty calibration.
 - The program neither searches for a deal nor predicts negotiation behavior.

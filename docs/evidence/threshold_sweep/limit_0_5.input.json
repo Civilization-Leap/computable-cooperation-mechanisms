@@ -1,0 +1,96 @@
+{
+  "actors": [
+    {
+      "id": "A",
+      "role": "primary-user"
+    },
+    {
+      "id": "B",
+      "role": "primary-user"
+    },
+    {
+      "id": "C",
+      "role": "third-party-reserved-user"
+    }
+  ],
+  "baseline": {
+    "allocations": {
+      "equipment_slots": 10
+    },
+    "outcomes": [
+      {
+        "actor": "A",
+        "dimension": "ordinary_cost",
+        "unit": "CU",
+        "value": 8
+      },
+      {
+        "actor": "B",
+        "dimension": "ordinary_cost",
+        "unit": "CU",
+        "value": 8
+      },
+      {
+        "actor": "C",
+        "dimension": "reserved_slot_loss",
+        "unit": "TU",
+        "value": 0
+      }
+    ]
+  },
+  "candidate": {
+    "allocations": {
+      "equipment_slots": 9
+    },
+    "outcomes": [
+      {
+        "actor": "A",
+        "dimension": "ordinary_cost",
+        "unit": "CU",
+        "value": 5
+      },
+      {
+        "actor": "B",
+        "dimension": "ordinary_cost",
+        "unit": "CU",
+        "value": 5
+      },
+      {
+        "actor": "C",
+        "dimension": "reserved_slot_loss",
+        "unit": "TU",
+        "value": 0.5
+      }
+    ]
+  },
+  "case_id": "TEACH-EQUIP-OK",
+  "constraints": [
+    {
+      "description": "At most 10 equipment slots",
+      "hard": true,
+      "id": "R-CAP",
+      "kind": "resource",
+      "limit": 10,
+      "operator": "<=",
+      "resource": "equipment_slots"
+    },
+    {
+      "actor": "C",
+      "description": "Third-party reserved-slot loss <= 1 TU",
+      "dimension": "reserved_slot_loss",
+      "hard": true,
+      "id": "THIRD-PARTY",
+      "kind": "outcome",
+      "limit": 0.5,
+      "operator": "<=",
+      "unit": "TU"
+    }
+  ],
+  "notes": "Original public teaching fixture; not a research run.",
+  "schema_version": "coop.case.v0.1",
+  "title": "Shared equipment - constraints satisfied",
+  "units": {
+    "cost": "CU",
+    "slot": "TU"
+  }
+}

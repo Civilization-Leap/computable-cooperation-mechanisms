@@ -1,7 +1,9 @@
 # Computable Competition–Cooperation Mechanisms
 ## Minimal Open Reference Implementation
 
-**v0.1.0 release source. Public open-source repository under Apache-2.0.**
+**Latest published release: v0.1.0. This branch also contains unreleased CLI and documentation additions. Apache-2.0.**
+
+**Same outcomes. Different verdict.** A and B each save 3 CU; C loses 0.5 TU. Lower only C's declared loss ceiling from 0.5 to 0.49: `SATISFIED` becomes `VIOLATED`, with all outcome deltas unchanged. A computation can enforce a line precisely without establishing that the line is legitimate. [Run the threshold sweep and inspect both complete reports](docs/THRESHOLD_SENSITIVITY.md).
 
 Human societies constantly compete, cooperate, form alliances, blocs, and communities. **How many of the mechanisms behind those relationships are explicit enough to inspect, recompute, falsify, and improve?**
 
@@ -64,6 +66,7 @@ Start with the open [contribution and research challenges](../../issues), especi
 - hard constraints are checked independently of ordinary gains;
 - explicit unknowns are preserved rather than filled with zero;
 - invalid references and undeclared units are rejected rather than converted to `UNKNOWN`;
+- unsupported top-level fields are rejected explicitly: adding `id` yields `unsupported fields: ['id']`; the declared case identifier is `case_id`;
 - evaluation is deterministic and does not mutate its input;
 - output contains a reproducibility hash and an interpretation boundary.
 
@@ -74,9 +77,15 @@ Start with the open [contribution and research challenges](../../issues), especi
 3. `shared_equipment_unknown.json` — current resource value is explicitly unknown, so the hard check remains `UNKNOWN`.
 4. `shared_equipment_capacity_violation.json` — a same-class extension case that violates resource capacity without scenario-specific core logic.
 
+## Optional CI gate (unreleased)
+
+Default exit 0 means reports were produced, including for violated or unknown constraints. In this development checkout, `--fail-on-violation` returns 1 for an overall hard violation; `--fail-on-unknown` returns 3 for overall UNKNOWN. Use **both flags** if a CI gate must require SATISFIED. Reports are written before semantic failure exits; malformed inputs still fail with exit 2. [Exit-code table and command](docs/CLI_EXIT_CODES.md). These flags are absent from the published v0.1.0 tag.
+
 ## Verification
 
-The current unit suite contains 12 tests. CI runs them with `ResourceWarning` treated as an error on Python 3.11, 3.12, and 3.13, and executes all four teaching variants. The formal release workflow repeats exact-commit verification before creating a version tag and GitHub Release.
+The frozen v0.1.0 suite contains 12 tests. This candidate contains 18: those original 12, five subprocess CLI tests, and one threshold-sensitivity test. CI runs them with `ResourceWarning` treated as an error on Python 3.11, 3.12, and 3.13, and executes all four teaching variants. The formal release workflow repeats exact-commit verification before creating a version tag and GitHub Release.
+
+A user independently reported successful reproduction on **Python 3.12.3**, including 13 source/metadata hashes, the original 12 tests with ResourceWarning as an error, and all four cases without pip. This is a user-reported run, distinct from the local Python 3.12.13 recheck and CI. [Evidence and exact scope](docs/THRESHOLD_SENSITIVITY.md#reproduction-provenance).
 
 ## Scope boundary
 

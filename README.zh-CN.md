@@ -1,7 +1,9 @@
 # 竞争—合作可计算机制
 ## 最小开源参考实现
 
-**v0.1.0 发布源码基线。公开开源仓库，采用 Apache-2.0。**
+**当前已发布版本：v0.1.0。本分支另含未发布的 CLI 与文档增补。采用 Apache-2.0。**
+
+**处境未变，判定翻转。** A、B 各节省 3 CU，C 损失 0.5 TU。只把 C 的损失上限从 0.5 调到 0.49，结果便由 `SATISFIED` 变为 `VIOLATED`，所有主体差值保持相同。计算可以准确执行一条保护线，却不能因此证明这条线画得正当。[阈值扫描、完整报告对照与中英文短稿](docs/THRESHOLD_SENSITIVITY.md)。
 
 人类社会每天都在竞争、合作、结盟、形成阵营与共同体。**这些关系背后的机制，有多少能够被明确表达、检查、复算、证伪和改进？**
 
@@ -64,6 +66,7 @@ python -m unittest discover -s tests -v
 - 硬约束独立检查，普通收益不能抵销第三方硬约束；
 - 明确 `UNKNOWN` 不补零；
 - 非法引用、未声明单位等输入错误直接拒绝，不伪装成 `UNKNOWN`；
+- 未支持的顶层字段直接拒绝：添加 `id` 会报 `unsupported fields: ['id']`；案例标识字段应为 `case_id`；
 - 计算具确定性，并验证不会修改原始输入；
 - 输出包含输入复算哈希和解释边界。
 
@@ -74,9 +77,15 @@ python -m unittest discover -s tests -v
 3. `shared_equipment_unknown.json`：当前资源被明确标记为未知，因此相应硬检查保持 `UNKNOWN`；
 4. `shared_equipment_capacity_violation.json`：同类场景扩展，仅通过更换输入触发资源容量违反，不在内核中写场景特判。
 
+## 可选 CI 门禁（未发布）
+
+默认退出码 0 表示报告生成成功，包括违反和未知结果。本开发分支新增 `--fail-on-violation`：总体硬约束违反时返回 1；新增 `--fail-on-unknown`：总体未知时返回 3。CI 若要求只有 SATISFIED 才继续，应**同时使用两项**。有效输入先写完报告再返回门禁退出码；输入错误仍返回 2。[退出码表与命令](docs/CLI_EXIT_CODES.md)。已发布的 v0.1.0 tag 尚无这两项参数。
+
 ## 验证
 
-当前单元测试共 12 项。CI 在 Python 3.11、3.12、3.13 上运行测试，把 `ResourceWarning` 当作错误，并实际运行四个教学变体。正式发布工作流会在创建版本标签和 GitHub Release 之前，再对精确发布提交执行一次验证。
+冻结的 v0.1.0 含原始 12 项测试；本候选共 18 项，即原始 12 项、5 项 CLI 子进程测试及 1 项阈值扫描测试。CI 在 Python 3.11、3.12、3.13 上运行测试，把 `ResourceWarning` 当作错误，并实际运行四个教学变体。正式发布工作流会在创建版本标签和 GitHub Release 之前，再对精确发布提交执行一次验证。
+
+用户报告已在 **Python 3.12.3** 独立复现：13 个原始源码／元数据文件哈希一致、原始 12 项测试在 ResourceWarning 作为错误时通过、四例通过且无需 pip。此处明确保留“用户报告”的证据来源，与本地 Python 3.12.13 重验及 CI 分列。[证据记录与范围](docs/THRESHOLD_SENSITIVITY.md#reproduction-provenance)。
 
 ## 范围边界
 
