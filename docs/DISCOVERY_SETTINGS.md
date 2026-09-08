@@ -4,20 +4,24 @@ Prepared 2026-09-08 for `Civilization-Leap/computable-cooperation-mechanisms`.
 
 ## Topics
 
-The GitHub repository API returned `topics: []` at inspection. Proposed set:
+Installed and verified on the public repository page on 2026-09-08:
 
 ```text
-mechanism-design
-competition
-cooperation
 automated-negotiation
-computational-social-science
-multi-agent-systems
+competitions
+computational-social-sciences
 constraint-validation
-reproducible-research
-reference-implementation
+cooperation
+mechanism-design
+multi-agent-systems
 python
+reference-implementation
+reproducible-research
 ```
+
+GitHub normalized the proposed labels `competition` and
+`computational-social-science` to the existing topic names `competitions` and
+`computational-social-sciences`.
 
 These describe research relevance and the reference implementation. They do not claim that this release includes a multi-agent simulator or negotiation engine. Avoid adding `norm-emergence`, `reinforcement-learning`, or `agi-alignment` as descriptions of implemented capabilities.
 
@@ -29,7 +33,10 @@ Asset: [`assets/social-preview.jpg`](../assets/social-preview.jpg). Headline: **
 
 The opaque JPEG is 1774 × 887 pixels (2:1), 194,351 bytes. It was created with the built-in image-generation tool, visually checked, and converted from PNG to JPEG for GitHub's under-1-MB limit; the composition and pixel dimensions were retained. GitHub recommends at least 640 × 320, with 1280 × 640 for best display. [Official instructions](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/customizing-your-repositorys-social-media-preview).
 
-Install under repository Settings → General → Social preview → Edit → Upload an image. Merely committing this file does not activate the preview. Platform rendering and cache behavior vary, so do not promise that every shared link will immediately display it or that it increases forwarding by a known amount.
+Installed on 2026-09-08 under repository Settings → General → Social preview.
+The settings page showed the active-image controls after upload. Platform
+rendering and cache behavior vary, so do not promise that every shared link
+will immediately display it or that it increases forwarding by a known amount.
 
 ## GitHub ↔ Zenodo
 
@@ -41,6 +48,9 @@ Zenodo's `code:codeRepository` already points to this repository. The reverse li
 
 The record owner completed both metadata corrections: version `0.10` → `0.1.0`; creator `zijinfu` → `Zijunfu`. The published Zenodo API now confirms both canonical values. Archive size/checksum and DOI are unchanged. [Verification evidence and correction history](ZENODO_ARCHIVE.md).
 
-## Status at preparation
+## Status
 
-The browser was signed out of GitHub; topics and custom-preview installation are pending authenticated settings access. The DOI identity and archive contents are now verified; the two Zenodo metadata corrections above are complete and verified. These account-level settings are not completed by this documentation change. Email and HN publication remain unsent.
+Repository topics and the custom social preview were installed and verified on
+2026-09-08. The DOI identity and archive contents are verified, and the two
+Zenodo metadata corrections above are complete and verified. Email and HN
+publication remain unsent.
