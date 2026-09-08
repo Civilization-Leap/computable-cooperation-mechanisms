@@ -45,6 +45,11 @@ A two-hour availability window after posting is a practical suggestion, not a pr
 
 Choose a person and one paper before composing a message. [Five paper-specific conversation candidates](RESEARCH_DIALOGUES.md) replace institution inboxes as the starting point. Their methodological differences are invitations to compare scope, not claims that this project solves those papers' limitations.
 
+The [source-checked first-wave package](RESEARCH_OUTREACH_WAVE1.md) contains
+five individualized drafts, current public contact routes, paper-specific
+questions, a send order, and an evidence-log format. It is preparation only;
+none of the messages is marked as sent.
+
 The following common description is supporting material, not a complete personalized message:
 
 **Subject:** Open computational starting point for competition/cooperation mechanisms — counterexamples welcome
