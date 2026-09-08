@@ -84,4 +84,4 @@ Repository: https://github.com/Civilization-Leap/computable-cooperation-mechanis
 
 ## Repository discovery and citation
 
-[Metadata settings and archive-link preparation](DISCOVERY_SETTINGS.md) record the proposed topics, social preview asset, and the unverified DOI dependency. A committed image is not an installed GitHub social preview, and a DOI must not be added until its record and archived version are verified.
+[Metadata settings and archive verification](DISCOVERY_SETTINGS.md) record the proposed topics, social preview asset, and verified v0.1.0 archive. Cite [10.5281/zenodo.22656544](https://doi.org/10.5281/zenodo.22656544) for that exact release. The [concept DOI](https://doi.org/10.5281/zenodo.22656543) represents all versions. The code repository backlink is present on Zenodo; the GitHub backlink is included in this candidate branch. Two Zenodo metadata typos remain documented in the [archive record](ZENODO_ARCHIVE.md). A committed image is still not an installed GitHub social preview, and the v0.1.0 archive does not include later candidate features.

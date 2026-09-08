@@ -97,7 +97,15 @@ python -m unittest discover -s tests -v
 
 可以按同一 JSON 合同新增同类场景。新增约束语义必须显式修改代码、测试和文档，不允许静默解释。独立团队可依据 Apache-2.0 分叉与扩展本项目，不需要依赖一个中心持续运营的服务。
 
-详见 [CONTRIBUTING.md](CONTRIBUTING.md)、[全球传播复用包](docs/OUTREACH_KIT.md)、[发布就绪检查表](docs/RELEASE_CHECKLIST.md) 与 [v0.1.0 发布说明](docs/RELEASE_NOTES_v0.1.0.md)。学术使用可直接采用仓库中的 [`CITATION.cff`](CITATION.cff) 引用元数据。
+详见 [CONTRIBUTING.md](CONTRIBUTING.md)、[全球传播复用包](docs/OUTREACH_KIT.md)、[发布就绪检查表](docs/RELEASE_CHECKLIST.md) 与 [v0.1.0 发布说明](docs/RELEASE_NOTES_v0.1.0.md)。
+
+## 引用已归档版本
+
+**v0.1.0 归档**的版本 DOI 为 [10.5281/zenodo.22656544](https://doi.org/10.5281/zenodo.22656544)；[全版本 DOI](https://doi.org/10.5281/zenodo.22656543) 对应整个版本族。引用具体复现结果时使用版本 DOI。
+
+归档的 34 个文件与 v0.1.0 标签内容逐字节一致。本分支新增的 CLI 门禁、阈值扫描脚本和后续文档不属于该归档。Zenodo 当前显示的版本 `0.10`、署名 `zijinfu` 尚待更正；源码版本与既定署名为 `0.1.0`、`Zijunfu`。[归档核验及元数据更正说明](docs/ZENODO_ARCHIVE.md)。
+
+可采用仓库中的 [`CITATION.cff`](CITATION.cff) 引用元数据。
 
 ## 许可证与商业使用
 

@@ -1,15 +1,15 @@
 cff-version: 1.2.0
-message: "If you use this software in research, please cite the project and its archived release."
+message: "Cite the archived v0.1.0 release using this DOI. Unreleased branch additions are outside that archive."
 title: "Computable Competition–Cooperation Mechanisms: Minimal Open Reference Implementation"
 type: software
 authors:
   - family-names: "Zijunfu"
-    name: "Zijunfu"
 version: 0.1.0
+doi: 10.5281/zenodo.22656544
 date-released: 2026-09-06
 license: Apache-2.0
 repository-code: "https://github.com/Civilization-Leap/computable-cooperation-mechanisms"
-url: "https://github.com/Civilization-Leap/computable-cooperation-mechanisms/releases/tag/v0.1.0"
+url: "https://zenodo.org/records/22656544"
 abstract: >-
   A minimal open reference implementation for expressing, checking, and recomputing declared multi-actor mechanism conditions without collapsing them into a universal fairness score.
 keywords:

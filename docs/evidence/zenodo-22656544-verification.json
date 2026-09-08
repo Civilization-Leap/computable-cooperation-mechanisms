@@ -1,0 +1,78 @@
+{
+  "record_id": 22656544,
+  "doi": "10.5281/zenodo.22656544",
+  "concept_doi": "10.5281/zenodo.22656543",
+  "status": "published",
+  "archive_filename": "computable-cooperation-mechanisms-0.1.0.zip",
+  "archive_bytes": 49027,
+  "archive_md5": "md5:a530230bfa782128c689c711a5062fea",
+  "archive_sha256": "ea54358e0a3fa5fd479914e3a0d872def1d9a6a3777fc3d1bd22cd1833612a37",
+  "tag": "v0.1.0",
+  "tag_commit": "a811eccf0eae8c5120c6be1d5ac4b11c8319d377",
+  "matching_files": [
+    ".github/workflows/ci.yml",
+    ".github/workflows/release.yml",
+    ".gitignore",
+    "CHANGELOG.md",
+    "CONTRIBUTING.md",
+    "IMPLEMENTATION_PLAN.md",
+    "LICENSE",
+    "LICENSE_SCOPE.md",
+    "README.md",
+    "README.zh-CN.md",
+    "RELEASE_VERSION",
+    "TEST_RESULTS.txt",
+    "docs/METHOD_AND_BOUNDARIES.md",
+    "docs/PROJECT_OVERVIEW.md",
+    "docs/PROJECT_OVERVIEW.zh-CN.md",
+    "docs/RELEASE_CHECKLIST.md",
+    "docs/RELEASE_NOTES_v0.1.0.md",
+    "examples/shared_equipment_capacity_violation.json",
+    "examples/shared_equipment_ok.json",
+    "examples/shared_equipment_third_party_violation.json",
+    "examples/shared_equipment_unknown.json",
+    "mechanism_ref/__init__.py",
+    "mechanism_ref/__main__.py",
+    "mechanism_ref/cli.py",
+    "mechanism_ref/core.py",
+    "outputs/shared_equipment_ok.report.md",
+    "outputs/shared_equipment_ok.result.json",
+    "outputs/shared_equipment_third_party_violation.report.md",
+    "outputs/shared_equipment_third_party_violation.result.json",
+    "outputs/shared_equipment_unknown.report.md",
+    "outputs/shared_equipment_unknown.result.json",
+    "pyproject.toml",
+    "schemas/coop.case.v0.1.schema.json",
+    "tests/test_core.py"
+  ],
+  "mismatched_files": [],
+  "missing_files": [],
+  "extra_files": [],
+  "zenodo_version": "0.10",
+  "zenodo_creators": [
+    {
+      "name": "zijinfu",
+      "affiliation": null
+    }
+  ],
+  "repository_relationship": {
+    "code:codeRepository": "https://github.com/Civilization-Leap/computable-cooperation-mechanisms"
+  },
+  "verification_date": "2026-09-08",
+  "zenodo_api": "https://zenodo.org/api/records/22656544",
+  "datacite_api": "https://api.datacite.org/dois/10.5281/zenodo.22656544",
+  "datacite_state_observed": "findable",
+  "annotated_tag_object": "0960d01d73c73a6ad66644341e70a8cf8b10dd15",
+  "archive_content_verdict": "PASS: exact file inventory and bytes match the peeled release commit",
+  "metadata_corrections_pending": {
+    "version": {
+      "observed": "0.10",
+      "expected": "0.1.0"
+    },
+    "creator": {
+      "observed": "zijinfu",
+      "expected": "Zijunfu"
+    }
+  },
+  "zenodo_metadata_modified_by_this_task": false
+}

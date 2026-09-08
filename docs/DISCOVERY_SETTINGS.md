@@ -33,16 +33,14 @@ Install under repository Settings → General → Social preview → Edit → Up
 
 ## GitHub ↔ Zenodo
 
-Verified: the public GitHub release is [`v0.1.0`](https://github.com/Civilization-Leap/computable-cooperation-mechanisms/releases/tag/v0.1.0), commit `0960d01d73c73a6ad66644341e70a8cf8b10dd15`. Current README and `CITATION.cff` have no Zenodo DOI. No matching Zenodo record was verified from the sources available in this task. That is not proof that no record exists.
+Verified 2026-09-08: [Zenodo record 22656544](https://zenodo.org/records/22656544) is published, its [version DOI](https://doi.org/10.5281/zenodo.22656544) is registered and findable in DataCite, and the [concept DOI](https://doi.org/10.5281/zenodo.22656543) represents all versions.
 
-Once the existing record is identified, compare its title, creator, version, uploaded archive, and repository relationship. Then:
+All 34 files in `computable-cooperation-mechanisms-0.1.0.zip` match GitHub tag `v0.1.0` byte-for-byte. The annotated tag object is `0960d01d73c73a6ad66644341e70a8cf8b10dd15`; it points to release commit `a811eccf0eae8c5120c6be1d5ac4b11c8319d377`. The previously described "commit 0960..." was the annotated tag object, not the peeled commit.
 
-1. On GitHub, add the verified record/DOI link in both READMEs and citation metadata, clearly distinguishing the archived release from changing main-branch documentation.
-2. On Zenodo, add the repository URL and exact tagged release as related software/source links, choosing the relation that matches the actual archived object. If the record archives the theoretical manuscript instead of this software, link it as related research and do not assign its DOI to the software's `CITATION.cff`.
-3. If distinct concept and version DOIs exist, label the former as all versions and use the correct version DOI when citing a particular release.
+Zenodo's `code:codeRepository` already points to this repository. The reverse link has been added to both READMEs and CITATION.cff in this candidate branch. This DOI identifies the archived release, not unreleased branch additions.
 
-Do not invent a DOI, silently create a duplicate record, or move the frozen release tag to include documentation updates.
+Two Zenodo metadata corrections remain: version `0.10` → `0.1.0`; creator `zijinfu` → `Zijunfu`. The archive itself is correct. No Zenodo metadata was modified in this task because the browser has no signed-in editing session. The record owner can use Edit → Publish on the same record; this preserves the DOI. [Verification evidence and exact instructions](ZENODO_ARCHIVE.md).
 
 ## Status at preparation
 
-The browser was signed out of GitHub; topics and custom-preview installation are pending authenticated settings access. The existing DOI/record identity is also pending verification. These account-level settings are not completed by this documentation change. Email and HN publication remain unsent.
+The browser was signed out of GitHub; topics and custom-preview installation are pending authenticated settings access. The DOI identity and archive contents are now verified; the two Zenodo metadata corrections above remain pending. These account-level settings are not completed by this documentation change. Email and HN publication remain unsent.
