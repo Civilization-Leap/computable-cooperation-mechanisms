@@ -1,7 +1,7 @@
 # First-wave researcher outreach
 
 Prepared and source-checked 2026-09-08. This is a five-message preparation
-record, not a sent-mail log. Recheck each address immediately before sending.
+and send record. Recheck each address immediately before sending.
 Send messages individually, without attachments or tracking links, and record
 only substantive replies or delivery failures.
 
@@ -234,3 +234,18 @@ delivery failure, reply, public issue/counterexample link, and follow-up status.
 One unanswered message is not evidence against the project. Do not send a
 second message unless the recipient replies or a materially new release answers
 the original question.
+
+### Send log
+
+Gmail acceptance means only that the authenticated account accepted the send;
+it does not establish inbox delivery or reading.
+
+- 2026-09-08T11:24Z — Rafik Hadfi, `rafik.hadfi@i.kyoto-u.ac.jp`;
+  subject: “What is the smallest counterexample to a scalar protection check?”;
+  Gmail message/thread ID: `1a080c33fedc1cac`; status: accepted and labelled
+  `SENT`; no delivery failure or reply observed at record time.
+- 2026-09-08T11:25Z — Takayuki Ito, `ito@i.kyoto-u.ac.jp`;
+  subject: “A non-compensable condition beside nonlinear negotiation utility”;
+  Gmail message/thread ID: `1a080c375e2d5856`; status: accepted and labelled
+  `SENT`; no delivery failure or reply observed at record time.
+- Tim Baarslag, Sandip Sen and Andrea Baronchelli: not sent.
