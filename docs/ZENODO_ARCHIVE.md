@@ -23,18 +23,20 @@ The comparison strips only the ZIP's outer repository directory, compares the co
 
 The release's original publication date in CITATION.cff is 2026-09-06. The Zenodo archive was published on 2026-09-08. These describe different publication events.
 
-## Two metadata corrections pending on Zenodo
+## Metadata corrections completed
 
-| Field | Currently published | Canonical value |
+The record owner corrected and republished the metadata. The published Zenodo API was rechecked after the user's completion message; record modification time is `2026-09-08T08:54:38.585383+00:00`.
+
+| Field | Previous value (history only) | Verified published value |
 |---|---|---|
 | Version | `0.10` | `0.1.0` |
 | Creator | `zijinfu` | `Zijunfu` |
 
-These are metadata discrepancies, not mismatches in the uploaded source. CITATION.cff retains the source's canonical author/version and adds the DOI of the verified archive. The browser available to this task is signed out of Zenodo; no remote metadata edit was performed.
+DataCite also confirms version `0.1.0`, creator `Zijunfu`, and state `findable` (updated `2026-09-08T08:54:39.000Z`).
 
-The record owner can open the record, choose **Edit**, change these two fields, and **Publish** the edited metadata. Do not choose New version or create a duplicate record for these corrections. Zenodo's [official metadata-editing instructions](https://help.zenodo.org/docs/deposit/manage-records/#edit) state that publishing a metadata edit does not affect the DOI.
+The DOI, archive filename, size (49,027 bytes), and checksum are unchanged. The earlier 34-file byte comparison therefore remains the archive-content evidence. CITATION.cff agrees with the corrected canonical author/version. The owner performed the edit; this task verified it and closed the pending documentation item.
 
-中文：在原记录点 **Edit**，将 Version 改为 `0.1.0`，Creator 改为 `Zijunfu`，再点 **Publish**。这次只更正元数据，保持现有压缩包、DOI 和版本关系。当前记录已正确链接回 GitHub 仓库。
+中文：两项更正已生效。Zenodo 公开记录显示版本 `0.1.0`、署名 `Zijunfu`；原 DOI 与归档文件保持不变。元数据更正待办已关闭。
 
 ## Citation scope and bidirectional links
 

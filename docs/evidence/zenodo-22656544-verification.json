@@ -48,10 +48,10 @@
   "mismatched_files": [],
   "missing_files": [],
   "extra_files": [],
-  "zenodo_version": "0.10",
+  "zenodo_version": "0.1.0",
   "zenodo_creators": [
     {
-      "name": "zijinfu",
+      "name": "Zijunfu",
       "affiliation": null
     }
   ],
@@ -64,7 +64,9 @@
   "datacite_state_observed": "findable",
   "annotated_tag_object": "0960d01d73c73a6ad66644341e70a8cf8b10dd15",
   "archive_content_verdict": "PASS: exact file inventory and bytes match the peeled release commit",
-  "metadata_corrections_pending": {
+  "metadata_corrections_pending": {},
+  "zenodo_metadata_modified_by_this_task": false,
+  "metadata_correction_history": {
     "version": {
       "observed": "0.10",
       "expected": "0.1.0"
@@ -74,5 +76,13 @@
       "expected": "Zijunfu"
     }
   },
-  "zenodo_metadata_modified_by_this_task": false
+  "metadata_correction_status": "COMPLETE / VERIFIED",
+  "record_modified_after_correction": "2026-09-08T08:54:38.585383+00:00",
+  "archive_size_and_checksum_unchanged_after_correction": true,
+  "datacite_metadata_after_correction": {
+    "version": "0.1.0",
+    "creator": "Zijunfu",
+    "state": "findable",
+    "updated": "2026-09-08T08:54:39.000Z"
+  }
 }

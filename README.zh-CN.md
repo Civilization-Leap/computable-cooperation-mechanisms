@@ -103,7 +103,7 @@ python -m unittest discover -s tests -v
 
 **v0.1.0 归档**的版本 DOI 为 [10.5281/zenodo.22656544](https://doi.org/10.5281/zenodo.22656544)；[全版本 DOI](https://doi.org/10.5281/zenodo.22656543) 对应整个版本族。引用具体复现结果时使用版本 DOI。
 
-归档的 34 个文件与 v0.1.0 标签内容逐字节一致。本分支新增的 CLI 门禁、阈值扫描脚本和后续文档不属于该归档。Zenodo 当前显示的版本 `0.10`、署名 `zijinfu` 尚待更正；源码版本与既定署名为 `0.1.0`、`Zijunfu`。[归档核验及元数据更正说明](docs/ZENODO_ARCHIVE.md)。
+归档的 34 个文件与 v0.1.0 标签内容逐字节一致。本分支新增的 CLI 门禁、阈值扫描脚本和后续文档不属于该归档。Zenodo 的版本 `0.1.0`、署名 `Zijunfu` 均已核验正确。[归档核验及元数据更正记录](docs/ZENODO_ARCHIVE.md)。
 
 可采用仓库中的 [`CITATION.cff`](CITATION.cff) 引用元数据。
 

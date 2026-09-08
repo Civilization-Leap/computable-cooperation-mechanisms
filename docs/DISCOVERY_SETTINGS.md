@@ -39,8 +39,8 @@ All 34 files in `computable-cooperation-mechanisms-0.1.0.zip` match GitHub tag `
 
 Zenodo's `code:codeRepository` already points to this repository. The reverse link has been added to both READMEs and CITATION.cff in this candidate branch. This DOI identifies the archived release, not unreleased branch additions.
 
-Two Zenodo metadata corrections remain: version `0.10` → `0.1.0`; creator `zijinfu` → `Zijunfu`. The archive itself is correct. No Zenodo metadata was modified in this task because the browser has no signed-in editing session. The record owner can use Edit → Publish on the same record; this preserves the DOI. [Verification evidence and exact instructions](ZENODO_ARCHIVE.md).
+The record owner completed both metadata corrections: version `0.10` → `0.1.0`; creator `zijinfu` → `Zijunfu`. The published Zenodo API now confirms both canonical values. Archive size/checksum and DOI are unchanged. [Verification evidence and correction history](ZENODO_ARCHIVE.md).
 
 ## Status at preparation
 
-The browser was signed out of GitHub; topics and custom-preview installation are pending authenticated settings access. The DOI identity and archive contents are now verified; the two Zenodo metadata corrections above remain pending. These account-level settings are not completed by this documentation change. Email and HN publication remain unsent.
+The browser was signed out of GitHub; topics and custom-preview installation are pending authenticated settings access. The DOI identity and archive contents are now verified; the two Zenodo metadata corrections above are complete and verified. These account-level settings are not completed by this documentation change. Email and HN publication remain unsent.

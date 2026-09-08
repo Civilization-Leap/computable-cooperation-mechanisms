@@ -1,7 +1,7 @@
 # Changelog
 
 ## Unreleased
-- Bind the verified v0.1.0 Zenodo version DOI and concept DOI; record exact archive matching and pending upstream metadata corrections.
+- Bind the verified v0.1.0 Zenodo version DOI and concept DOI; record exact archive matching and verified completion of the upstream metadata corrections.
 - Add opt-in CLI exits: 1 for VIOLATED with --fail-on-violation, 3 for UNKNOWN with --fail-on-unknown; preserve default report-only exit behavior.
 - Add five CLI tests and one threshold experiment test, retaining the original 12 tests.
 - Add a standard-library threshold sweep, full report comparison, and bilingual dissemination text with separate user-reported/local reproduction provenance.

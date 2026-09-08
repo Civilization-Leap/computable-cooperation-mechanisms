@@ -103,7 +103,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md), [Global Outreach Kit](docs/OUTREACH_KIT.
 
 The **v0.1.0 archive** has version DOI [10.5281/zenodo.22656544](https://doi.org/10.5281/zenodo.22656544). The [all-versions DOI](https://doi.org/10.5281/zenodo.22656543) identifies the release family. Use the version DOI for reproducible citations.
 
-All 34 archived files match the v0.1.0 tag byte-for-byte. The archive excludes the unreleased CLI gates, threshold-sweep script, and later documentation in this branch. Zenodo currently displays two metadata typos (`0.10` and `zijinfu`); the source version and canonical author are `0.1.0` and `Zijunfu`. These corrections are pending on Zenodo. [Archive verification and metadata correction details](docs/ZENODO_ARCHIVE.md).
+All 34 archived files match the v0.1.0 tag byte-for-byte. The archive excludes the unreleased CLI gates, threshold-sweep script, and later documentation in this branch. Zenodo now records the canonical version `0.1.0` and author `Zijunfu`. [Archive verification and metadata correction history](docs/ZENODO_ARCHIVE.md).
 
 GitHub citation metadata is in [`CITATION.cff`](CITATION.cff).
 
