@@ -32,6 +32,15 @@ For one controlled change, copy the satisfied example and lower the constraint w
 
 The published [v0.1.0 Release](https://github.com/Civilization-Leap/computable-cooperation-mechanisms/releases/tag/v0.1.0) and [source tag](https://github.com/Civilization-Leap/computable-cooperation-mechanisms/tree/v0.1.0) can also be opened directly.
 
+## Independent third-party testing
+
+**Reproduce it, break it, or reimplement it. Endorsement is not requested.**
+Choose a 5–15 minute frozen-release reproduction, a 15–45 minute development
+challenge, or an independent implementation. Use the
+[testing guide](docs/THIRD_PARTY_TESTING.md) and return results in
+[Issue #14](https://github.com/Civilization-Leap/computable-cooperation-mechanisms/issues/14).
+Failed reproductions, incompatibilities, and counterexamples are useful results.
+
 ## Both sides gain. Who else pays?
 
 In the shared-equipment teaching pair, A and B each reduce their declared cost from 8 to 5 CU. Their savings are identical in both candidates. Yet C's reserved-slot loss changes from 0.5 to 2 TU, crossing the declared limit of 1 TU: `SATISFIED` becomes `VIOLATED`. The same gains can coexist with different constraint results.
