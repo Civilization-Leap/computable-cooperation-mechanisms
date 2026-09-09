@@ -78,7 +78,54 @@ Authenticated sender: `axdwzx@gmail.com`.
   `1a0844837f13aa77`; accepted and labelled `SENT`; no immediate delivery
   failure observed.
 
-No invitation is counted as external use. Record a result only after receiving
-commands, environment, an exact tag or commit, and observed evidence. Do not send
-a reminder unless the recipient replies or a materially new release directly
-changes the requested test.
+## 4. Follow-on Track D invitation — Sasha Costanza-Chock
+
+One additional, document-only invitation was sent on 2026-09-09. This is a
+CCM methodological question, not a request for a formal audit or a joint
+assessment of another project.
+
+- Relevant public background: coauthor of *Who Audits the Auditors?
+  Recommendations from a field scan of the algorithmic auditing ecosystem*.
+  The AJL publication page discusses unverifiable audit claims and recommends
+  clearer standards, disclosure for peer review, and affected-stakeholder
+  involvement. This is evidence of topical relevance, not endorsement.
+- Sources checked for this invitation:
+  - https://www.ajl.org/auditors
+  - https://arxiv.org/abs/2310.02521
+  - https://cyber.harvard.edu/people/scostanzachock
+- Public professional contact: `scostanzachock@cyber.harvard.edu`, listed on
+  the Berkman Klein Center profile.
+- Subject: “When an exact threshold check is mistaken for legitimacy — a
+  non-code review question”.
+- Primary question: where might an accurate threshold result be repackaged as
+  “computed, therefore objective and legitimate”, and what context should
+  remain attached to make that misuse harder?
+- Combined secondary question: what minimum disclosure of methods, relevant
+  experience and conflicts makes an independence claim defensible without
+  the project simply certifying its own reviewers?
+- Only the public threshold note and Track D guide were linked. No code run,
+  endorsement, formal audit, confidential material, or response was required.
+  A paragraph on either question was explicitly enough.
+- Pre-send mailbox searches found no prior matching correspondence with this
+  recipient. The message was sent individually from `axdwzx@gmail.com` and
+  read back with the Gmail `SENT` label. Delivery and reading are unconfirmed;
+  no review result is established by this event.
+- The invitation states that a private reply will not be publicly quoted or
+  attributed without permission. No new invitation to other recipients was
+  issued as part of this follow-on.
+
+## Result handling
+
+No invitation is counted as external use or validation. For Tracks A–C, record
+a result only with its commands, environment, exact tag or commit, and observed
+evidence. For Track D, retain the document version and sections, the question,
+reasoning or supporting evidence, and voluntarily disclosed methodological
+background and material relationships; state what is self-described or
+unverified. Do not require code execution for a document-only response.
+
+Credentials do not replace reasons or exclude anonymous and affected-party
+counterexamples. A Track D response is not software validation, an external
+audit, or project endorsement. Private correspondence requires permission
+before public attribution or quotation. Do not send a reminder unless the
+recipient replies or a materially new release directly changes the requested
+test.
