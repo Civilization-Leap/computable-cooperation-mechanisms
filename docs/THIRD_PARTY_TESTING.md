@@ -189,6 +189,12 @@ A successful software test does not establish that:
 The checker evaluates declared inputs under declared rules. Testing should
 expose both what it does reliably and what it cannot establish.
 
+## Maintainer-initiated invitations
+
+The first three individualized invitations and their bounded test roles are
+recorded in the [Wave 1 outreach log](THIRD_PARTY_TESTER_OUTREACH_WAVE1.md).
+An invitation is not counted as external use or validation.
+
 ## 中文简要说明
 
 可选择三条路径：复现冻结版、挑战当前开发版、或用另一种语言独立实现。
