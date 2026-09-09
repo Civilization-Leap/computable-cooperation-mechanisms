@@ -178,6 +178,28 @@ proposed field list. State which document and section you reviewed. This is a
 audit. If you also run code, report that execution separately under Track A or
 B.
 
+### Methodological context and citation limits
+
+Track D does not require an overall pass/fail verdict. Its judgments must still
+be open to challenge: identify the exact wording, the reasoning or evidence
+behind the concern, and, where possible, what would change the assessment.
+
+When citing a response as informed methodological evidence, keep the reviewed
+document version, question, method and evidence together with the reviewer's
+voluntarily disclosed relevant methodological or practice background and
+material relationships to the project. Distinguish publicly corroborated
+background from self-description or undisclosed information. A name, title or
+institution does not establish correctness or independence; the citation must
+not imply broader expertise, coverage, endorsement or assurance than supported.
+
+Anonymous and affected-party feedback remain welcome. Credentials are not an
+admission gate, and a concrete counterexample must be considered on its merits.
+When background or independence cannot be established, state that limitation
+rather than presenting the response as an expert or independently audited
+conclusion. Do not require sensitive personal details or confidential client
+information. Private replies are not permission to publish attribution or
+quotations; obtain permission before doing so.
+
 ## What to return
 
 Reply in [Issue #14](https://github.com/Civilization-Leap/computable-cooperation-mechanisms/issues/14)
@@ -197,9 +219,13 @@ Observed exit codes (A–C):
 Semantic agreement: yes / partial / no / not tested
 Hash agreement: yes / partial / no / not tested
 Malformed-input coverage:
-Document and sections reviewed (D):
+Document version/commit and sections reviewed (D):
 Evidence label or boundary challenged (D):
 Concrete misuse path or missing provenance field (D):
+Reasoning/evidence and what could change the assessment (D):
+Relevant methods/practice background and public references (D; optional):
+Background basis: public reference / self-description / not disclosed
+Material relationship to the project (optional; do not include sensitive details):
 Unexpected behavior or counterexample:
 Public evidence link:
 Time spent (optional):
@@ -219,8 +245,10 @@ Results will be described narrowly:
 - **counterexample or incompatibility** — a documented behavior, input, or
   representation gap;
 - **document-only methodological review** — a non-code review of evidence
-  labels, interpretation boundaries, rule provenance, or likely misuse; it is
-  not software validation;
+  labels, interpretation boundaries, rule provenance, or likely misuse; its
+  citation is bounded by the reviewed scope, reasoning, evidence and disclosed
+  methodological background, not by the reviewer's name alone; it is not
+  software validation;
 - **external audit** — reserved for a separately scoped audit with stated
   methods, independence criteria, and evidence. Track D alone does not qualify.
 
@@ -254,5 +282,12 @@ An invitation is not counted as external use or validation.
 运行代码而审阅证据标签、解释边界、阈值来源与可能误用。代码轨道须记录运行
 环境、精确提交、命令、状态与退出码；文档轨道须指出具体章节、缺失字段或误用
 路径。失败、差异和反例同样有价值。测试成功不等于认可理论；文档审阅也不冒充
-软件验证或外部审计。结果可提交至
+软件验证或外部审计。
+
+引用文档审阅时，应同时保留审阅版本、问题范围、方法与证据，以及自愿披露的
+相关方法或实践背景；区分公开可核查、自述与未披露。背景帮助判断适用范围，
+不能以身份替代理由、证明独立性或扩大为背书。匿名意见与受影响者经验仍可进入；
+没有公开资历不取消反例的价值。私人回复不自动授权公开署名或引用。
+
+结果可提交至
 [Issue #14](https://github.com/Civilization-Leap/computable-cooperation-mechanisms/issues/14)。
