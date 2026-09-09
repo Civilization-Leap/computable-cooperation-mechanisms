@@ -35,8 +35,9 @@ The published [v0.1.0 Release](https://github.com/Civilization-Leap/computable-c
 ## Independent third-party testing
 
 **Reproduce it, break it, or reimplement it. Endorsement is not requested.**
-Choose a 5–15 minute frozen-release reproduction, a 15–45 minute development
-challenge, or an independent implementation. Use the
+Choose a 5–15 minute frozen-release reproduction, a fixed development
+challenge, an independent implementation, or a 10–30 minute non-code review of
+evidence labels, rule provenance, and misuse risks. Use the
 [testing guide](docs/THIRD_PARTY_TESTING.md) and return results in
 [Issue #14](https://github.com/Civilization-Leap/computable-cooperation-mechanisms/issues/14).
 Failed reproductions, incompatibilities, and counterexamples are useful results.
@@ -92,7 +93,7 @@ Default exit 0 means reports were produced, including for violated or unknown co
 
 ## Verification
 
-The frozen v0.1.0 suite contains 12 tests. This candidate contains 18: those original 12, five subprocess CLI tests, and one threshold-sensitivity test. CI runs them with `ResourceWarning` treated as an error on Python 3.11, 3.12, and 3.13, and executes all four teaching variants. The formal release workflow repeats exact-commit verification before creating a version tag and GitHub Release.
+The frozen v0.1.0 suite contains 12 tests. Development checkpoint `198723d0` contains 18: those original 12, five subprocess CLI tests, and one threshold-sensitivity test. CI runs the current suite with `ResourceWarning` treated as an error on Python 3.11, 3.12, and 3.13, and executes all four teaching variants. All three jobs passed on the latest documentation PR. This is automated CI evidence, not independent third-party execution. The formal release workflow repeats exact-commit verification before creating a version tag and GitHub Release.
 
 A user independently reported successful reproduction on **Python 3.12.3**, including 13 source/metadata hashes, the original 12 tests with ResourceWarning as an error, and all four cases without pip. This is a user-reported run, distinct from the local Python 3.12.13 recheck and CI. [Evidence and exact scope](docs/THRESHOLD_SENSITIVITY.md#reproduction-provenance).
 

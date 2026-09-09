@@ -18,9 +18,15 @@ Target:
 
 - release: `v0.1.0`;
 - commit: `0960d01d73c73a6ad66644341e70a8cf8b10dd15`;
-- runtime: Python 3.11–3.13;
+- requested runtime: Python 3.11–3.13;
 - dependencies after download: Python standard library only; no pip, network,
   account, API key, or model download.
+
+The release contains a CI matrix for Python 3.11, 3.12, and 3.13. The latest
+development PR also completed all three matrix jobs successfully. That is CI
+evidence, not independent third-party execution. The reported external
+reproduction so far used Python 3.12.3; please state the exact runtime you
+actually test.
 
 ```bash
 git clone --branch v0.1.0 --depth 1 https://github.com/Civilization-Leap/computable-cooperation-mechanisms.git
@@ -65,10 +71,26 @@ python -W error::ResourceWarning -m unittest discover -s tests -v
 python scripts/threshold_sweep.py
 ```
 
-At the time this call was prepared, the candidate suite contained 18 tests:
-the original 12, five CLI subprocess tests, and one threshold-sensitivity test.
-If the count changes, report the commit and observed count rather than forcing
-the old expectation.
+### Fixed development checkpoint
+
+Use commit `198723d0b0c8e2ea13f3d0d01b0d3078c81db3b4` when you need a
+fixed, falsifiable comparison rather than floating `main`:
+
+```bash
+git checkout 198723d0b0c8e2ea13f3d0d01b0d3078c81db3b4
+```
+
+At that checkpoint, the suite must report 18 passing tests: the original 12,
+five CLI subprocess tests, and one threshold-sensitivity test. The four public
+case statuses must remain `VIOLATED`, `UNKNOWN`, `SATISFIED`, and
+`VIOLATED`; the threshold sweep and exit-code expectations below are also
+fixed. A different result is a failed reproduction or a version-specific
+incompatibility.
+
+For a later `main` commit, report the actual test count and compare it with
+that commit's CI and documentation. A count below 18 is a review trigger, not
+automatically a defect: tests may have been consolidated, removed, or replaced.
+The fixed checkpoint remains the stable anchor.
 
 The sweep holds A's, B's, and C's supplied outcomes fixed while changing only
 the declared `THIRD-PARTY` limit. Expected statuses:
@@ -131,6 +153,31 @@ Planning estimate:
 See the full [independent implementation specification](INDEPENDENT_IMPLEMENTATION.md)
 and [Issue #8](https://github.com/Civilization-Leap/computable-cooperation-mechanisms/issues/8).
 
+## Track D — review the evidence and governance claims without code
+
+**Typical time:** 10–30 minutes. No programming or local execution is required.
+
+This track is for auditors, accountability researchers, civic technologists,
+domain practitioners, and affected-party advocates. Read this guide, the
+[threshold-sensitivity note](THRESHOLD_SENSITIVITY.md), and the generated report
+comparison. Return one concrete weakness in any of these areas:
+
+1. whether the evidence labels distinguish execution, reimplementation,
+   counterexample, methodological review, and audit without overstating them;
+2. what a reader could wrongly infer from `SATISFIED`, `VIOLATED`, or
+   `UNKNOWN`;
+3. which provenance fields are missing for a declared threshold—who proposed
+   it, under what authority or evidence, whose interests it protects, who was
+   affected or absent, and how it can be contested, amended, or retired;
+4. one realistic misuse path in which precise computation gives an unjustified
+   appearance of legitimacy.
+
+A useful response can be a paragraph, annotated screenshot, issue comment, or
+proposed field list. State which document and section you reviewed. This is a
+**document-only methodological review**, not software validation or an external
+audit. If you also run code, report that execution separately under Track A or
+B.
+
 ## What to return
 
 Reply in [Issue #14](https://github.com/Civilization-Leap/computable-cooperation-mechanisms/issues/14)
@@ -141,15 +188,18 @@ Tester / handle:
 UTC date:
 OS:
 Language and runtime:
-Track: A / B / C
-Exact tag or commit:
-Commands run:
-Observed case statuses:
-Observed test count:
-Observed exit codes:
-Semantic agreement: yes / partial / no
+Track: A / B / C / D
+Exact tag or commit (A–C):
+Commands run (A–C):
+Observed case statuses (A–C):
+Observed test count (A–C):
+Observed exit codes (A–C):
+Semantic agreement: yes / partial / no / not tested
 Hash agreement: yes / partial / no / not tested
 Malformed-input coverage:
+Document and sections reviewed (D):
+Evidence label or boundary challenged (D):
+Concrete misuse path or missing provenance field (D):
 Unexpected behavior or counterexample:
 Public evidence link:
 Time spent (optional):
@@ -168,8 +218,11 @@ Results will be described narrowly:
 - **independent reimplementation** — someone built a separate implementation;
 - **counterexample or incompatibility** — a documented behavior, input, or
   representation gap;
+- **document-only methodological review** — a non-code review of evidence
+  labels, interpretation boundaries, rule provenance, or likely misuse; it is
+  not software validation;
 - **external audit** — reserved for a separately scoped audit with stated
-  methods and evidence.
+  methods, independence criteria, and evidence. Track D alone does not qualify.
 
 Anonymous reports are welcome, but a public handle, exact environment, commit,
 and raw evidence make the result easier to verify. Project-maintainer runs and
@@ -197,7 +250,9 @@ An invitation is not counted as external use or validation.
 
 ## 中文简要说明
 
-可选择三条路径：复现冻结版、挑战当前开发版、或用另一种语言独立实现。
-请记录运行环境、精确提交、命令、状态、退出码和异常；失败、差异和反例同样
-有价值。测试成功不等于认可理论，也不构成公平认证、现实授权或外部审计。
-结果可提交至 [Issue #14](https://github.com/Civilization-Leap/computable-cooperation-mechanisms/issues/14)。
+可选择四条路径：复现冻结版、挑战固定开发版、用另一种语言独立实现，或不
+运行代码而审阅证据标签、解释边界、阈值来源与可能误用。代码轨道须记录运行
+环境、精确提交、命令、状态与退出码；文档轨道须指出具体章节、缺失字段或误用
+路径。失败、差异和反例同样有价值。测试成功不等于认可理论；文档审阅也不冒充
+软件验证或外部审计。结果可提交至
+[Issue #14](https://github.com/Civilization-Leap/computable-cooperation-mechanisms/issues/14)。
