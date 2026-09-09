@@ -248,4 +248,16 @@ it does not establish inbox delivery or reading.
   subject: “A non-compensable condition beside nonlinear negotiation utility”;
   Gmail message/thread ID: `1a080c375e2d5856`; status: accepted and labelled
   `SENT`; no delivery failure or reply observed at record time.
-- Tim Baarslag, Sandip Sen and Andrea Baronchelli: not sent.
+- 2026-09-09T03:34:36Z — Tim Baarslag, `T.Baarslag@cwi.nl`;
+  subject: “Where should third-party constraints enter an opponent-model
+  benchmark?”; Gmail message/thread ID: `1a0843b57dca1d4d`; status: accepted
+  and labelled `SENT`; no delivery failure or reply observed at record time.
+- 2026-09-09T03:34:47Z — Sandip Sen, `sandip-sen@utulsa.edu`;
+  subject: “Convention convergence and separately protected outcomes”; Gmail
+  message/thread ID: `1a0843b8379e7a79`; status: accepted and labelled
+  `SENT`; no delivery failure or reply observed at record time.
+- 2026-09-09T03:35:00Z — Andrea Baronchelli,
+  `andrea.baronchelli.1@city.ac.uk`; subject: “What should be reported beside
+  successful LLM convention formation?”; Gmail message/thread ID:
+  `1a0843bb38ef6661`; status: accepted and labelled `SENT`; no delivery
+  failure or reply observed at record time.
