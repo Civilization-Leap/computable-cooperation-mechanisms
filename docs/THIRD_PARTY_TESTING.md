@@ -1,36 +1,36 @@
 # Independent third-party testing
 
-**Test address:** https://github.com/Civilization-Leap/computable-cooperation-mechanisms/issues/14
+**Public test address:** https://github.com/Civilization-Leap/computable-cooperation-mechanisms/issues/14
 
-We invite independent testers to reproduce, break, or reimplement this small
-reference checker. You do **not** need to endorse the framework. A failed
-reproduction, precise incompatibility, malformed input, or counterexample is
-useful evidence.
+**Current fixed software release:** `v0.1.1`
 
-Choose one track. Keep the frozen release and the development checkout
-separate in your report.
+Release page: https://github.com/Civilization-Leap/computable-cooperation-mechanisms/releases/tag/v0.1.1
 
-## Track A — reproduce the frozen release
+Offline bundle: `computable-cooperation-mechanisms-v0.1.1-offline.tar.gz`
 
-**Typical time:** 5–15 minutes after Python and Git are available.
+Expected bundle SHA-256:
 
-Target:
+```text
+15f11f18b8438821bb1215439754aebc182023bb2a53a68efacbdf12b8947d12
+```
 
-- release: `v0.1.0`;
-- commit: `0960d01d73c73a6ad66644341e70a8cf8b10dd15`;
-- requested runtime: Python 3.11–3.13;
-- dependencies after download: Python standard library only; no pip, network,
-  account, API key, or model download.
+We invite independent testers to **reproduce it, break it, reimplement it, or challenge the evidence and governance claims**. Endorsement is not requested. A failed reproduction, precise incompatibility, malformed input, counterexample, missing provenance field, or realistic misuse path is a useful result.
 
-The release contains a CI matrix for Python 3.11, 3.12, and 3.13. The latest
-development PR also completed all three matrix jobs successfully. That is CI
-evidence, not independent third-party execution. The reported external
-reproduction so far used Python 3.12.3; please state the exact runtime you
-actually test.
+The project checks declared inputs under declared rules. It does not establish that the inputs are true, that a threshold is legitimate, that affected parties participated in setting it, that a mechanism is fair, or that a real-world action is authorized.
+
+## Fastest route — 5 to 15 minutes
+
+Requires Python 3.11–3.13. After downloading the source, the checker and test suite use only the Python standard library: no pip, account, API key, model download, or hosted service is required.
 
 ```bash
-git clone --branch v0.1.0 --depth 1 https://github.com/Civilization-Leap/computable-cooperation-mechanisms.git
+git clone --branch v0.1.1 --depth 1 https://github.com/Civilization-Leap/computable-cooperation-mechanisms.git
 cd computable-cooperation-mechanisms
+python scripts/reproduce_offline.py
+```
+
+Or run the four public cases and suite directly:
+
+```bash
 python -m mechanism_ref examples/shared_equipment_third_party_violation.json --out-dir outputs
 python -m mechanism_ref examples/shared_equipment_unknown.json --out-dir outputs
 python -m mechanism_ref examples/shared_equipment_ok.json --out-dir outputs
@@ -47,53 +47,39 @@ SATISFIED
 VIOLATED
 ```
 
-Expected frozen test count: 12 passing tests. The valid cases all return process
-exit 0 in `v0.1.0`; that exit code means the reports were produced, not that
-every hard constraint was satisfied.
+Expected test count for `v0.1.1`: **18 passing tests**.
 
-If Git is unavailable, download the
-[v0.1.0 source archive](https://github.com/Civilization-Leap/computable-cooperation-mechanisms/releases/tag/v0.1.0),
-extract it, and run the same commands from the directory containing
-`mechanism_ref/`, `examples/`, and `tests/`.
+Repository CI verifies the exact release on Python 3.11, 3.12, and 3.13. That is automated CI evidence, not independent third-party execution. Please state the exact runtime you actually use.
 
-## Track B — challenge the development checkout
+## Track A — reproduce `v0.1.1`
+
+**Typical time:** 5–15 minutes.
+
+Report:
+
+- OS and Python version;
+- exact tag `v0.1.1` or exact commit;
+- commands run;
+- four observed statuses;
+- observed test count;
+- whether the offline bundle SHA-256 matches;
+- any mismatch, warning, or unexpected behavior.
+
+A successful run is evidence of independent execution only. It is not fairness certification, empirical validation, or policy approval.
+
+## Track B — try to break `v0.1.1`
 
 **Typical time:** 15–45 minutes.
 
-This track tests current `main`, not the archived release. Record the exact
-commit:
+### 1. Threshold sensitivity
+
+Run:
 
 ```bash
-git clone https://github.com/Civilization-Leap/computable-cooperation-mechanisms.git
-cd computable-cooperation-mechanisms
-git rev-parse HEAD
-python -W error::ResourceWarning -m unittest discover -s tests -v
 python scripts/threshold_sweep.py
 ```
 
-### Fixed development checkpoint
-
-Use commit `198723d0b0c8e2ea13f3d0d01b0d3078c81db3b4` when you need a
-fixed, falsifiable comparison rather than floating `main`:
-
-```bash
-git checkout 198723d0b0c8e2ea13f3d0d01b0d3078c81db3b4
-```
-
-At that checkpoint, the suite must report 18 passing tests: the original 12,
-five CLI subprocess tests, and one threshold-sensitivity test. The four public
-case statuses must remain `VIOLATED`, `UNKNOWN`, `SATISFIED`, and
-`VIOLATED`; the threshold sweep and exit-code expectations below are also
-fixed. A different result is a failed reproduction or a version-specific
-incompatibility.
-
-For a later `main` commit, report the actual test count and compare it with
-that commit's CI and documentation. A count below 18 is a review trigger, not
-automatically a defect: tests may have been consolidated, removed, or replaced.
-The fixed checkpoint remains the stable anchor.
-
-The sweep holds A's, B's, and C's supplied outcomes fixed while changing only
-the declared `THIRD-PARTY` limit. Expected statuses:
+The supplied outcomes remain fixed while only the declared `THIRD-PARTY` limit changes.
 
 | Limit (TU) | A delta (CU) | B delta (CU) | C delta (TU) | Status |
 |---|---:|---:|---:|---|
@@ -103,13 +89,9 @@ the declared `THIRD-PARTY` limit. Expected statuses:
 | 0.49 | -3.0 | -3.0 | +0.5 | VIOLATED |
 | 0.25 | -3.0 | -3.0 | +0.5 | VIOLATED |
 
-This is elementary threshold behavior. Its purpose is to expose exactly where
-the declared rule enters the verdict. It does not establish who may legitimately
-set the line.
+This is elementary threshold behavior. Its purpose is to expose exactly where the declared rule enters the verdict. **A precise computation can enforce a line; it does not establish who had authority to draw the line or whether the line is legitimate.**
 
-### Test the opt-in CI gates
-
-These flags exist on current `main` and are absent from `v0.1.0`:
+### 2. CI exit gates
 
 ```bash
 python -m mechanism_ref examples/shared_equipment_third_party_violation.json --out-dir outputs --fail-on-violation --fail-on-unknown
@@ -117,177 +99,99 @@ python -m mechanism_ref examples/shared_equipment_unknown.json --out-dir outputs
 python -m mechanism_ref examples/shared_equipment_ok.json --out-dir outputs --fail-on-violation --fail-on-unknown
 ```
 
-Expected exit codes are 1, 3, and 0 respectively. Reports should be written
-before the two semantic gate failures. Input or argument errors return 2.
+Expected exit codes: **1, 3, 0**. Reports should be written before semantic gate failures. Input or argument errors return 2.
 
-### Test strict rejection
+### 3. Strict rejection
 
-Add an unsupported top-level `id` field to a copy of
-`examples/shared_equipment_ok.json` and run it. Expected behavior is an input
-error containing:
+Add an unsupported top-level `id` field to a copy of `examples/shared_equipment_ok.json`.
+
+Expected input error:
 
 ```text
 unsupported fields: ['id']
 ```
 
-The supported case identifier is `case_id`. Record any input that is silently
-accepted, silently coerced, or converted to `UNKNOWN` when it should be
-rejected.
+The supported identifier is `case_id`.
 
-Useful challenges include duplicate JSON keys, non-finite numbers, undeclared
-units, invalid references, duplicate outcomes, duplicate constraint IDs,
-missing values, report-write failures, and platform-specific exit behavior.
+Useful challenges include duplicate JSON keys, non-finite numbers, undeclared units, invalid references, duplicate outcomes, duplicate constraint IDs, missing values, report-write failures, and platform-specific exit behavior.
 
 ## Track C — implement it independently
 
-Reimplement the fixed `v0.1.0` semantics in a language you know. Do not port
-line by line merely to match the Python structure. A separate repository is
-welcome and no upstream merge is required.
+Reimplement the public semantics in another language. Do not port line by line merely to match Python structure. A separate repository is welcome; no upstream merge is required.
 
 Planning estimate:
 
 - 8–16 focused hours for four-case semantic agreement;
-- 16–32 hours including malformed-input coverage, documented differences, and
-  a reproducible command.
+- 16–32 hours including malformed-input coverage, documented differences, and a reproducible command.
 
-See the full [independent implementation specification](INDEPENDENT_IMPLEMENTATION.md)
-and [Issue #8](https://github.com/Civilization-Leap/computable-cooperation-mechanisms/issues/8).
+See [INDEPENDENT_IMPLEMENTATION.md](INDEPENDENT_IMPLEMENTATION.md) and [Issue #8](https://github.com/Civilization-Leap/computable-cooperation-mechanisms/issues/8).
 
-## Track D — review the evidence and governance claims without code
+Report semantic agreement, hash agreement, and malformed-input coverage separately. Cross-language hash differences may reflect JSON serialization rather than semantic disagreement.
 
-**Typical time:** 10–30 minutes. No programming or local execution is required.
+## Track D — review the claims without running code
 
-This track is for auditors, accountability researchers, civic technologists,
-domain practitioners, and affected-party advocates. Read this guide, the
-[threshold-sensitivity note](THRESHOLD_SENSITIVITY.md), and the generated report
-comparison. Return one concrete weakness in any of these areas:
+**Typical time:** 10–30 minutes. No programming is required.
 
-1. whether the evidence labels distinguish execution, reimplementation,
-   counterexample, methodological review, and audit without overstating them;
-2. what a reader could wrongly infer from `SATISFIED`, `VIOLATED`, or
-   `UNKNOWN`;
-3. which provenance fields are missing for a declared threshold—who proposed
-   it, under what authority or evidence, whose interests it protects, who was
-   affected or absent, and how it can be contested, amended, or retired;
-4. one realistic misuse path in which precise computation gives an unjustified
-   appearance of legitimacy.
+This track is for auditors, accountability researchers, civic technologists, domain practitioners, affected-party advocates, and anyone who can identify a concrete governance or interpretation failure.
 
-A useful response can be a paragraph, annotated screenshot, issue comment, or
-proposed field list. State which document and section you reviewed. This is a
-**document-only methodological review**, not software validation or an external
-audit. If you also run code, report that execution separately under Track A or
-B.
+Read this guide and [THRESHOLD_SENSITIVITY.md](THRESHOLD_SENSITIVITY.md), then return at least one concrete weakness in any of these areas:
 
-### Methodological context and citation limits
+1. a misleading inference a reader could draw from `SATISFIED`, `VIOLATED`, or `UNKNOWN`;
+2. missing provenance for a threshold: who proposed it, under what authority or evidence, whose interests it protects, who was affected or absent, and how it can be contested, amended, or retired;
+3. a realistic misuse path in which precise computation gives an unjustified appearance of legitimacy;
+4. a weakness in the evidence labels used to distinguish execution, reimplementation, counterexample, methodological review, and audit.
 
-Track D does not require an overall pass/fail verdict. Its judgments must still
-be open to challenge: identify the exact wording, the reasoning or evidence
-behind the concern, and, where possible, what would change the assessment.
+A Track D response is a **document-only methodological review**, not software validation or an external audit. When a review is cited, its scope, reasoning, evidence, document version, and any voluntarily disclosed relevant methodological background should remain attached. A name, title, or institution does not establish correctness or independence.
 
-When citing a response as informed methodological evidence, keep the reviewed
-document version, question, method and evidence together with the reviewer's
-voluntarily disclosed relevant methodological or practice background and
-material relationships to the project. Distinguish publicly corroborated
-background from self-description or undisclosed information. A name, title or
-institution does not establish correctness or independence; the citation must
-not imply broader expertise, coverage, endorsement or assurance than supported.
-
-Anonymous and affected-party feedback remain welcome. Credentials are not an
-admission gate, and a concrete counterexample must be considered on its merits.
-When background or independence cannot be established, state that limitation
-rather than presenting the response as an expert or independently audited
-conclusion. Do not require sensitive personal details or confidential client
-information. Private replies are not permission to publish attribution or
-quotations; obtain permission before doing so.
+Anonymous and affected-party feedback are welcome. Credentials are not an admission gate. Private replies are not permission to publish attribution or quotations.
 
 ## What to return
 
-Reply in [Issue #14](https://github.com/Civilization-Leap/computable-cooperation-mechanisms/issues/14)
-or link a separate public issue/repository. This compact template is enough:
+Reply in [Issue #14](https://github.com/Civilization-Leap/computable-cooperation-mechanisms/issues/14) or link a separate public issue/repository.
 
 ```markdown
 Tester / handle:
 UTC date:
-OS:
-Language and runtime:
 Track: A / B / C / D
+OS / runtime (A–C):
 Exact tag or commit (A–C):
 Commands run (A–C):
-Observed case statuses (A–C):
+Observed statuses (A–C):
 Observed test count (A–C):
 Observed exit codes (A–C):
+Bundle SHA-256 agreement: yes / no / not tested
 Semantic agreement: yes / partial / no / not tested
 Hash agreement: yes / partial / no / not tested
 Malformed-input coverage:
-Document version/commit and sections reviewed (D):
-Evidence label or boundary challenged (D):
-Concrete misuse path or missing provenance field (D):
+Document/section reviewed (D):
+Concrete boundary, provenance, or misuse concern (D):
 Reasoning/evidence and what could change the assessment (D):
-Relevant methods/practice background and public references (D; optional):
-Background basis: public reference / self-description / not disclosed
-Material relationship to the project (optional; do not include sensitive details):
 Unexpected behavior or counterexample:
 Public evidence link:
 Time spent (optional):
 ```
 
-Report semantic agreement, hash agreement, and malformed-input coverage
-separately. A four-case match is not complete input-language conformance.
-Cross-language hash differences may reflect JSON serialization rather than
-semantic disagreement.
-
 ## Evidence labels
 
-Results will be described narrowly:
+Results are described narrowly:
 
 - **independent execution** — someone ran the supplied implementation;
 - **independent reimplementation** — someone built a separate implementation;
-- **counterexample or incompatibility** — a documented behavior, input, or
-  representation gap;
-- **document-only methodological review** — a non-code review of evidence
-  labels, interpretation boundaries, rule provenance, or likely misuse; its
-  citation is bounded by the reviewed scope, reasoning, evidence and disclosed
-  methodological background, not by the reviewer's name alone; it is not
-  software validation;
-- **external audit** — reserved for a separately scoped audit with stated
-  methods, independence criteria, and evidence. Track D alone does not qualify.
+- **counterexample or incompatibility** — a documented behavior, input, or representation gap;
+- **document-only methodological review** — a bounded non-code review of evidence labels, interpretation boundaries, rule provenance, or likely misuse;
+- **external audit** — reserved for a separately scoped audit with stated methods, independence criteria, and evidence.
 
-Anonymous reports are welcome, but a public handle, exact environment, commit,
-and raw evidence make the result easier to verify. Project-maintainer runs and
-AI-assisted internal checks are not counted as independent third-party
-validation.
+Maintainer runs and AI-assisted internal checks are not counted as independent third-party validation.
 
-## Interpretation boundary
+## Historical release
 
-A successful software test does not establish that:
-
-- supplied facts are true;
-- a threshold is legitimate;
-- affected parties participated in setting it;
-- the mechanism is fair, optimal, or safe;
-- a real-world action is authorized.
-
-The checker evaluates declared inputs under declared rules. Testing should
-expose both what it does reliably and what it cannot establish.
-
-## Maintainer-initiated invitations
-
-The first three individualized invitations and their bounded test roles are
-recorded in the [Wave 1 outreach log](THIRD_PARTY_TESTER_OUTREACH_WAVE1.md).
-An invitation is not counted as external use or validation.
+`v0.1.0` remains available as the first frozen milestone and has Zenodo version DOI `10.5281/zenodo.22656544`. New public testing should normally target `v0.1.1`; use `v0.1.0` only when reproducing the historical release specifically.
 
 ## 中文简要说明
 
-可选择四条路径：复现冻结版、挑战固定开发版、用另一种语言独立实现，或不
-运行代码而审阅证据标签、解释边界、阈值来源与可能误用。代码轨道须记录运行
-环境、精确提交、命令、状态与退出码；文档轨道须指出具体章节、缺失字段或误用
-路径。失败、差异和反例同样有价值。测试成功不等于认可理论；文档审阅也不冒充
-软件验证或外部审计。
+当前公开测试基线为 **v0.1.1**。最快路径约 5–15 分钟：下载固定版本后运行 `python scripts/reproduce_offline.py`。也可选择进一步击破输入与退出门禁、用另一种语言独立实现，或不运行代码而审阅证据标签、阈值来源、受影响方参与及现实误用风险。
 
-引用文档审阅时，应同时保留审阅版本、问题范围、方法与证据，以及自愿披露的
-相关方法或实践背景；区分公开可核查、自述与未披露。背景帮助判断适用范围，
-不能以身份替代理由、证明独立性或扩大为背书。匿名意见与受影响者经验仍可进入；
-没有公开资历不取消反例的价值。私人回复不自动授权公开署名或引用。
+项目不要求测试者认同理论。失败、差异、反例和无法表达的问题都属于有效结果。软件测试成功不等于公平、正当、实证有效或现实授权。
 
-结果可提交至
-[Issue #14](https://github.com/Civilization-Leap/computable-cooperation-mechanisms/issues/14)。
+结果提交入口：
+https://github.com/Civilization-Leap/computable-cooperation-mechanisms/issues/14
