@@ -1,7 +1,7 @@
 # 竞争—合作可计算机制
 ## 最小开源参考实现
 
-**当前已发布版本：v0.1.0。本分支另含未发布的 CLI 与文档增补。采用 Apache-2.0。**
+**当前发布目标：v0.1.1。只有固定 tag 与 GitHub Release 实际形成后，才视为正式发布。采用 Apache-2.0。**
 
 **处境未变，判定翻转。** A、B 各节省 3 CU，C 损失 0.5 TU。只把 C 的损失上限从 0.5 调到 0.49，结果便由 `SATISFIED` 变为 `VIOLATED`，所有主体差值保持相同。计算可以准确执行一条保护线，却不能因此证明这条线画得正当。[阈值扫描、完整报告对照与中英文短稿](docs/THRESHOLD_SENSITIVITY.md)。
 
@@ -15,10 +15,10 @@
 
 ## 五分钟试运行
 
-以下下载方式需要 Git，运行需要 Python 3.11–3.13；计算器和测试都只使用 Python 标准库。**在解压后的仓库目录中运行，无需 `pip install`，也无需 `pip install -e .`。** 从已发布版本开始：
+以下下载方式需要 Git，运行需要 Python 3.11–3.13；计算器和测试都只使用 Python 标准库。**在解压后的仓库目录中运行，无需 `pip install`，也无需 `pip install -e .`。** v0.1.1 正式发布后，可从固定版本开始：
 
 ```bash
-git clone --branch v0.1.0 --depth 1 https://github.com/Civilization-Leap/computable-cooperation-mechanisms.git
+git clone --branch v0.1.1 --depth 1 https://github.com/Civilization-Leap/computable-cooperation-mechanisms.git
 cd computable-cooperation-mechanisms
 python -m mechanism_ref examples/shared_equipment_third_party_violation.json --out-dir outputs
 python -m mechanism_ref examples/shared_equipment_unknown.json --out-dir outputs
@@ -30,7 +30,13 @@ python -m unittest discover -s tests -v
 
 做一次具体修改：复制满足约束的示例，把 ID 为 `THIRD-PARTY` 的约束从 `limit: 1` 调低为 `limit: 0.25`，保留 C 的损失 `0.5`。结果就会变成 `VIOLATED`，A/B 的节省保持相同。[精确复制修改命令、报告位置与全部四例](docs/FIVE_MINUTE_WALKTHROUGH.md)。取得源码后，运行无需账号、API 密钥、模型下载或托管服务。
 
-可直接查看已发布的 [v0.1.0 Release](https://github.com/Civilization-Leap/computable-cooperation-mechanisms/releases/tag/v0.1.0) 和[源码 tag](https://github.com/Civilization-Leap/computable-cooperation-mechanisms/tree/v0.1.0)。
+完整当前复现路径可直接运行 `python scripts/reproduce_offline.py`。v0.1.1 发布工作流还会附加精确提交的离线源码归档及 SHA-256 校验文件。
+
+历史 [v0.1.0 Release](https://github.com/Civilization-Leap/computable-cooperation-mechanisms/releases/tag/v0.1.0) 与[源码 tag](https://github.com/Civilization-Leap/computable-cooperation-mechanisms/tree/v0.1.0)继续冻结保留；v0.1.1 的固定入口以发布工作流实际完成为准。
+
+## 独立第三方测试
+
+**复现它、击破它或独立重写它；不要求背书。** 可选择 5–15 分钟冻结版本复现、固定开发挑战、独立实现，或 10–30 分钟不写代码的方法审阅。详见[第三方测试指南](docs/THIRD_PARTY_TESTING.md)，结果可回传至 [Issue #14](https://github.com/Civilization-Leap/computable-cooperation-mechanisms/issues/14)。复现失败、不兼容与反例同样是有效结果。
 
 ## 双方都获益，谁还在付出代价？
 
@@ -77,15 +83,15 @@ python -m unittest discover -s tests -v
 3. `shared_equipment_unknown.json`：当前资源被明确标记为未知，因此相应硬检查保持 `UNKNOWN`；
 4. `shared_equipment_capacity_violation.json`：同类场景扩展，仅通过更换输入触发资源容量违反，不在内核中写场景特判。
 
-## 可选 CI 门禁（未发布）
+## 可选 CI 门禁
 
-默认退出码 0 表示报告生成成功，包括违反和未知结果。本开发分支新增 `--fail-on-violation`：总体硬约束违反时返回 1；新增 `--fail-on-unknown`：总体未知时返回 3。CI 若要求只有 SATISFIED 才继续，应**同时使用两项**。有效输入先写完报告再返回门禁退出码；输入错误仍返回 2。[退出码表与命令](docs/CLI_EXIT_CODES.md)。已发布的 v0.1.0 tag 尚无这两项参数。
+默认退出码 0 表示报告生成成功，包括违反和未知结果。v0.1.1 中，`--fail-on-violation` 在总体硬约束违反时返回 1；`--fail-on-unknown` 在总体未知时返回 3。CI 若要求只有 SATISFIED 才继续，应**同时使用两项**。有效输入先写完报告再返回门禁退出码；输入错误仍返回 2。[退出码表与命令](docs/CLI_EXIT_CODES.md)。历史 v0.1.0 tag 不含这两项参数。
 
 ## 验证
 
-冻结的 v0.1.0 含原始 12 项测试；本候选共 18 项，即原始 12 项、5 项 CLI 子进程测试及 1 项阈值扫描测试。CI 在 Python 3.11、3.12、3.13 上运行测试，把 `ResourceWarning` 当作错误，并实际运行四个教学变体。正式发布工作流会在创建版本标签和 GitHub Release 之前，再对精确发布提交执行一次验证。
+冻结的 v0.1.0 含原始 12 项测试；v0.1.1 共 18 项，即原始 12 项、5 项 CLI 子进程测试及 1 项阈值扫描测试。CI 在 Python 3.11、3.12、3.13 上运行测试，把 `ResourceWarning` 当作错误，实际运行四个教学变体，并执行离线复现路径。正式发布工作流会在创建版本标签和 GitHub Release 之前，再对精确发布提交执行一次验证。
 
-用户报告已在 **Python 3.12.3** 独立复现：13 个原始源码／元数据文件哈希一致、原始 12 项测试在 ResourceWarning 作为错误时通过、四例通过且无需 pip。此处明确保留“用户报告”的证据来源，与本地 Python 3.12.13 重验及 CI 分列。[证据记录与范围](docs/THRESHOLD_SENSITIVITY.md#reproduction-provenance)。
+用户此前报告已在 **Python 3.12.3** 独立复现冻结的 v0.1.0 材料：13 个原始源码／元数据文件哈希一致、原始 12 项测试在 ResourceWarning 作为错误时通过、四例通过且无需 pip。这里不把该证据静默升级为 v0.1.1 的独立验证。[证据记录与范围](docs/THRESHOLD_SENSITIVITY.md#reproduction-provenance)。
 
 ## 范围边界
 
@@ -97,15 +103,15 @@ python -m unittest discover -s tests -v
 
 可以按同一 JSON 合同新增同类场景。新增约束语义必须显式修改代码、测试和文档，不允许静默解释。独立团队可依据 Apache-2.0 分叉与扩展本项目，不需要依赖一个中心持续运营的服务。
 
-详见 [CONTRIBUTING.md](CONTRIBUTING.md)、[全球传播复用包](docs/OUTREACH_KIT.md)、[发布就绪检查表](docs/RELEASE_CHECKLIST.md) 与 [v0.1.0 发布说明](docs/RELEASE_NOTES_v0.1.0.md)。
+详见 [CONTRIBUTING.md](CONTRIBUTING.md)、[全球传播复用包](docs/OUTREACH_KIT.md)、[发布就绪检查表](docs/RELEASE_CHECKLIST.md) 与 [v0.1.1 发布说明](docs/RELEASE_NOTES_v0.1.1.md)。
 
 ## 引用已归档版本
 
-**v0.1.0 归档**的版本 DOI 为 [10.5281/zenodo.22656544](https://doi.org/10.5281/zenodo.22656544)；[全版本 DOI](https://doi.org/10.5281/zenodo.22656543) 对应整个版本族。引用具体复现结果时使用版本 DOI。
+冻结的 **v0.1.0 归档**版本 DOI 为 [10.5281/zenodo.22656544](https://doi.org/10.5281/zenodo.22656544)；[全版本 DOI](https://doi.org/10.5281/zenodo.22656543) 对应整个版本族。它们不是 v0.1.1 的版本 DOI。若建立 v0.1.1 独立归档，应在归档核验后另行登记其版本 DOI。
 
-归档的 34 个文件与 v0.1.0 标签内容逐字节一致。本分支新增的 CLI 门禁、阈值扫描脚本和后续文档不属于该归档。Zenodo 的版本 `0.1.0`、署名 `Zijunfu` 均已核验正确。[归档核验及元数据更正记录](docs/ZENODO_ARCHIVE.md)。
+归档的 34 个文件与 v0.1.0 标签内容逐字节一致。Zenodo 的版本 `0.1.0`、署名 `Zijunfu` 均已核验正确。[归档核验及元数据更正记录](docs/ZENODO_ARCHIVE.md)。
 
-可采用仓库中的 [`CITATION.cff`](CITATION.cff) 引用元数据。
+仓库中的 [`CITATION.cff`](CITATION.cff) 在新的归档版本完成绑定前，继续指向已经核验的 v0.1.0 归档。
 
 ## 许可证与商业使用
 
