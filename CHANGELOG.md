@@ -1,11 +1,15 @@
 # Changelog
 
 ## Unreleased
-- Bind the verified v0.1.0 Zenodo version DOI and concept DOI; record exact archive matching and verified completion of the upstream metadata corrections.
-- Add opt-in CLI exits: 1 for VIOLATED with --fail-on-violation, 3 for UNKNOWN with --fail-on-unknown; preserve default report-only exit behavior.
-- Add five CLI tests and one threshold experiment test, retaining the original 12 tests.
+
+## 0.1.1 — 2026-09-12
+- Add opt-in CLI exits: 1 for VIOLATED with `--fail-on-violation`, 3 for UNKNOWN with `--fail-on-unknown`; preserve default report-only exit behavior.
+- Add five CLI tests and one threshold-sensitivity test, retaining the original 12 tests for 18 total tests.
 - Add a standard-library threshold sweep, full report comparison, and bilingual dissemination text with separate user-reported/local reproduction provenance.
-- Keep evaluator semantics, original fixtures, published tag, and license unchanged.
+- Add a standard-library offline reproduction script that runs the current tests, all four teaching cases, and one isolated threshold change without pip, network access, API keys, or hosted services after source acquisition.
+- Add bounded third-party testing tracks for frozen-release reproduction, fixed development challenge, independent implementation, and non-code methodological review; keep evidence labels distinct from maintainer or AI-assisted internal checks.
+- Bind the verified v0.1.0 Zenodo version DOI and concept DOI; record exact archive matching and verified completion of the upstream metadata corrections.
+- Keep evaluator semantics, original fixtures, Apache-2.0 scope, and the v0.1.0 historical release unchanged.
 
 ## 0.1.0 — First open-source milestone release
 - Freeze the first formal release line at `v0.1.0`.
