@@ -26,3 +26,5 @@ jobs:
           python -m mechanism_ref examples/shared_equipment_third_party_violation.json --out-dir "$tmpdir"
           python -m mechanism_ref examples/shared_equipment_unknown.json --out-dir "$tmpdir"
           python -m mechanism_ref examples/shared_equipment_capacity_violation.json --out-dir "$tmpdir"
+      - name: Run offline reproduction path
+        run: python scripts/reproduce_offline.py

@@ -4,7 +4,7 @@ build-backend="setuptools.build_meta"
 
 [project]
 name="coop-mechanism-ref"
-version="0.1.0"
+version="0.1.1"
 description="Minimal open reference implementation for computable competition-cooperation mechanisms"
 requires-python=">=3.11"
 license={text="Apache-2.0"}

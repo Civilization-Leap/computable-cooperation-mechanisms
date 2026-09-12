@@ -1,7 +1,7 @@
 # Computable Competition–Cooperation Mechanisms
 ## Minimal Open Reference Implementation
 
-**Latest published release: v0.1.0. This branch also contains unreleased CLI and documentation additions. Apache-2.0.**
+**Latest published release line: v0.1.1 release candidate. Apache-2.0.**
 
 **Same outcomes. Different verdict.** A and B each save 3 CU; C loses 0.5 TU. Lower only C's declared loss ceiling from 0.5 to 0.49: `SATISFIED` becomes `VIOLATED`, with all outcome deltas unchanged. A computation can enforce a line precisely without establishing that the line is legitimate. [Run the threshold sweep and inspect both complete reports](docs/THRESHOLD_SENSITIVITY.md).
 
@@ -15,10 +15,10 @@ It does **not** assume cooperation is always preferable, certify fairness, infer
 
 ## Try it in five minutes
 
-Requires Git for this download route and Python 3.11–3.13 to run; the evaluator and tests use only the Python standard library. **No `pip install` or `pip install -e .` is needed when running from the extracted repository directory.** Start from the published release:
+Requires Git for this download route and Python 3.11–3.13 to run; the evaluator and tests use only the Python standard library. **No `pip install` or `pip install -e .` is needed when running from the extracted repository directory.** After v0.1.1 is published, start from the fixed release:
 
 ```bash
-git clone --branch v0.1.0 --depth 1 https://github.com/Civilization-Leap/computable-cooperation-mechanisms.git
+git clone --branch v0.1.1 --depth 1 https://github.com/Civilization-Leap/computable-cooperation-mechanisms.git
 cd computable-cooperation-mechanisms
 python -m mechanism_ref examples/shared_equipment_third_party_violation.json --out-dir outputs
 python -m mechanism_ref examples/shared_equipment_unknown.json --out-dir outputs
@@ -30,7 +30,9 @@ The runs print `VIOLATED`, `UNKNOWN`, and `SATISFIED`. In the first report, A/B 
 
 For one controlled change, copy the satisfied example and lower the constraint with ID `THIRD-PARTY` from `limit: 1` to `limit: 0.25`; leave C's loss at `0.5`. The result changes to `VIOLATED` while A/B savings remain identical. [Exact copy-and-edit command, output files, and all four cases](docs/FIVE_MINUTE_WALKTHROUGH.md). No account, API key, model download, or hosted service is needed after obtaining the source.
 
-The published [v0.1.0 Release](https://github.com/Civilization-Leap/computable-cooperation-mechanisms/releases/tag/v0.1.0) and [source tag](https://github.com/Civilization-Leap/computable-cooperation-mechanisms/tree/v0.1.0) can also be opened directly.
+For the complete current path, run `python scripts/reproduce_offline.py`. The v0.1.1 release workflow also attaches an exact-commit offline source archive and its SHA-256 checksum.
+
+The historical [v0.1.0 Release](https://github.com/Civilization-Leap/computable-cooperation-mechanisms/releases/tag/v0.1.0) and [source tag](https://github.com/Civilization-Leap/computable-cooperation-mechanisms/tree/v0.1.0) remain frozen. The v0.1.1 links become fixed when the release workflow completes.
 
 ## Independent third-party testing
 
@@ -87,15 +89,15 @@ Start with the open [contribution and research challenges](../../issues), especi
 3. `shared_equipment_unknown.json` — current resource value is explicitly unknown, so the hard check remains `UNKNOWN`.
 4. `shared_equipment_capacity_violation.json` — a same-class extension case that violates resource capacity without scenario-specific core logic.
 
-## Optional CI gate (unreleased)
+## Optional CI gate
 
-Default exit 0 means reports were produced, including for violated or unknown constraints. In this development checkout, `--fail-on-violation` returns 1 for an overall hard violation; `--fail-on-unknown` returns 3 for overall UNKNOWN. Use **both flags** if a CI gate must require SATISFIED. Reports are written before semantic failure exits; malformed inputs still fail with exit 2. [Exit-code table and command](docs/CLI_EXIT_CODES.md). These flags are absent from the published v0.1.0 tag.
+Default exit 0 means reports were produced, including for violated or unknown constraints. In v0.1.1, `--fail-on-violation` returns 1 for an overall hard violation; `--fail-on-unknown` returns 3 for overall `UNKNOWN`. Use **both flags** if a CI gate must require SATISFIED. Reports are written before semantic failure exits; malformed inputs still fail with exit 2. [Exit-code table and command](docs/CLI_EXIT_CODES.md). These flags are absent from the historical v0.1.0 tag.
 
 ## Verification
 
-The frozen v0.1.0 suite contains 12 tests. Development checkpoint `198723d0` contains 18: those original 12, five subprocess CLI tests, and one threshold-sensitivity test. CI runs the current suite with `ResourceWarning` treated as an error on Python 3.11, 3.12, and 3.13, and executes all four teaching variants. All three jobs passed on the latest documentation PR. This is automated CI evidence, not independent third-party execution. The formal release workflow repeats exact-commit verification before creating a version tag and GitHub Release.
+The frozen v0.1.0 suite contains 12 tests. v0.1.1 contains 18: those original 12, five subprocess CLI tests, and one threshold-sensitivity test. CI runs the current suite with `ResourceWarning` treated as an error on Python 3.11, 3.12, and 3.13, executes all four teaching variants, and exercises the offline reproduction path. The formal release workflow repeats exact-commit verification before creating the version tag and GitHub Release.
 
-A user independently reported successful reproduction on **Python 3.12.3**, including 13 source/metadata hashes, the original 12 tests with ResourceWarning as an error, and all four cases without pip. This is a user-reported run, distinct from the local Python 3.12.13 recheck and CI. [Evidence and exact scope](docs/THRESHOLD_SENSITIVITY.md#reproduction-provenance).
+A user independently reported successful reproduction on **Python 3.12.3** of the frozen v0.1.0 materials, including 13 source/metadata hashes, the original 12 tests with ResourceWarning as an error, and all four cases without pip. This is a user-reported run and is not silently promoted into independent verification of v0.1.1. [Evidence and exact scope](docs/THRESHOLD_SENSITIVITY.md#reproduction-provenance).
 
 ## Scope boundary
 
@@ -107,15 +109,15 @@ The software checks **declared inputs and declared constraints**. It does not pr
 
 Add another JSON case with the same contract. New constraint types require explicit code, tests, and documentation rather than silent interpretation. Independent teams may fork and extend the project under Apache-2.0 without depending on a centrally operated service.
 
-See [CONTRIBUTING.md](CONTRIBUTING.md), [Global Outreach Kit](docs/OUTREACH_KIT.md), the [release-readiness checklist](docs/RELEASE_CHECKLIST.md), and the [v0.1.0 release notes](docs/RELEASE_NOTES_v0.1.0.md).
+See [CONTRIBUTING.md](CONTRIBUTING.md), [Global Outreach Kit](docs/OUTREACH_KIT.md), the [release-readiness checklist](docs/RELEASE_CHECKLIST.md), and the [v0.1.1 release notes](docs/RELEASE_NOTES_v0.1.1.md).
 
-## Cite the archived release
+## Cite archived releases
 
-The **v0.1.0 archive** has version DOI [10.5281/zenodo.22656544](https://doi.org/10.5281/zenodo.22656544). The [all-versions DOI](https://doi.org/10.5281/zenodo.22656543) identifies the release family. Use the version DOI for reproducible citations.
+The frozen **v0.1.0 archive** has version DOI [10.5281/zenodo.22656544](https://doi.org/10.5281/zenodo.22656544). The [all-versions DOI](https://doi.org/10.5281/zenodo.22656543) identifies the release family. Those identifiers are not a v0.1.1 version DOI. A v0.1.1-specific archive identifier, if created, must be recorded separately after archive verification.
 
-All 34 archived files match the v0.1.0 tag byte-for-byte. The archive excludes the unreleased CLI gates, threshold-sweep script, and later documentation in this branch. Zenodo now records the canonical version `0.1.0` and author `Zijunfu`. [Archive verification and metadata correction history](docs/ZENODO_ARCHIVE.md).
+All 34 archived files match the v0.1.0 tag byte-for-byte. Zenodo records the canonical version `0.1.0` and author `Zijunfu`. [Archive verification and metadata correction history](docs/ZENODO_ARCHIVE.md).
 
-GitHub citation metadata is in [`CITATION.cff`](CITATION.cff).
+GitHub citation metadata in [`CITATION.cff`](CITATION.cff) continues to point to the verified v0.1.0 archive until a newer archived version is independently bound.
 
 ## License and commercial use
 

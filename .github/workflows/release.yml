@@ -30,10 +30,13 @@ jobs:
           project = tomllib.loads(pathlib.Path('pyproject.toml').read_text(encoding='utf-8'))
           package = project['project']['version']
           runtime = mechanism_ref.__version__
-          assert release == '0.1.0', (release, '0.1.0')
+          assert release, 'RELEASE_VERSION is empty'
           assert package == release, (package, release)
           assert runtime == release, (runtime, release)
+          notes = pathlib.Path(f'docs/RELEASE_NOTES_v{release}.md')
+          assert notes.is_file(), notes
           print(f'version agreement: {release}')
+          print(f'release notes: {notes}')
           PY
       - name: Run unit tests with warnings as errors
         run: python -W error::ResourceWarning -m unittest discover -s tests -v
@@ -44,14 +47,18 @@ jobs:
           python -m mechanism_ref examples/shared_equipment_third_party_violation.json --out-dir "$tmpdir"
           python -m mechanism_ref examples/shared_equipment_unknown.json --out-dir "$tmpdir"
           python -m mechanism_ref examples/shared_equipment_capacity_violation.json --out-dir "$tmpdir"
+      - name: Run offline reproduction path
+        run: python scripts/reproduce_offline.py
       - name: Verify release-boundary files
         run: |
+          version="$(tr -d '[:space:]' < RELEASE_VERSION)"
+          notes="docs/RELEASE_NOTES_v${version}.md"
           test -f LICENSE
           test -f LICENSE_SCOPE.md
           test -f CONTRIBUTING.md
-          test -f docs/RELEASE_NOTES_v0.1.0.md
+          test -f "$notes"
           test ! -e LICENSE-PENDING.txt
-          grep -F "deterministic checks of declared inputs and declared constraints only" docs/RELEASE_NOTES_v0.1.0.md
+          grep -F "deterministic checks of declared inputs and declared constraints only" "$notes"
 
   publish:
     needs: verify
@@ -60,13 +67,18 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Create exact-commit tag and GitHub Release
+      - name: Create exact-commit tag, offline bundle, and GitHub Release
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
           version="$(tr -d '[:space:]' < RELEASE_VERSION)"
           tag="v${version}"
+          notes="docs/RELEASE_NOTES_${tag}.md"
+          bundle="computable-cooperation-mechanisms-${tag}-offline.tar.gz"
+          checksum="${bundle}.sha256"
+
+          test -f "$notes"
 
           if gh release view "$tag" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
             echo "Release $tag already exists; no action needed."
@@ -80,12 +92,19 @@ jobs:
             tagged="$(git rev-list -n 1 "$tag")"
             test "$tagged" = "$GITHUB_SHA"
           else
-            git tag -a "$tag" "$GITHUB_SHA" -m "$tag — First Open-Source Milestone Release"
+            git tag -a "$tag" "$GITHUB_SHA" -m "$tag — Open-Source Milestone Release"
             git push origin "$tag"
           fi
 
-          gh release create "$tag" \
+          git archive \
+            --format=tar.gz \
+            --prefix="computable-cooperation-mechanisms-${tag}/" \
+            --output="$bundle" \
+            "$GITHUB_SHA"
+          sha256sum "$bundle" > "$checksum"
+
+          gh release create "$tag" "$bundle" "$checksum" \
             --repo "$GITHUB_REPOSITORY" \
-            --title "$tag — First Open-Source Milestone Release" \
-            --notes-file docs/RELEASE_NOTES_v0.1.0.md \
+            --title "$tag — Reproducibility and External-Testing Milestone" \
+            --notes-file "$notes" \
             --verify-tag
