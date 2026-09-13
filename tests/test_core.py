@@ -32,4 +32,18 @@ class T(unittest.TestCase):
  def test_future_capability_field_not_silently_accepted(self):
   c=ex('shared_equipment_ok.json');c['future_capability']={'equipment_slots':99}
   with self.assertRaises(InputError):evaluate(c)
+ def test_candidate_only_outcome_rejected(self):
+  c=ex('shared_equipment_ok.json')
+  c['candidate']['outcomes'].append({'actor':'C','dimension':'new_burden','unit':'TU','value':0.5})
+  with self.assertRaisesRegex(InputError,'outcome keys must match'):evaluate(c)
+ def test_baseline_only_outcome_rejected(self):
+  c=ex('shared_equipment_ok.json')
+  c['baseline']['outcomes'].append({'actor':'C','dimension':'legacy_burden','unit':'TU','value':0.5})
+  with self.assertRaisesRegex(InputError,'outcome keys must match'):evaluate(c)
+ def test_explicit_null_remains_unknown_not_absent(self):
+  c=ex('shared_equipment_ok.json')
+  c['baseline']['outcomes'][0]['value']=None
+  r=evaluate(c)
+  d=next(x for x in r['outcome_deltas'] if x['actor']==c['baseline']['outcomes'][0]['actor'] and x['dimension']==c['baseline']['outcomes'][0]['dimension'] and x['unit']==c['baseline']['outcomes'][0]['unit'])
+  self.assertIsNone(d['delta'])
 if __name__=='__main__':unittest.main()
