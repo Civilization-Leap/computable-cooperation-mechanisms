@@ -1,7 +1,15 @@
 # Computable Competition–Cooperation Mechanisms
 ## Minimal Open Reference Implementation
 
-**Latest published release line: v0.1.1 release candidate. Apache-2.0.**
+**Latest published release: v0.1.1. Apache-2.0.**
+
+## Why this project exists
+
+**What does cooperation gain and cost? What does non-cooperation gain and cost? Who benefits, who bears the burden, and who was never at the table?**
+
+This project explores a more explicit and challengeable way to reason about competition and cooperation. It takes self-interest seriously without assuming that one actor's gain is the whole system's gain. It asks whether interests, constraints, third-party effects, exit conditions, unknowns, and irreversible consequences can become visible earlier—before positions harden or costs are silently shifted elsewhere.
+
+Start with the idea, not the code: [Can We Learn to Compete and Cooperate Better?](docs/PUBLIC_IDEA_GUIDE_EN.md) · [我们能否学会更好地竞争与合作？](docs/PUBLIC_IDEA_GUIDE_ZH.md) · [short share copy](docs/PUBLIC_SHARE_COPY.md)
 
 **Same outcomes. Different verdict.** A and B each save 3 CU; C loses 0.5 TU. Lower only C's declared loss ceiling from 0.5 to 0.49: `SATISFIED` becomes `VIOLATED`, with all outcome deltas unchanged. A computation can enforce a line precisely without establishing that the line is legitimate. [Run the threshold sweep and inspect both complete reports](docs/THRESHOLD_SENSITIVITY.md).
 
@@ -15,34 +23,22 @@ It does **not** assume cooperation is always preferable, certify fairness, infer
 
 ## Try it in five minutes
 
-Requires Git for this download route and Python 3.11–3.13 to run; the evaluator and tests use only the Python standard library. **No `pip install` or `pip install -e .` is needed when running from the extracted repository directory.** After v0.1.1 is published, start from the fixed release:
+Requires Git for this download route and Python 3.11–3.13 to run; the evaluator and tests use only the Python standard library. **No `pip install` or `pip install -e .` is needed when running from the extracted repository directory.** Start from the fixed v0.1.1 release:
 
 ```bash
 git clone --branch v0.1.1 --depth 1 https://github.com/Civilization-Leap/computable-cooperation-mechanisms.git
 cd computable-cooperation-mechanisms
-python -m mechanism_ref examples/shared_equipment_third_party_violation.json --out-dir outputs
-python -m mechanism_ref examples/shared_equipment_unknown.json --out-dir outputs
-python -m mechanism_ref examples/shared_equipment_ok.json --out-dir outputs
-python -m unittest discover -s tests -v
+python scripts/reproduce_offline.py
 ```
 
-The runs print `VIOLATED`, `UNKNOWN`, and `SATISFIED`. In the first report, A/B each save 3 CU but C loses 2 TU against a declared maximum of 1 TU. Open `outputs/shared_equipment_third_party_violation.report.md` to see both facts together.
+The reproduction path exercises the public teaching cases and current test suite. No account, API key, model download, or hosted service is needed after obtaining the source.
 
-For one controlled change, copy the satisfied example and lower the constraint with ID `THIRD-PARTY` from `limit: 1` to `limit: 0.25`; leave C's loss at `0.5`. The result changes to `VIOLATED` while A/B savings remain identical. [Exact copy-and-edit command, output files, and all four cases](docs/FIVE_MINUTE_WALKTHROUGH.md). No account, API key, model download, or hosted service is needed after obtaining the source.
-
-For the complete current path, run `python scripts/reproduce_offline.py`. The v0.1.1 release workflow also attaches an exact-commit offline source archive and its SHA-256 checksum.
-
-The historical [v0.1.0 Release](https://github.com/Civilization-Leap/computable-cooperation-mechanisms/releases/tag/v0.1.0) and [source tag](https://github.com/Civilization-Leap/computable-cooperation-mechanisms/tree/v0.1.0) remain frozen. The v0.1.1 links become fixed when the release workflow completes.
+The historical [v0.1.0 Release](https://github.com/Civilization-Leap/computable-cooperation-mechanisms/releases/tag/v0.1.0) remains frozen. The fixed [v0.1.1 Release](https://github.com/Civilization-Leap/computable-cooperation-mechanisms/releases/tag/v0.1.1) is the current public testing baseline.
 
 ## Independent third-party testing
 
 **Reproduce it, break it, or reimplement it. Endorsement is not requested.**
-Choose a 5–15 minute frozen-release reproduction, a fixed development
-challenge, an independent implementation, or a 10–30 minute non-code review of
-evidence labels, rule provenance, and misuse risks. Use the
-[testing guide](docs/THIRD_PARTY_TESTING.md) and return results in
-[Issue #14](https://github.com/Civilization-Leap/computable-cooperation-mechanisms/issues/14).
-Failed reproductions, incompatibilities, and counterexamples are useful results.
+Choose a 5–15 minute release reproduction, a 15–45 minute break-it challenge, an independent implementation, or a 10–30 minute non-code review of evidence labels, rule provenance, and misuse risks. Use the [testing guide](docs/THIRD_PARTY_TESTING.md) and return results in [Issue #14](https://github.com/Civilization-Leap/computable-cooperation-mechanisms/issues/14). Failed reproductions, incompatibilities, and counterexamples are useful results.
 
 ## Both sides gain. Who else pays?
 
