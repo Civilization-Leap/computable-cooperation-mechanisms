@@ -10,6 +10,9 @@ Read the public idea guide first:
 
 - [我们能否学会更好地竞争与合作？](PUBLIC_IDEA_GUIDE_ZH.md)
 - [Can We Learn to Compete and Cooperate Better?](PUBLIC_IDEA_GUIDE_EN.md)
+- [中文应用指南](APPLICATION_GUIDE_ZH.md)
+- [English Application Guide](APPLICATION_GUIDE_EN.md)
+- [Public BYOP entry](BYOP_PUBLIC_ENTRY_EN.md)
 
 The project does not assume that cooperation is always good or competition always bad. It asks what cooperation and non-cooperation each gain, cost, preserve, damage, or make irreversible—and who bears consequences without being at the table.
 
@@ -20,6 +23,8 @@ Read the [Capability Ledger](BYOP_CAPABILITY_LEDGER.md). Do not force a real pro
 ## 3. Bring a problem
 
 Fill the [Problem Card](BYOP_PROBLEM_CARD.md). Start with your own purpose, affected actors, candidate arrangements, third-party impacts, hard boundaries, evidence/unknowns, and what would change your view.
+
+You can also post a synthetic/anonymized version directly in [BYOP Issue #25](https://github.com/Civilization-Leap/computable-cooperation-mechanisms/issues/25).
 
 ## 4. Map it to the current tool
 
@@ -65,11 +70,21 @@ Prefer the smallest adequate response:
 
 `documentation → teaching/template → domain extension → core/schema`
 
+Use the [Domain Extension Registry](BYOP_DOMAIN_EXTENSION_REGISTRY.md) when a repeated real-use need appears across multiple problems in the same field. A single unfamiliar term is not, by itself, a reason to expand the core.
+
 Some problems should remain outside software.
 
 ## 9. See one complete example
 
 Read [Acquire the Supplier, or Keep It Independent?](BYOP_END_TO_END_ACQUISITION.md). It deliberately shows both what v0.1.1 can express and where a realistic acquisition problem exceeds the current core.
+
+Runnable synthetic candidates are included in the repository:
+
+- `examples/byop_acquisition_full.json`
+- `examples/byop_acquisition_supply_agreement.json`
+- `examples/byop_acquisition_minority_joint_capacity.json`
+
+They are expected to return `VIOLATED`, `SATISFIED`, and `UNKNOWN` respectively under their declared synthetic inputs and constraints.
 
 ## 10. Return the result
 
