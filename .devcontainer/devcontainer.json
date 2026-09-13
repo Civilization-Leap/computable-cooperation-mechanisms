@@ -1,0 +1,10 @@
+{
+  "name": "CCM Reproducible Quickstart",
+  "image": "mcr.microsoft.com/devcontainers/python:1-3.12-bookworm",
+  "postCreateCommand": "python --version && python scripts/reproduce_offline.py",
+  "customizations": {
+    "vscode": {
+      "extensions": ["ms-python.python"]
+    }
+  }
+}
