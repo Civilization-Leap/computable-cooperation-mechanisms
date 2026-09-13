@@ -1,0 +1,24 @@
+{
+  "draft_version": "byop.draft.v0.1",
+  "domain": "rule_change_multi_actor",
+  "problem": {"title": "", "purpose": "", "baseline": "", "decision_window": ""},
+  "actors": [
+    {"id": "R", "role": "rule_setter", "purpose": ""},
+    {"id": "A", "role": "direct_participant", "purpose": ""},
+    {"id": "T1", "role": "affected_third_party", "purpose": ""}
+  ],
+  "candidates": [
+    {"id": "status_quo", "description": "Keep current arrangement"},
+    {"id": "option_1", "description": "Proposed change"},
+    {"id": "option_2", "description": "Limited or staged alternative"}
+  ],
+  "effects": [
+    {"actor": "A", "dimension": "", "unit": "", "baseline": "UNKNOWN", "candidate_values": {"option_1": "UNKNOWN", "option_2": "UNKNOWN"}, "evidence": "UNKNOWN"}
+  ],
+  "hard_boundaries": [
+    {"id": "HB-1", "affected_actor": "T1", "dimension": "", "unit": "", "operator": "<=", "limit": "UNKNOWN", "source": ""}
+  ],
+  "unknowns": [],
+  "outside_current_computation": [],
+  "privacy_note": "Use synthetic or anonymized values in public submissions."
+}
