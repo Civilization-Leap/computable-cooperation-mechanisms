@@ -21,6 +21,27 @@ It does **not** assume cooperation is always preferable, certify fairness, infer
 
 **Project purpose, objectives, method, application modes, scope, global participation, commercial independence, and maintenance boundaries:** [Project Overview](docs/PROJECT_OVERVIEW.md) · [中文项目总览](docs/PROJECT_OVERVIEW.zh-CN.md)
 
+## Bring your own problem
+
+**Do not stop at reading the theory or reproducing our examples. Bring a real competition/cooperation problem and use the current tool to discover what can be represented, what remains unknown, and where the model breaks.**
+
+Shortest path:
+
+**Understand → Bring a Problem → Model → Run → Interpret → Challenge → Extend**
+
+- [Public BYOP entry](docs/BYOP_PUBLIC_ENTRY_EN.md)
+- [BYOP Start Here](docs/BYOP_START_HERE.md)
+- [中文应用指南](docs/APPLICATION_GUIDE_ZH.md) · [English Application Guide](docs/APPLICATION_GUIDE_EN.md)
+- [Problem Card](docs/BYOP_PROBLEM_CARD.md)
+- [Capability Ledger](docs/BYOP_CAPABILITY_LEDGER.md)
+- [Input Mapping](docs/BYOP_INPUT_MAPPING.md)
+- [Feedback Protocol](docs/BYOP_FEEDBACK_PROTOCOL.md)
+- [Runnable acquisition example](docs/BYOP_END_TO_END_ACQUISITION.md)
+- [Domain Extension Registry](docs/BYOP_DOMAIN_EXTENSION_REGISTRY.md)
+- [Bring a real problem: Issue #25](https://github.com/Civilization-Leap/computable-cooperation-mechanisms/issues/25)
+
+A failed fit is useful evidence. If the material mechanism cannot be represented without distortion, record a **REPRESENTATION GAP** rather than forcing a verdict. Repeated real-use gaps are the preferred source of new templates, domain extensions, and—only when necessary—core/schema changes.
+
 ## Try it in five minutes
 
 Requires Git for this download route and Python 3.11–3.13 to run; the evaluator and tests use only the Python standard library. **No `pip install` or `pip install -e .` is needed when running from the extracted repository directory.** Start from the fixed v0.1.1 release:
