@@ -1,32 +1,42 @@
-# Computable Competition–Cooperation Mechanisms
-## Minimal Open Reference Implementation
+# Computable Competition–Cooperation Mechanisms (CCM)
 
-**Latest published release: v0.1.1. Apache-2.0.**
+> **竞争合作可计算机制：让多主体竞争合作中的利益、代价、第三方、硬边界与未知项显式化。**
+>
+> AI and agents can help us see, reason, compute, and act. CCM asks who gains, who bears the burden, what cannot be traded away, what remains unknown, and when the system must stop and reconsider.
 
-> **AI and agents can help us see, reason, compute, and act. CCM asks who gains, who bears the burden, what cannot be traded away, what remains unknown, and when the system must stop and reconsider.**
+**Latest published release: v0.1.1 · Apache-2.0 · DOI: [10.5281/zenodo.22656544](https://doi.org/10.5281/zenodo.22656544)**
 
-## Start here / 从这里开始
+[📖 思想母文 / Public idea](docs/PUBLIC_IDEA_GUIDE_ZH.md) · [💡 为什么不是普通 AI](docs/WHY_NOT_JUST_AI_ZH.md) · [⚡ 浏览器 5 分钟体验](docs/BROWSER_QUICKSTART.md) · [📥 BYOP 三分钟提问卡](docs/BYOP_3_MINUTE_CARD_ZH.md) · [🌐 文明跃迁背景](https://www.civitas.top/ccm/)
 
-Choose the entry that matches what you need:
+## 0.50 → 0.49 in one glance
 
-1. **Why does this matter? / 为什么需要一种更好的竞争合作方式？**  
-   [Can We Learn to Compete and Cooperate Better?](docs/PUBLIC_IDEA_GUIDE_EN.md) · [我们能不能学会更好地竞争与合作？](docs/PUBLIC_IDEA_GUIDE_ZH.md)
+A and B each save **3 CU**. C loses **0.5 TU**. Only the declared protection ceiling changes:
 
-2. **Why not just use an AI? / 为什么不是“用个 AI 也能做到”？**  
-   [English](docs/WHY_NOT_JUST_AI.md) · [中文](docs/WHY_NOT_JUST_AI_ZH.md)
+```text
+C loss = 0.50
+ceiling = 0.50  -> SATISFIED
+ceiling = 0.49  -> VIOLATED
+```
 
-3. **Try it in five minutes. / 五分钟运行一次。**  
-   Jump to [Try it in five minutes](#try-it-in-five-minutes).
+**Nothing about the outcomes changed. Only the line moved.**
 
-4. **Bring a real problem. / 带一个真实问题来。**  
-   [BYOP Start Here](docs/BYOP_START_HERE.md) · [中文应用指南](docs/APPLICATION_GUIDE_ZH.md) · [English Application Guide](docs/APPLICATION_GUIDE_EN.md)
+A computation can enforce a line precisely. It cannot establish who had the authority to draw that line, whether the line is legitimate, or whether a third party accepted the burden.
 
-5. **Test, challenge, adapt, or spread it. / 测试、质疑、改进与传播。**  
-   [Third-party testing](docs/THIRD_PARTY_TESTING.md) · [Independent implementation](docs/INDEPENDENT_IMPLEMENTATION.md) · [Contribution guide](CONTRIBUTING.md)
+[Run the full threshold sweep](docs/THRESHOLD_SENSITIVITY.md) · [Open the browser quickstart](docs/BROWSER_QUICKSTART.md) · [Bring a real problem](docs/BYOP_3_MINUTE_CARD_ZH.md)
 
-**Stable archive anchor:** [v0.1.0 DOI 10.5281/zenodo.22656544](https://doi.org/10.5281/zenodo.22656544) · [all-versions DOI](https://doi.org/10.5281/zenodo.22656543)
+## Start here
 
-**Wider context:** [Civilization Leap / 文明跃迁](https://www.civitas.top/) — not a prerequisite for using CCM. Start with your real problem; the wider civilizational question belongs to the accumulation layer, not the entry gate.
+| I want to... | Start here |
+|---|---|
+| understand the idea | [Public idea guide](docs/PUBLIC_IDEA_GUIDE_EN.md) / [中文](docs/PUBLIC_IDEA_GUIDE_ZH.md) |
+| see why this is not “just use AI” | [Why not just AI?](docs/WHY_NOT_JUST_AI.md) / [中文](docs/WHY_NOT_JUST_AI_ZH.md) |
+| reproduce it without local setup | [Browser / Codespaces quickstart](docs/BROWSER_QUICKSTART.md) |
+| bring a real problem | [3-minute BYOP card](docs/BYOP_3_MINUTE_CARD_ZH.md) / [English](docs/BYOP_3_MINUTE_CARD_EN.md) / [BYOP Start Here](docs/BYOP_START_HERE.md) |
+| challenge or reimplement it | [Third-party testing](docs/THIRD_PARTY_TESTING.md) / [Independent implementation](docs/INDEPENDENT_IMPLEMENTATION.md) |
+
+**Evidence discipline:** exposure ≠ use; use ≠ effectiveness; sending ≠ endorsement; runnable ≠ real-world problem solved.
+
+**Wider context:** [Civilization Leap / 文明跃迁](https://www.civitas.top/) is not a prerequisite for using CCM. Start with the real problem. The wider civilizational question belongs to the accumulation layer, not the entry gate.
 
 ---
 
@@ -60,6 +70,8 @@ Shortest path:
 
 **Understand → Bring a Problem → Model → Run → Interpret → Challenge → Extend**
 
+- [3-minute BYOP card — 中文](docs/BYOP_3_MINUTE_CARD_ZH.md)
+- [3-minute BYOP card — English](docs/BYOP_3_MINUTE_CARD_EN.md)
 - [Public BYOP entry](docs/BYOP_PUBLIC_ENTRY_EN.md)
 - [BYOP Start Here](docs/BYOP_START_HERE.md)
 - [中文应用指南](docs/APPLICATION_GUIDE_ZH.md) · [English Application Guide](docs/APPLICATION_GUIDE_EN.md)
@@ -74,6 +86,16 @@ Shortest path:
 A failed fit is useful evidence. If the material mechanism cannot be represented without distortion, record a **REPRESENTATION GAP** rather than forcing a verdict. Repeated real-use gaps are the preferred source of new templates, domain extensions, and—only when necessary—core/schema changes.
 
 ## Try it in five minutes
+
+### Browser / no local setup
+
+Open [Browser Quickstart](docs/BROWSER_QUICKSTART.md) and launch the repository in GitHub Codespaces. The included `.devcontainer` uses Python 3.12 and automatically runs:
+
+```bash
+python scripts/reproduce_offline.py
+```
+
+### Local reproduction
 
 Requires Git for this download route and Python 3.11–3.13 to run; the evaluator and tests use only the Python standard library. **No `pip install` or `pip install -e .` is needed when running from the extracted repository directory.** Start from the fixed v0.1.1 release:
 
@@ -160,7 +182,7 @@ High-consequence, irreversible, or value-incommensurable problems should not be 
 
 Add another JSON case with the same contract. New constraint types require explicit code, tests, and documentation rather than silent interpretation. Independent teams may fork and extend the project under Apache-2.0 without depending on a centrally operated service.
 
-See [CONTRIBUTING.md](CONTRIBUTING.md), [Global Outreach Kit](docs/OUTREACH_KIT.md), the [release-readiness checklist](docs/RELEASE_CHECKLIST.md), and the [v0.1.1 release notes](docs/RELEASE_NOTES_v0.1.1.md).
+See [CONTRIBUTING.md](CONTRIBUTING.md), the [Global Outreach Kit](docs/OUTREACH_KIT.md), the [release-readiness checklist](docs/RELEASE_CHECKLIST.md), and the [v0.1.1 release notes](docs/RELEASE_NOTES_v0.1.1.md).
 
 ## Cite archived releases
 
