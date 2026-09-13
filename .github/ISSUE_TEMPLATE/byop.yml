@@ -1,0 +1,100 @@
+name: Bring Your Own Problem (BYOP)
+description: Submit a real-use competition/cooperation problem, representation gap, counterexample, or domain extension.
+title: "[BYOP] "
+labels:
+  - help wanted
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use synthetic or anonymized material only. Do not post confidential contracts, personal data, private bargaining positions, or security-sensitive operational details.
+
+        This project does not assume cooperation is always preferable. A useful result may be that the current tool cannot represent the material mechanism without distortion.
+  - type: dropdown
+    id: feedback_class
+    attributes:
+      label: Feedback class
+      description: Choose the closest current category.
+      options:
+        - A — REPRESENTATION GAP
+        - B — COUNTEREXAMPLE
+        - C — MISSING ACTOR / IMPACT
+        - D — MISSING CONSTRAINT
+        - E — MISINTERPRETATION RISK
+        - F — DOMAIN EXTENSION
+        - G — CORE DEFECT
+    validations:
+      required: true
+  - type: input
+    id: domain
+    attributes:
+      label: Domain / problem class
+      placeholder: e.g. supplier negotiation, labor relations, platform governance, public policy
+    validations:
+      required: true
+  - type: textarea
+    id: purpose
+    attributes:
+      label: Actor purpose
+      description: What is the submitting actor trying to achieve or protect?
+    validations:
+      required: true
+  - type: textarea
+    id: actors
+    attributes:
+      label: Actors and affected third parties
+      description: Who participates, who is affected, and who may bear consequences without being at the table?
+    validations:
+      required: true
+  - type: textarea
+    id: candidates
+    attributes:
+      label: Candidate arrangements
+      description: Include cooperation and non-cooperation / status quo where relevant, plus any third path.
+    validations:
+      required: true
+  - type: textarea
+    id: outcomes
+    attributes:
+      label: Gains, losses, risks, and hard boundaries
+      description: Separate actor-specific outcomes and identify any non-offsettable constraints.
+    validations:
+      required: true
+  - type: textarea
+    id: unknowns
+    attributes:
+      label: Unknowns and evidence limits
+      description: What is known, inferred, unknown, or intentionally not disclosed?
+    validations:
+      required: true
+  - type: textarea
+    id: current_fit
+    attributes:
+      label: Where the current tool fits or fails
+      description: What can v0.1.1 express cleanly, and what cannot be represented without distortion?
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version / commit tested
+      placeholder: v0.1.1 or commit SHA
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction evidence (if applicable)
+      description: Environment, smallest synthetic input, exact command, observed output, and expected interpretation.
+  - type: textarea
+    id: extension
+    attributes:
+      label: Smallest adequate change
+      description: If proposing a change, say whether documentation, a reusable template, a domain extension, or core/schema change seems necessary and why.
+  - type: checkboxes
+    id: boundaries
+    attributes:
+      label: Boundary confirmation
+      options:
+        - label: I have removed confidential, personal, proprietary, or security-sensitive details.
+          required: true
+        - label: I understand that a computed result does not establish truth, fairness, legitimacy, or real-world authorization.
+          required: true
