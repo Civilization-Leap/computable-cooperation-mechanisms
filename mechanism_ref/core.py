@@ -27,6 +27,7 @@ def validate(c):
  for a in c["actors"]:
   if set(a)!={"id","role"}:raise InputError("actor fields must be id,role")
   if not isinstance(a["id"],str) or not a["id"]:raise InputError("actor id must be a non-empty string")
+ outcome_keys={}
  for pn in ("baseline","candidate"):
   p=c[pn]
   if set(p)!={"allocations","outcomes"}:raise InputError(f"{pn}: invalid fields")
@@ -43,8 +44,10 @@ def validate(c):
    if key in seen:raise InputError(f"{pn}: duplicate outcome {key}")
    seen.add(key)
    if o["value"] is not None:num(o["value"],f"{pn}.outcome.value")
+  outcome_keys[pn]=seen
  if set(c["baseline"]["allocations"])!=set(c["candidate"]["allocations"]):raise InputError("baseline/candidate allocation resources must match")
- candidate_outcomes={(o["actor"],o["dimension"],o["unit"]) for o in c["candidate"]["outcomes"]}
+ if outcome_keys["baseline"]!=outcome_keys["candidate"]:raise InputError("baseline/candidate outcome keys must match; use explicit null for UNKNOWN rather than omitting an outcome")
+ candidate_outcomes=outcome_keys["candidate"]
  rids=[]
  for r in c["constraints"]:
   for k in ("id","kind","description","operator","limit","hard"):
@@ -76,7 +79,7 @@ def evaluate(c):
  hard=[x for x in checks if x["hard"]]
  overall="VIOLATED" if any(x["status"]=="VIOLATED" for x in hard) else "UNKNOWN" if any(x["status"]=="UNKNOWN" for x in hard) else "SATISFIED"
  ds=[]
- for k in sorted(set(bi)&set(ci)):
+ for k in sorted(bi):
   b,v=bi[k],ci[k];ds.append({"actor":k[0],"dimension":k[1],"unit":k[2],"baseline":b,"candidate":v,"delta":None if b is None or v is None else float(v)-float(b)})
  raw=json.dumps(c,ensure_ascii=False,sort_keys=True,separators=(",",":"),allow_nan=False).encode()
  return {"software_version":__version__,"case_id":c["case_id"],"input_sha256":hashlib.sha256(raw).hexdigest(),"overall_declared_constraint_status":overall,"checks":checks,"outcome_deltas":ds,"interpretation_boundary":"Deterministic check of declared inputs and constraints only; not a fairness certification, H/T/L/RUN state, or real-world authorization."}
