@@ -1,0 +1,68 @@
+name: Quick BYOP / 三分钟真实问题
+description: A low-friction three-minute intake for a real competition/cooperation problem.
+title: "[BYOP-QUICK] "
+labels:
+  - help wanted
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Start with a real problem, not a complete model. Use synthetic or anonymized material only. Do not post confidential, personal, proprietary, or security-sensitive details.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: My real problem / 我的现实问题
+      description: In one or two sentences, what is stuck now?
+    validations:
+      required: true
+
+  - type: textarea
+    id: purpose
+    attributes:
+      label: What I want to change / 我希望发生的现实改变
+      description: Not “prove who is right”; what should actually become different?
+    validations:
+      required: true
+
+  - type: textarea
+    id: actors
+    attributes:
+      label: Who benefits, who bears the cost? / 谁获益，谁承担代价？
+      description: List the main actors and any affected third party who may not be at the table.
+    validations:
+      required: true
+
+  - type: textarea
+    id: unknowns
+    attributes:
+      label: What do we actually not know yet? / 哪些事情其实还不知道？
+      description: Facts, causes, responsibilities, future effects, intentions, or other uncertainties. Keep UNKNOWN as UNKNOWN.
+    validations:
+      required: true
+
+  - type: textarea
+    id: boundaries
+    attributes:
+      label: What should not be traded away? / 哪些边界不能被其他收益抵销？
+      description: Examples: minimum protection, exit rights, safety boundary, budget ceiling, legal duty. “Not yet determined” is acceptable.
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: What evidence would change your mind? / 什么证据会让我改变判断？
+
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Boundary confirmation / 边界确认
+      options:
+        - label: I removed confidential, personal, proprietary, and security-sensitive details.
+          required: true
+        - label: I understand CCM does not establish truth, fairness, legitimacy, or real-world authorization.
+          required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        If the current representation cannot express the mechanism without distortion, record a **REPRESENTATION GAP** rather than forcing a verdict. If you want the full professional intake, use the standard BYOP issue form.
