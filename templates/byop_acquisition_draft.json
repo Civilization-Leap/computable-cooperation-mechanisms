@@ -1,0 +1,61 @@
+{
+  "draft_version": "byop.draft.v0.1",
+  "domain": "commercial_transaction_acquisition",
+  "problem": {
+    "title": "Replace with a short problem title",
+    "purpose": "What is the submitting actor trying to achieve?",
+    "baseline": "What happens if no new arrangement is adopted?",
+    "decision_window": "When does a decision need to be made?"
+  },
+  "actors": [
+    {"id": "A", "role": "buyer_or_lead_firm", "purpose": ""},
+    {"id": "B", "role": "seller_supplier_or_partner", "purpose": ""},
+    {"id": "T1", "role": "affected_third_party", "purpose": ""}
+  ],
+  "candidates": [
+    {"id": "status_quo", "description": "No transaction / continue current arrangement"},
+    {"id": "full_acquisition", "description": "Full acquisition"},
+    {"id": "long_term_contract", "description": "Long-term commercial agreement"},
+    {"id": "minority_or_joint", "description": "Minority investment / joint capacity / staged cooperation"}
+  ],
+  "effects": [
+    {
+      "actor": "A",
+      "dimension": "replace_with_dimension",
+      "unit": "replace_with_unit",
+      "baseline": "UNKNOWN",
+      "candidate_values": {
+        "full_acquisition": "UNKNOWN",
+        "long_term_contract": "UNKNOWN",
+        "minority_or_joint": "UNKNOWN"
+      },
+      "evidence": "source, estimate, assumption, or UNKNOWN"
+    }
+  ],
+  "hard_boundaries": [
+    {
+      "id": "HB-1",
+      "affected_actor": "T1",
+      "dimension": "replace_with_dimension",
+      "unit": "replace_with_unit",
+      "operator": "<=",
+      "limit": "UNKNOWN",
+      "who_set_this_boundary": "state explicitly",
+      "why_hard": "why ordinary gains must not silently offset it"
+    }
+  ],
+  "unknowns": [
+    "future behavior",
+    "long-term commitment credibility",
+    "market-structure effects",
+    "consent / legal / regulatory questions where applicable"
+  ],
+  "outside_current_computation": [
+    "truth of valuation or forecasts",
+    "bargaining power",
+    "legal validity",
+    "fairness or legitimacy",
+    "real-world authorization"
+  ],
+  "privacy_note": "Use synthetic or anonymized values only in public submissions."
+}
