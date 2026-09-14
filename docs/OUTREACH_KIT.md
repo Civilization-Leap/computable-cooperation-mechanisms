@@ -8,7 +8,7 @@ Human societies constantly compete, cooperate, form alliances, blocs, and commun
 
 **Computable Competition–Cooperation Mechanisms** is a deliberately small open-source starting point. It turns declared actors, resources, outcomes, constraints, and unknowns into a deterministic, inspectable computation. It does not assume cooperation is always better, collapse everything into a universal fairness score, or claim to predict human behavior.
 
-The first release, `v0.1.0`, includes strict JSON validation, baseline/candidate comparisons, independent hard-constraint checks, explicit `UNKNOWN` handling, four synthetic teaching cases, and automated tests across Python 3.11–3.13.
+The current public testing baseline, `v0.1.1`, includes strict JSON validation, baseline/candidate comparisons, independent hard-constraint checks, explicit `UNKNOWN` handling, four synthetic teaching cases, CLI semantic gates, a threshold-sensitivity test, and 18 automated tests across Python 3.11–3.13.
 
 The project is Apache-2.0 licensed. Independent research, forks, alternative formalizations, and commercial downstream development are welcome. Downstream products remain responsible for their own claims, validation, deployment, and consequences.
 
@@ -16,9 +16,36 @@ We are not asking people to endorse the framework. We are looking for strong cou
 
 Repository: https://github.com/Civilization-Leap/computable-cooperation-mechanisms
 
+## Current public entry funnel
+
+Use one destination per audience. Do not ask a first-time reader to navigate the whole repository.
+
+- **Public idea:** [Can we learn to compete and cooperate better? — 中文](PUBLIC_IDEA_GUIDE_ZH.md)
+- **Why this is not just an AI prompt:** [中文](WHY_NOT_JUST_AI_ZH.md) · [English](WHY_NOT_JUST_AI.md)
+- **Five-minute browser run:** [Browser Quickstart](BROWSER_QUICKSTART.md) · [Open Codespaces](https://codespaces.new/Civilization-Leap/computable-cooperation-mechanisms?quickstart=1)
+- **Bring a real problem:** [BYOP three-minute card — 中文](BYOP_3_MINUTE_CARD_ZH.md) · [English](BYOP_3_MINUTE_CARD_EN.md)
+- **Submit the short form:** [Quick BYOP issue form](https://github.com/Civilization-Leap/computable-cooperation-mechanisms/issues/new?template=byop_quick.yml)
+- **Reproduce or challenge the release:** [Public testing issue #14](https://github.com/Civilization-Leap/computable-cooperation-mechanisms/issues/14)
+
+The preferred public path is:
+
+`SEEN → UNDERSTOOD → TRIED → USED → CHALLENGED → ADAPTED → REUSED`
+
+A 2026-09-14 maintainer-assisted run confirmed that `python scripts/reproduce_offline.py` completed in a real GitHub Codespace and reproduced the `SATISFIED → VIOLATED` threshold flip with unchanged outcome deltas. The public evidence record is in [Issue #14](https://github.com/Civilization-Leap/computable-cooperation-mechanisms/issues/14). This establishes browser-environment runnability only; it is not independent validation or real-world effectiveness evidence.
+
+## Three-step public call to action
+
+Use a short action path at the end of general-audience posts:
+
+1. Think of one recurring deadlock near you: uneven team work, platform fees, unclear interface responsibility, a contract trade-off, or a resource-allocation dispute.
+2. Ask three questions: **Who benefits? Who bears the cost? What do we actually not know yet?**
+3. Use the [three-minute BYOP card](BYOP_3_MINUTE_CARD_ZH.md), or submit the [Quick BYOP issue form](https://github.com/Civilization-Leap/computable-cooperation-mechanisms/issues/new?template=byop_quick.yml).
+
+Do not require readers to accept the wider Civilization Leap theory before using CCM. The direct entry is their own problem. The civilizational meaning belongs to the later accumulation of inspectable, challengeable, and revisable practices.
+
 ## Result-led developer entry
 
-Lead with the [threshold-sensitivity experiment](THRESHOLD_SENSITIVITY.md): all three outcome deltas stay fixed while changing only the declared ceiling flips the hard-check result. That page contains English/Chinese copy and complete report comparison images. The status, input hash, and check reason change; do not claim the reports differ only in status or that C was proven to have been excluded from rule-setting. These texts are reusable on channels that permit assisted writing. The [original teaching-case comparison](SHARED_EQUIPMENT_COMPARISON.md) remains available as a separate experiment that changes C's loss instead of the threshold. Link directly to the [five-minute walkthrough](FIVE_MINUTE_WALKTHROUGH.md).
+Lead with the [threshold-sensitivity experiment](THRESHOLD_SENSITIVITY.md): all three outcome deltas stay fixed while changing only the declared ceiling flips the hard-check result. That page contains English/Chinese copy and complete report comparison images. The status, input hash, and check reason change; do not claim the reports differ only in status or that C was proven to have been excluded from rule-setting. These texts are reusable on channels that permit assisted writing. The [original teaching-case comparison](SHARED_EQUIPMENT_COMPARISON.md) remains available as a separate experiment that changes C's loss instead of the threshold. Link directly to the [browser quickstart](BROWSER_QUICKSTART.md) or the [five-minute local walkthrough](FIVE_MINUTE_WALKTHROUGH.md).
 
 The result is a synthetic demonstration of chosen semantics. Do not describe it as a new empirical finding, a prediction of the benefits of cooperation, or a comparison with a competing solver that was never run.
 
