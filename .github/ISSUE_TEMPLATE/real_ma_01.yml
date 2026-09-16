@@ -1,0 +1,61 @@
+name: REAL MA 01 reproduction or counterexample
+description: Report a V1.3 reproduction, failure, representation gap, or evidence challenge
+title: "[REAL MA 01] "
+labels: ["research", "testing"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Endorsement is not requested. Do not submit confidential orders, contracts, personal data, or protected-record material. A public issue is not a regulatory filing.
+  - type: dropdown
+    id: result_type
+    attributes:
+      label: Result type
+      options:
+        - Reproduction pass
+        - Reproduction failure
+        - Counterexample
+        - Representation gap
+        - Evidence or authority challenge
+    validations:
+      required: true
+  - type: input
+    id: commit
+    attributes:
+      label: Exact commit or version
+      placeholder: commit SHA or REAL MA 01 V1.3
+    validations:
+      required: true
+  - type: textarea
+    id: command_environment
+    attributes:
+      label: Command and environment
+      description: Include the exact command, Python version, operating system, and input SHA-256 when available.
+    validations:
+      required: true
+  - type: textarea
+    id: observation
+    attributes:
+      label: What happened?
+      description: State the observed output or the assumption the counterexample challenges.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Public evidence and scope
+      description: For real evidence, give source, date, unit, corridor/order scope, claim-versus-measurement status, and access restrictions. Links only; no protected material.
+  - type: textarea
+    id: affected_parties
+    attributes:
+      label: Affected parties and authority
+      description: Who gains, who bears the burden, who can accept the trade-off, and who can verify the proposed boundary?
+  - type: checkboxes
+    id: boundaries
+    attributes:
+      label: Evidence discipline
+      options:
+        - label: I have not treated UNKNOWN as zero or as approval.
+          required: true
+        - label: I understand that a reproducible calculation is not a transaction opinion, endorsement, or real-world authorization.
+          required: true

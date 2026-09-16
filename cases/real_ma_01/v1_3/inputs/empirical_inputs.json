@@ -1,0 +1,26 @@
+{
+  "case_id": "REAL_MA_01_CORRIDOR_V1_3",
+  "as_of_date": "2026-09-16",
+  "comparison": {
+    "baseline": "A1_INDEPENDENT_OPEN_COOPERATION_WITH_AI",
+    "candidate": "B1_HYPOTHETICAL_MERGER_WITH_COMPARABLE_AI"
+  },
+  "measurements": {
+    "shipper_cost_usd_per_load": {
+      "a1_independent_ai": null,
+      "b1_merger_ai": null
+    },
+    "transit_hours_per_load": {
+      "a1_independent_ai": null,
+      "b1_merger_ai": null
+    }
+  },
+  "boundary_evidence": {
+    "labor_transition_plan_verified": null,
+    "community_safety_review_verified": null,
+    "nondiscriminatory_access_verified": null,
+    "human_override_verified": null,
+    "rollback_drill_verified": null
+  },
+  "evidence_note": "Null is intentional: no order-level A1/B1 evidence or verified boundary evidence is supplied in this public default. Replace only in a traceable copy and cite the source and authority for every value."
+}

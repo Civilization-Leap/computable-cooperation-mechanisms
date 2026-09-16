@@ -32,7 +32,7 @@ A computation can enforce a line precisely. It cannot establish who had the auth
 | see why this is not “just use AI” | [Why not just AI?](docs/WHY_NOT_JUST_AI.md) / [中文](docs/WHY_NOT_JUST_AI_ZH.md) |
 | reproduce it without local setup | [Browser / Codespaces quickstart](docs/BROWSER_QUICKSTART.md) |
 | bring a real problem | [3-minute BYOP card](docs/BYOP_3_MINUTE_CARD_ZH.md) / [English](docs/BYOP_3_MINUTE_CARD_EN.md) / [BYOP Start Here](docs/BYOP_START_HERE.md) |
-| challenge or reimplement it | [Third-party testing](docs/THIRD_PARTY_TESTING.md) / [Independent implementation](docs/INDEPENDENT_IMPLEMENTATION.md) |
+| challenge or reimplement it | [Third-party testing](docs/THIRD_PARTY_TESTING.md) / [Independent implementation](docs/INDEPENDENT_IMPLEMENTATION.md) |\n| inspect a public real-case model | [REAL MA 01 railway-merger model V1.3](cases/real_ma_01/v1_3/README.md) / [reproduction and counterexample challenge](docs/REAL_MA_01_REPRODUCTION_CHALLENGE.md) |
 
 **Evidence discipline:** exposure ≠ use; use ≠ effectiveness; sending ≠ endorsement; runnable ≠ real-world problem solved.
 

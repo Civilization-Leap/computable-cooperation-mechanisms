@@ -1,0 +1,1 @@
+"""Public CCM application cases."""
