@@ -42,4 +42,4 @@ Copy `inputs/empirical_inputs.json`; do not edit generated output as if it were 
 python cases/real_ma_01/v1_3/run.py --input /path/to/traceable-copy.json --output-dir /tmp/real-ma-01
 ```
 
-See [`docs/REAL_MA_01_REPRODUCTION_CHALLENGE.md`](../../../docs/REAL_MA_01_REPRODUCTION_CHALLENGE.md). Failed fits and evidence that A1/B1 cannot be compared as modeled are valid results.
+See [`docs/REAL_MA_01_REPRODUCTION_CHALLENGE.md`](../../../docs/REAL_MA_01_REPRODUCTION_CHALLENGE.md), join the [Round 1 coordination issue](https://github.com/Civilization-Leap/computable-cooperation-mechanisms/issues/45), and inspect the [evidence ledger](../../../docs/REAL_MA_01_EVIDENCE_LEDGER.md). Failed fits and evidence that A1/B1 cannot be compared as modeled are valid results.
