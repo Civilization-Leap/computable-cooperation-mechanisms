@@ -2,6 +2,8 @@
 
 Reproduce, challenge, or break the model; endorsement is not requested.
 
+**Round 1 is open:** use [Issue #45](https://github.com/Civilization-Leap/computable-cooperation-mechanisms/issues/45) as the public coordination hub. Submit an individual result through the [REAL MA 01 issue form](https://github.com/Civilization-Leap/computable-cooperation-mechanisms/issues/new?template=real_ma_01.yml). Current evidence state is recorded in the [REAL MA 01 evidence ledger](REAL_MA_01_EVIDENCE_LEDGER.md).
+
 ## Smallest useful checks
 
 1. Run the untouched default and confirm five `UNKNOWN` boundary checks.
