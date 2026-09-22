@@ -2,7 +2,21 @@
 
 Reproduce, challenge, or break the model; endorsement is not requested.
 
-**Round 1 is open:** use [Issue #45](https://github.com/Civilization-Leap/computable-cooperation-mechanisms/issues/45) as the public coordination hub. Submit an individual result through the [REAL MA 01 issue form](https://github.com/Civilization-Leap/computable-cooperation-mechanisms/issues/new?template=real_ma_01.yml). Current evidence state is recorded in the [REAL MA 01 evidence ledger](REAL_MA_01_EVIDENCE_LEDGER.md).
+## Independent Challenge Sprint — Round 1
+
+Choose the smallest useful contribution:
+
+- **10–15 minutes — reproduce:** run the public default and report whether the documented result is reproduced.
+- **20–40 minutes — challenge:** break one assumption, variable, boundary, unit, or authorization relationship.
+- **45–90 minutes — bring a problem:** contribute one non-confidential real coordination problem or validation protocol.
+
+A one-sentence contribution is enough to start:
+
+> I think the model omits ______; this could cause ______; it could be checked with ______.
+
+Use the [REAL MA 01 issue form](https://github.com/Civilization-Leap/computable-cooperation-mechanisms/issues/new?template=real_ma_01.yml) or add context to the [Round 1 coordination issue](https://github.com/Civilization-Leap/computable-cooperation-mechanisms/issues/45). If GitHub is a barrier, a maintainer may transcribe a contributor's emailed observation with permission and label its provenance.
+
+Every contribution should receive a visible disposition: reproduced, accepted, partly accepted, not accepted with reasons, awaiting evidence, or representation gap. A contribution is not counted as independent validation merely because a maintainer or AI assistant reran it.
 
 ## Smallest useful checks
 
@@ -27,3 +41,11 @@ For each proposed boundary, also identify who proposed it, who is affected, who 
 - a representation gap or misuse risk.
 
 Open a repository issue and link the exact commit, input hash, command, Python version, and output. Public discussion is not the same as a regulatory filing, endorsement, or independent validation.
+
+## Evidence-state discipline
+
+Outreach and participation states must not be collapsed:
+
+`SENT → DELIVERED → REPLIED → TRIED → CHALLENGED → CHANGED → REUSED`
+
+Only mark a state when direct evidence exists. All later states remain `UNKNOWN`; a sent invitation is not evidence of delivery, reading, endorsement, reproduction, adoption, or real-world effect.
