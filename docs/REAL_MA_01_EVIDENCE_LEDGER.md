@@ -1,47 +1,48 @@
 # REAL MA 01 — Public Evidence Ledger
 
-**Opened:** 2026-09-20  
-**Coordination:** [Round 1 issue #45](https://github.com/Civilization-Leap/computable-cooperation-mechanisms/issues/45)  
-**Case baseline:** REAL MA 01 V1.3
+Last updated: 2026-09-22
 
-This ledger separates publication, attention, execution, challenge, real use, and effectiveness. A higher state is never inferred from a lower one.
+This ledger separates outreach from independent use. It records only evidence directly held by the project. `UNKNOWN` is not zero, failure, rejection, or lack of interest.
 
-## Evidence states
+## State definitions
 
-| State | Minimum evidence | Current status |
-|---|---|---|
-| PUBLISHED | Public case, runnable model, instructions, and intake path are reachable | YES |
-| SEEN | Platform analytics or an identifiable participant reports seeing the case | UNKNOWN |
-| READ | A participant reports reading the case far enough to identify its question and boundary | UNKNOWN |
-| REPRODUCED | A non-maintainer reports exact version, command, environment, input hash when available, and observed output | UNKNOWN |
-| CHALLENGED | A documented counterexample, evidence challenge, misuse risk, or representation gap is submitted | UNKNOWN |
-| USED | A real actor describes a material change to a real decision, negotiation, arrangement, or risk identification | UNKNOWN |
-| EFFECTIVE | Outcome evidence supports that the change improved the relevant real-world result, with scope and alternatives stated | UNKNOWN |
-| REUSED | An independent actor applies the method to another problem without maintainer execution | UNKNOWN |
+| State | Minimum evidence |
+|---|---|
+| `SENT` | The sending account contains the outgoing message or equivalent submission receipt. |
+| `DELIVERED` | Delivery confirmation or absence of a conclusive bounce where the channel provides delivery evidence. Absence of a bounce alone is not sufficient. |
+| `REPLIED` | A recipient or authorized representative responds. |
+| `TRIED` | An external participant reports an attempted run or structured review. |
+| `CHALLENGED` | An external participant provides a reproducible failure, counterexample, missing variable, authority objection, or representation gap. |
+| `CHANGED` | A challenge produces a documented change to code, data, method, interface, or public recommendation. |
+| `REUSED` | A party independently applies the method or an accepted contribution in another problem or process. |
 
-## Current entries
+## Directed invitation waves
 
-| Date | Actor relationship | Evidence type | Public record | Scope | Adjudication |
+All invitations below were sent on 2026-09-22 from the project account. They requested independent challenge rather than endorsement and prohibited confidential, personal, security-sensitive, contractual, customer, or protected-proceeding material.
+
+| Wave | Recipient perspective | Challenge focus | SENT | DELIVERED | REPLIED | TRIED | CHALLENGED | CHANGED | REUSED |
+|---|---|---|---|---|---|---|---|---|---|
+| 1 | IANA Operations Committee / AI Working Group | Interchange, terminals, driver productivity, exception handling | YES | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
+| 1 | National Industrial Transportation League | Shipper cost, reliability, switching and access | YES | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
+| 1 | Trade Union Advisory Committee to the OECD | Labor transition, waiting, human override and rollback | YES | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
+| 2 | National University Rail Center of Excellence | Rail variables, data requirements and experimental design | YES | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
+| 2 | SMART Transportation Division | Frontline workload, technology failure and worker voice | YES | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
+| 2 | Coalition for Reimagined Mobility / SAFE | AI mobility, autonomous modes, openness and fallback capacity | YES | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
+| 3 | American Short Line and Regional Railroad Association | Short-line access, data portability, dependence and exit cost | YES | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
+| 3 | MIT Center for Transportation & Logistics | Separating AI coordination value from ownership-integration value | YES | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
+| 3 | Center for Neighborhood Technology | Community burdens, observables, resilience and challenge rights | YES | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
+
+## Contribution disposition log
+
+No external contribution has yet been entered in this log.
+
+| Contribution | Provenance | Reproduction evidence | Disposition | Resulting change | Reuse evidence |
 |---|---|---|---|---|---|
-| 2026-09-20 | Maintainer | Published case and opened Round 1 challenge | [Issue #45](https://github.com/Civilization-Leap/computable-cooperation-mechanisms/issues/45) | Public invitation only | PUBLISHED; not independent reproduction |
+| None recorded | — | — | — | — | — |
 
-## Admission rules
+## Boundaries
 
-1. Maintainer runs, AI-assisted maintainer runs, page publication, link clicks, and issue creation do not count as independent reproduction.
-2. A reproduction failure remains evidence when the exact version, environment, command, and observed failure are recorded.
-3. A real-use claim must name the decision or process that changed, the actor's relationship to it, what changed, and what remains unknown. Confidential data must not be posted.
-4. Self-reported use is not automatically effectiveness. Effectiveness requires stronger outcome evidence and a stated comparison.
-5. Exposure is not adoption; adoption is not endorsement; computation is not authorization.
-6. Evidence may be downgraded or withdrawn when provenance, scope, or independence fails review. The reason must remain visible.
-
-## Milestones
-
-- **Milestone A — real improvement:** one independent real actor uses CCM to materially improve a real problem and leaves sufficient public or auditable evidence.
-- **Milestone B — independent diffusion:** a second actor reuses or adapts the method without maintainer execution.
-- **Civilizational accumulation:** considered only after solutions are retained, corrected, reused across actors, and continue to preserve human choice and reversibility. It is not a prerequisite for participation.
-
-## How to add evidence
-
-Use the [REAL MA 01 issue form](https://github.com/Civilization-Leap/computable-cooperation-mechanisms/issues/new?template=real_ma_01.yml). Link public sources only. Do not submit confidential orders, contracts, personal data, or protected-record material.
-
-Ledger updates require a public record or an auditable evidence reference. Empty states remain `UNKNOWN`; they are not converted to zero, failure, consent, or approval.
+- Publishing, emailing, or opening an issue does not enter material into an STB docket.
+- Maintainer runs and AI-assisted checks are not independent third-party validation.
+- Contributor identity is published only with consent.
+- When evidence cannot be represented without distortion, record a `REPRESENTATION GAP` instead of forcing a value.
