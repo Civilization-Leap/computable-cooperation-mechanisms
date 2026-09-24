@@ -70,7 +70,13 @@ class RealGC01V02Tests(unittest.TestCase):
 
     def test_irreversible_boundary_violation_blocks_dominance(self):
         boundary = IrreversibleBoundary(
-            "SYS-RISK", "TP_GLOBAL_PUBLIC", "risk", "T1", "<=", 10, "index"
+            "SYS-RECOVERY-CHANNEL",
+            "TP_GLOBAL_PUBLIC",
+            "recovery",
+            "loss of a credible recovery channel after systemic disruption",
+            "CONDITIONAL_ASSUMPTION",
+            False,
+            "synthetic test: irreversible boundaries protect channels rather than numeric welfare thresholds",
         )
         a = Configuration(
             "A", "synthetic", "S2_HIGHER_COOP_RETAINED_COMP",
