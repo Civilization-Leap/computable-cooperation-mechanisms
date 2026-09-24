@@ -42,4 +42,8 @@ Copy `inputs/empirical_inputs.json`; do not edit generated output as if it were 
 python cases/real_ma_01/v1_3/run.py --input /path/to/traceable-copy.json --output-dir /tmp/real-ma-01
 ```
 
-See [`docs/REAL_MA_01_REPRODUCTION_CHALLENGE.md`](../../../docs/REAL_MA_01_REPRODUCTION_CHALLENGE.md), join the [Round 1 coordination issue](https://github.com/Civilization-Leap/computable-cooperation-mechanisms/issues/45), and inspect the [evidence ledger](../../../docs/REAL_MA_01_EVIDENCE_LEDGER.md). Failed fits and evidence that A1/B1 cannot be compared as modeled are valid results.
+See [`docs/REAL_MA_01_REPRODUCTION_CHALLENGE.md`](../../../docs/REAL_MA_01_REPRODUCTION_CHALLENGE.md). Failed fits and evidence that A1/B1 cannot be compared as modeled are valid results.
+
+Round 1 is coordinated in [Issue #45](https://github.com/Civilization-Leap/computable-cooperation-mechanisms/issues/45). Outreach and external-use states are kept separately in the [public evidence ledger](../../../docs/REAL_MA_01_EVIDENCE_LEDGER.md); a sent invitation is not independent validation.
+
+The first [AI multi-perspective stress-test pack](../challenges/ai_round_1/README.md) turns six stakeholder concerns into five executable scenarios and one explicit representation gap. It is maintainer-observed and AI-assisted, not independent validation.
