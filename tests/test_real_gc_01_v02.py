@@ -41,6 +41,27 @@ class RealGC01V02Tests(unittest.TestCase):
         self.assertFalse(dominates(b, a))
         self.assertEqual({"A", "B"}, set(pareto_frontier([a, b])["frontier"]))
 
+    def test_within_actor_tradeoff_remains_non_dominated(self):
+        base = measures(5, 5, 3)
+        a = Configuration(
+            "A", "synthetic", "S1_BOUNDED_COMP_MIN_COOP",
+            base + (
+                Measure("US", "option_value", "T1", 2, "CONDITIONAL_ASSUMPTION", "index"),
+            ),
+        )
+        b = Configuration(
+            "B", "synthetic", "S0_HIGH_COMP_LOW_COOP",
+            (
+                Measure("US", "benefit", "T1", 15, "CONDITIONAL_ASSUMPTION", "index"),
+                base[1],
+                base[2],
+                Measure("US", "option_value", "T1", 1, "CONDITIONAL_ASSUMPTION", "index"),
+            ),
+        )
+        self.assertFalse(dominates(a, b))
+        self.assertFalse(dominates(b, a))
+        self.assertEqual({"A", "B"}, set(pareto_frontier([a, b])["frontier"]))
+
     def test_unknown_prevents_forced_dominance(self):
         a = Configuration("A", "synthetic", "S1_BOUNDED_COMP_MIN_COOP", measures(6, 6, 1))
         b = Configuration("B", "synthetic", "S0_HIGH_COMP_LOW_COOP", measures(5, 5, 0, unknown=True))
