@@ -38,13 +38,13 @@ def _measures(values):
 
 def build_grid():
     boundary = IrreversibleBoundary(
-        "GLOBAL-SYSTEMIC-RISK-T1",
+        "GLOBAL-RECOVERY-CHANNEL",
         "TP_GLOBAL_PUBLIC",
-        "risk",
-        "T1",
-        "<=",
-        10,
-        "synthetic_index",
+        "recovery",
+        "loss of a credible correction/recovery channel after systemic escalation",
+        "CONDITIONAL_ASSUMPTION",
+        True,
+        "synthetic mechanism test; not a claim about real U.S.-China conditions",
     )
     configs = []
     for state, values in STATE_VALUES.items():
@@ -54,7 +54,13 @@ def build_grid():
                 FeedbackStep(1, "CN", "US", "benefit", "T1", -6, "CONDITIONAL_ASSUMPTION", "synthetic_index", "synthetic counteraction feedback"),
                 FeedbackStep(2, "US", "CN", "benefit", "T1", -6, "CONDITIONAL_ASSUMPTION", "synthetic_index", "synthetic reciprocal feedback"),
             )
-        configs.append(Configuration(state, "SYNTHETIC_CROSS_DOMAIN", state, _measures(values), (boundary,), feedback))
+        state_boundary = boundary
+        if state == "S3_ESCALATORY_RECURSION":
+            state_boundary = IrreversibleBoundary(
+                boundary.id, boundary.affected_actor, boundary.protected_channel,
+                boundary.closure_condition, boundary.evidence_state, False, boundary.rationale
+            )
+        configs.append(Configuration(state, "SYNTHETIC_CROSS_DOMAIN", state, _measures(values), (state_boundary,), feedback))
     return configs
 
 
