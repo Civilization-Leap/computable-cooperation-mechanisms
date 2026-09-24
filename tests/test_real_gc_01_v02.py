@@ -86,7 +86,7 @@ class RealGC01V02Tests(unittest.TestCase):
             "B", "synthetic", "S1_BOUNDED_COMP_MIN_COOP",
             measures(1, 1, 1), (boundary,)
         )
-        self.assertEqual("VIOLATED", boundary_status(a)["SYS-RISK"])
+        self.assertEqual("VIOLATED", boundary_status(a)["SYS-RECOVERY-CHANNEL"])
         self.assertFalse(dominates(a, b))
 
     def test_feedback_returns_consequences_to_initiator(self):
