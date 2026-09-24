@@ -18,6 +18,8 @@ Use the [REAL MA 01 issue form](https://github.com/Civilization-Leap/computable-
 
 Every contribution should receive a visible disposition: reproduced, accepted, partly accepted, not accepted with reasons, awaiting evidence, or representation gap. A contribution is not counted as independent validation merely because a maintainer or AI assistant reran it.
 
+The [AI multi-perspective stress test, Round 1](../cases/real_ma_01/challenges/ai_round_1/README.md) provides six ready-to-challenge prompts. Its results are labeled `AI_ASSISTED_STRESS_TEST`; they do not advance the external invitation ledger or count as independent validation.
+
 ## Smallest useful checks
 
 1. Run the untouched default and confirm five `UNKNOWN` boundary checks.
