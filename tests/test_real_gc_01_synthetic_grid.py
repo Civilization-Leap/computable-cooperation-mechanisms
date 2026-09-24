@@ -10,7 +10,7 @@ class RealGC01SyntheticGridTests(unittest.TestCase):
     def test_escalatory_state_crosses_declared_synthetic_boundary(self):
         result = run_grid()
         s3 = next(x for x in result["configurations"] if x["id"] == "S3_ESCALATORY_RECURSION")
-        self.assertEqual("VIOLATED", s3["boundary_status"]["GLOBAL-SYSTEMIC-RISK-T1"])
+        self.assertEqual("VIOLATED", s3["boundary_status"]["GLOBAL-RECOVERY-CHANNEL"])
 
     def test_feedback_reverses_s3_initial_bilateral_benefit(self):
         result = run_grid()
