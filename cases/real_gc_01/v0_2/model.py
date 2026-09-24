@@ -48,6 +48,19 @@ class Measure:
 
 @dataclass(frozen=True)
 class IrreversibleBoundary:
+    """Named channel-closure criterion, not a compensable numeric threshold."""
+    id: str
+    affected_actor: str
+    protected_channel: str
+    closure_condition: str
+    evidence_state: str
+    channel_open: Optional[bool]
+    rationale: str
+
+
+@dataclass(frozen=True)
+class QuantitativeConstraint:
+    """Ordinary numeric constraint; intentionally separate from irreversibility."""
     id: str
     actor: str
     dimension: str
@@ -110,11 +123,16 @@ def validate_configuration(c: Configuration) -> None:
             raise ValueError(f"duplicate measure: {key}")
         seen.add(key)
     for b in c.boundaries:
-        if b.actor not in ACTORS or b.dimension not in DIMENSIONS or b.horizon not in HORIZONS:
-            raise ValueError(f"invalid boundary: {b.id}")
-        if b.operator not in {"<=", ">="}:
-            raise ValueError(f"invalid boundary operator: {b.operator}")
-        _finite_or_none(b.limit, "boundary.limit")
+        if b.affected_actor not in ACTORS:
+            raise ValueError(f"invalid boundary actor: {b.id}")
+        if not b.protected_channel or not b.closure_condition or not b.rationale:
+            raise ValueError(f"boundary must name channel, closure condition, and rationale: {b.id}")
+        if b.evidence_state not in EVIDENCE_STATES:
+            raise ValueError(f"invalid boundary evidence_state: {b.id}")
+        if b.evidence_state == "UNKNOWN" and b.channel_open is not None:
+            raise ValueError("UNKNOWN boundary evidence must keep channel_open None")
+        if b.evidence_state != "UNKNOWN" and not isinstance(b.channel_open, bool):
+            raise ValueError("known boundary evidence requires boolean channel_open")
     orders = [x.order for x in c.feedback_chain]
     if orders != sorted(orders) or len(orders) != len(set(orders)):
         raise ValueError("feedback steps must have unique ascending order")
@@ -133,16 +151,19 @@ def validate_configuration(c: Configuration) -> None:
 
 
 def boundary_status(c: Configuration) -> Dict[str, str]:
+    """Evaluate only declared protected-channel availability.
+
+    SATISFIED means the named correction/exit/recovery/refusal/reversal channel
+    remains open. VIOLATED means the declared evidence says it is closed.
+    UNKNOWN remains UNKNOWN.
+    """
     validate_configuration(c)
-    idx = {(m.actor, m.dimension, m.horizon, m.unit): m.value for m in c.measures}
     out: Dict[str, str] = {}
     for b in c.boundaries:
-        value = idx.get((b.actor, b.dimension, b.horizon, b.unit))
-        if value is None:
+        if b.channel_open is None:
             out[b.id] = "UNKNOWN"
         else:
-            ok = value <= b.limit if b.operator == "<=" else value >= b.limit
-            out[b.id] = "SATISFIED" if ok else "VIOLATED"
+            out[b.id] = "SATISFIED" if b.channel_open else "VIOLATED"
     return out
 
 
