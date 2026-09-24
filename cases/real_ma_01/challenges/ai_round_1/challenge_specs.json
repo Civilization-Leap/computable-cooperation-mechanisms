@@ -1,0 +1,120 @@
+{
+  "round_id": "REAL_MA_01_AI_STRESS_TEST_ROUND_1",
+  "model_version": "REAL_MA_01_V1_3",
+  "as_of_date": "2026-09-24",
+  "evidence_class": "AI_ASSISTED_STRESS_TEST",
+  "independent_validation": false,
+  "challenges": [
+    {
+      "id": "AI-R1-SHIPPER-01",
+      "perspective": "shipper",
+      "mode": "EXECUTABLE",
+      "question": "Can a voluntarily purchased faster service remain visible as a cost-time trade-off without being mislabeled a boundary violation?",
+      "measurements": {
+        "shipper_cost_usd_per_load": {"a1_independent_ai": 1000, "b1_merger_ai": 1200},
+        "transit_hours_per_load": {"a1_independent_ai": 40, "b1_merger_ai": 32}
+      },
+      "boundary_evidence": {
+        "labor_transition_plan_verified": 1,
+        "community_safety_review_verified": 1,
+        "nondiscriminatory_access_verified": 1,
+        "human_override_verified": 1,
+        "rollback_drill_verified": 1
+      },
+      "expected": {"boundary_status": "SATISFIED", "cost_delta": 200.0, "time_delta": -8.0},
+      "finding_class": "REPRODUCED",
+      "external_task": "Replace the synthetic amounts with a public, corridor-matched quotation pair and state who accepts the price-time trade-off."
+    },
+    {
+      "id": "AI-R1-CONNECTING-CARRIER-01",
+      "perspective": "connecting_carrier",
+      "mode": "EXECUTABLE",
+      "question": "Does explicit evidence of discriminatory access stop the candidate even when every other proposed boundary is recorded as verified?",
+      "measurements": {
+        "shipper_cost_usd_per_load": {"a1_independent_ai": 1000, "b1_merger_ai": 900},
+        "transit_hours_per_load": {"a1_independent_ai": 40, "b1_merger_ai": 34}
+      },
+      "boundary_evidence": {
+        "labor_transition_plan_verified": 1,
+        "community_safety_review_verified": 1,
+        "nondiscriminatory_access_verified": 0,
+        "human_override_verified": 1,
+        "rollback_drill_verified": 1
+      },
+      "expected": {"boundary_status": "VIOLATED", "violated_constraint": "NONDISCRIMINATORY-ACCESS"},
+      "finding_class": "CHALLENGED",
+      "external_task": "Propose a public test for access terms, refusal reasons, settlement timing, data portability, and actual switching cost."
+    },
+    {
+      "id": "AI-R1-WORKFORCE-01",
+      "perspective": "workforce",
+      "mode": "EXECUTABLE",
+      "question": "Does missing labor-transition evidence remain UNKNOWN instead of being silently treated as satisfied?",
+      "measurements": {
+        "shipper_cost_usd_per_load": {"a1_independent_ai": 1000, "b1_merger_ai": 940},
+        "transit_hours_per_load": {"a1_independent_ai": 40, "b1_merger_ai": 35}
+      },
+      "boundary_evidence": {
+        "labor_transition_plan_verified": null,
+        "community_safety_review_verified": 1,
+        "nondiscriminatory_access_verified": 1,
+        "human_override_verified": 1,
+        "rollback_drill_verified": 1
+      },
+      "expected": {"boundary_status": "UNKNOWN", "unknown_constraint": "LABOR-TRANSITION"},
+      "finding_class": "INSUFFICIENT_EVIDENCE",
+      "external_task": "Identify what would count as verified labor-transition evidence and who is entitled to verify it."
+    },
+    {
+      "id": "AI-R1-COMMUNITY-01",
+      "perspective": "community",
+      "mode": "EXECUTABLE",
+      "question": "Can a community-safety failure remain decisive despite lower shipper cost and faster transit?",
+      "measurements": {
+        "shipper_cost_usd_per_load": {"a1_independent_ai": 1000, "b1_merger_ai": 880},
+        "transit_hours_per_load": {"a1_independent_ai": 40, "b1_merger_ai": 31}
+      },
+      "boundary_evidence": {
+        "labor_transition_plan_verified": 1,
+        "community_safety_review_verified": 0,
+        "nondiscriminatory_access_verified": 1,
+        "human_override_verified": 1,
+        "rollback_drill_verified": 1
+      },
+      "expected": {"boundary_status": "VIOLATED", "violated_constraint": "COMMUNITY-SAFETY"},
+      "finding_class": "CHALLENGED",
+      "external_task": "Name one observable community outcome and a legitimate review process that cannot be replaced by shipper savings."
+    },
+    {
+      "id": "AI-R1-COMPETITION-01",
+      "perspective": "competition_and_regulation",
+      "mode": "REPRESENTATION_GAP",
+      "question": "Can V1.3 represent market concentration, foreclosure, option loss, or merger-only incremental value?",
+      "covered_dimensions": ["shipper cost delta", "transit-time delta", "non-discriminatory-access binary evidence"],
+      "missing_dimensions": ["market concentration", "foreclosure incentive", "customer option loss", "switching cost over time", "merger-only incremental value beyond A1"],
+      "finding_class": "REPRESENTATION_GAP",
+      "external_task": "Propose one observable that distinguishes an open shared infrastructure path from a progressively closed gatekeeper path."
+    },
+    {
+      "id": "AI-R1-AUTONOMOUS-LOGISTICS-01",
+      "perspective": "autonomous_logistics",
+      "mode": "EXECUTABLE",
+      "question": "Does failure of a rollback drill stop an otherwise asserted human-override arrangement, and what remains compressed by binary evidence?",
+      "measurements": {
+        "shipper_cost_usd_per_load": {"a1_independent_ai": 1000, "b1_merger_ai": 850},
+        "transit_hours_per_load": {"a1_independent_ai": 40, "b1_merger_ai": 28}
+      },
+      "boundary_evidence": {
+        "labor_transition_plan_verified": 1,
+        "community_safety_review_verified": 1,
+        "nondiscriminatory_access_verified": 1,
+        "human_override_verified": 1,
+        "rollback_drill_verified": 0
+      },
+      "expected": {"boundary_status": "VIOLATED", "violated_constraint": "ROLLBACK-DRILL"},
+      "finding_class": "CHALLENGED",
+      "representation_gap": "Binary evidence does not encode drill scope, frequency, response time, authority chain, degraded-mode capacity, or cross-mode responsibility.",
+      "external_task": "Design one failure drill spanning rail, autonomous truck, warehouse, and low-altitude delivery with named stop and recovery authorities."
+    }
+  ]
+}

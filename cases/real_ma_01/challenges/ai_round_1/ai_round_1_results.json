@@ -1,0 +1,328 @@
+{
+  "round_id": "REAL_MA_01_AI_STRESS_TEST_ROUND_1",
+  "model_version": "REAL_MA_01_V1_3",
+  "as_of_date": "2026-09-24",
+  "evidence_class": "AI_ASSISTED_STRESS_TEST",
+  "independent_validation": false,
+  "external_evidence_state_changed": false,
+  "interpretation_boundary": "AI-assisted and maintainer-observed stress test only. It does not establish delivery, independent reproduction, endorsement, adoption, authority, or real-world effect.",
+  "all_assertions_pass": true,
+  "finding_counts": {
+    "REPRODUCED": 1,
+    "CHALLENGED": 3,
+    "INSUFFICIENT_EVIDENCE": 1,
+    "REPRESENTATION_GAP": 1
+  },
+  "results": [
+    {
+      "id": "AI-R1-SHIPPER-01",
+      "perspective": "shipper",
+      "mode": "EXECUTABLE",
+      "finding_class": "REPRODUCED",
+      "question": "Can a voluntarily purchased faster service remain visible as a cost-time trade-off without being mislabeled a boundary violation?",
+      "assertions": {
+        "boundary_status": true,
+        "cost_delta": true,
+        "time_delta": true
+      },
+      "assertions_pass": true,
+      "observed": {
+        "boundary_status": "SATISFIED",
+        "cost_delta": 200.0,
+        "time_delta": -8.0,
+        "checks": [
+          {
+            "constraint_id": "LABOR-TRANSITION",
+            "hard": true,
+            "status": "SATISFIED",
+            "source": "candidate.outcomes:workforce/labor_transition_plan_verified/BINARY_EVIDENCE",
+            "reason": "1 >= 1 is true"
+          },
+          {
+            "constraint_id": "COMMUNITY-SAFETY",
+            "hard": true,
+            "status": "SATISFIED",
+            "source": "candidate.outcomes:community/community_safety_review_verified/BINARY_EVIDENCE",
+            "reason": "1 >= 1 is true"
+          },
+          {
+            "constraint_id": "NONDISCRIMINATORY-ACCESS",
+            "hard": true,
+            "status": "SATISFIED",
+            "source": "candidate.outcomes:connecting_carrier/nondiscriminatory_access_verified/BINARY_EVIDENCE",
+            "reason": "1 >= 1 is true"
+          },
+          {
+            "constraint_id": "HUMAN-OVERRIDE",
+            "hard": true,
+            "status": "SATISFIED",
+            "source": "candidate.outcomes:operations/human_override_verified/BINARY_EVIDENCE",
+            "reason": "1 >= 1 is true"
+          },
+          {
+            "constraint_id": "ROLLBACK-DRILL",
+            "hard": true,
+            "status": "SATISFIED",
+            "source": "candidate.outcomes:operations/rollback_drill_verified/BINARY_EVIDENCE",
+            "reason": "1 >= 1 is true"
+          }
+        ],
+        "input_sha256": "ad12053dc36408ba59ef2a58b9ad90c32a3d943f97b14ebbd26aae2998354a33"
+      },
+      "representation_gap": null,
+      "external_task": "Replace the synthetic amounts with a public, corridor-matched quotation pair and state who accepts the price-time trade-off."
+    },
+    {
+      "id": "AI-R1-CONNECTING-CARRIER-01",
+      "perspective": "connecting_carrier",
+      "mode": "EXECUTABLE",
+      "finding_class": "CHALLENGED",
+      "question": "Does explicit evidence of discriminatory access stop the candidate even when every other proposed boundary is recorded as verified?",
+      "assertions": {
+        "boundary_status": true,
+        "violated_constraint": true
+      },
+      "assertions_pass": true,
+      "observed": {
+        "boundary_status": "VIOLATED",
+        "cost_delta": -100.0,
+        "time_delta": -6.0,
+        "checks": [
+          {
+            "constraint_id": "LABOR-TRANSITION",
+            "hard": true,
+            "status": "SATISFIED",
+            "source": "candidate.outcomes:workforce/labor_transition_plan_verified/BINARY_EVIDENCE",
+            "reason": "1 >= 1 is true"
+          },
+          {
+            "constraint_id": "COMMUNITY-SAFETY",
+            "hard": true,
+            "status": "SATISFIED",
+            "source": "candidate.outcomes:community/community_safety_review_verified/BINARY_EVIDENCE",
+            "reason": "1 >= 1 is true"
+          },
+          {
+            "constraint_id": "NONDISCRIMINATORY-ACCESS",
+            "hard": true,
+            "status": "VIOLATED",
+            "source": "candidate.outcomes:connecting_carrier/nondiscriminatory_access_verified/BINARY_EVIDENCE",
+            "reason": "0 >= 1 is false"
+          },
+          {
+            "constraint_id": "HUMAN-OVERRIDE",
+            "hard": true,
+            "status": "SATISFIED",
+            "source": "candidate.outcomes:operations/human_override_verified/BINARY_EVIDENCE",
+            "reason": "1 >= 1 is true"
+          },
+          {
+            "constraint_id": "ROLLBACK-DRILL",
+            "hard": true,
+            "status": "SATISFIED",
+            "source": "candidate.outcomes:operations/rollback_drill_verified/BINARY_EVIDENCE",
+            "reason": "1 >= 1 is true"
+          }
+        ],
+        "input_sha256": "aad6f74f9eb386eb2dc9332af5d85bc2e3b7503d1ee98c95266378b240c6a546"
+      },
+      "representation_gap": null,
+      "external_task": "Propose a public test for access terms, refusal reasons, settlement timing, data portability, and actual switching cost."
+    },
+    {
+      "id": "AI-R1-WORKFORCE-01",
+      "perspective": "workforce",
+      "mode": "EXECUTABLE",
+      "finding_class": "INSUFFICIENT_EVIDENCE",
+      "question": "Does missing labor-transition evidence remain UNKNOWN instead of being silently treated as satisfied?",
+      "assertions": {
+        "boundary_status": true,
+        "unknown_constraint": true
+      },
+      "assertions_pass": true,
+      "observed": {
+        "boundary_status": "UNKNOWN",
+        "cost_delta": -60.0,
+        "time_delta": -5.0,
+        "checks": [
+          {
+            "constraint_id": "LABOR-TRANSITION",
+            "hard": true,
+            "status": "UNKNOWN",
+            "source": "candidate.outcomes:workforce/labor_transition_plan_verified/BINARY_EVIDENCE",
+            "reason": "required value is explicitly unknown"
+          },
+          {
+            "constraint_id": "COMMUNITY-SAFETY",
+            "hard": true,
+            "status": "SATISFIED",
+            "source": "candidate.outcomes:community/community_safety_review_verified/BINARY_EVIDENCE",
+            "reason": "1 >= 1 is true"
+          },
+          {
+            "constraint_id": "NONDISCRIMINATORY-ACCESS",
+            "hard": true,
+            "status": "SATISFIED",
+            "source": "candidate.outcomes:connecting_carrier/nondiscriminatory_access_verified/BINARY_EVIDENCE",
+            "reason": "1 >= 1 is true"
+          },
+          {
+            "constraint_id": "HUMAN-OVERRIDE",
+            "hard": true,
+            "status": "SATISFIED",
+            "source": "candidate.outcomes:operations/human_override_verified/BINARY_EVIDENCE",
+            "reason": "1 >= 1 is true"
+          },
+          {
+            "constraint_id": "ROLLBACK-DRILL",
+            "hard": true,
+            "status": "SATISFIED",
+            "source": "candidate.outcomes:operations/rollback_drill_verified/BINARY_EVIDENCE",
+            "reason": "1 >= 1 is true"
+          }
+        ],
+        "input_sha256": "bcc28802ec8abfa83063a10db44f3503d8d639d2a363e33e614fda463225d54d"
+      },
+      "representation_gap": null,
+      "external_task": "Identify what would count as verified labor-transition evidence and who is entitled to verify it."
+    },
+    {
+      "id": "AI-R1-COMMUNITY-01",
+      "perspective": "community",
+      "mode": "EXECUTABLE",
+      "finding_class": "CHALLENGED",
+      "question": "Can a community-safety failure remain decisive despite lower shipper cost and faster transit?",
+      "assertions": {
+        "boundary_status": true,
+        "violated_constraint": true
+      },
+      "assertions_pass": true,
+      "observed": {
+        "boundary_status": "VIOLATED",
+        "cost_delta": -120.0,
+        "time_delta": -9.0,
+        "checks": [
+          {
+            "constraint_id": "LABOR-TRANSITION",
+            "hard": true,
+            "status": "SATISFIED",
+            "source": "candidate.outcomes:workforce/labor_transition_plan_verified/BINARY_EVIDENCE",
+            "reason": "1 >= 1 is true"
+          },
+          {
+            "constraint_id": "COMMUNITY-SAFETY",
+            "hard": true,
+            "status": "VIOLATED",
+            "source": "candidate.outcomes:community/community_safety_review_verified/BINARY_EVIDENCE",
+            "reason": "0 >= 1 is false"
+          },
+          {
+            "constraint_id": "NONDISCRIMINATORY-ACCESS",
+            "hard": true,
+            "status": "SATISFIED",
+            "source": "candidate.outcomes:connecting_carrier/nondiscriminatory_access_verified/BINARY_EVIDENCE",
+            "reason": "1 >= 1 is true"
+          },
+          {
+            "constraint_id": "HUMAN-OVERRIDE",
+            "hard": true,
+            "status": "SATISFIED",
+            "source": "candidate.outcomes:operations/human_override_verified/BINARY_EVIDENCE",
+            "reason": "1 >= 1 is true"
+          },
+          {
+            "constraint_id": "ROLLBACK-DRILL",
+            "hard": true,
+            "status": "SATISFIED",
+            "source": "candidate.outcomes:operations/rollback_drill_verified/BINARY_EVIDENCE",
+            "reason": "1 >= 1 is true"
+          }
+        ],
+        "input_sha256": "7d665408f109c50683a63f10b845c9e88c4271b87468d29b95ad1ecb58090b90"
+      },
+      "representation_gap": null,
+      "external_task": "Name one observable community outcome and a legitimate review process that cannot be replaced by shipper savings."
+    },
+    {
+      "id": "AI-R1-COMPETITION-01",
+      "perspective": "competition_and_regulation",
+      "mode": "REPRESENTATION_GAP",
+      "finding_class": "REPRESENTATION_GAP",
+      "question": "Can V1.3 represent market concentration, foreclosure, option loss, or merger-only incremental value?",
+      "assertions": {
+        "gap_declared_without_forced_numeric_value": true
+      },
+      "assertions_pass": true,
+      "covered_dimensions": [
+        "shipper cost delta",
+        "transit-time delta",
+        "non-discriminatory-access binary evidence"
+      ],
+      "missing_dimensions": [
+        "market concentration",
+        "foreclosure incentive",
+        "customer option loss",
+        "switching cost over time",
+        "merger-only incremental value beyond A1"
+      ],
+      "external_task": "Propose one observable that distinguishes an open shared infrastructure path from a progressively closed gatekeeper path."
+    },
+    {
+      "id": "AI-R1-AUTONOMOUS-LOGISTICS-01",
+      "perspective": "autonomous_logistics",
+      "mode": "EXECUTABLE",
+      "finding_class": "CHALLENGED",
+      "question": "Does failure of a rollback drill stop an otherwise asserted human-override arrangement, and what remains compressed by binary evidence?",
+      "assertions": {
+        "boundary_status": true,
+        "violated_constraint": true
+      },
+      "assertions_pass": true,
+      "observed": {
+        "boundary_status": "VIOLATED",
+        "cost_delta": -150.0,
+        "time_delta": -12.0,
+        "checks": [
+          {
+            "constraint_id": "LABOR-TRANSITION",
+            "hard": true,
+            "status": "SATISFIED",
+            "source": "candidate.outcomes:workforce/labor_transition_plan_verified/BINARY_EVIDENCE",
+            "reason": "1 >= 1 is true"
+          },
+          {
+            "constraint_id": "COMMUNITY-SAFETY",
+            "hard": true,
+            "status": "SATISFIED",
+            "source": "candidate.outcomes:community/community_safety_review_verified/BINARY_EVIDENCE",
+            "reason": "1 >= 1 is true"
+          },
+          {
+            "constraint_id": "NONDISCRIMINATORY-ACCESS",
+            "hard": true,
+            "status": "SATISFIED",
+            "source": "candidate.outcomes:connecting_carrier/nondiscriminatory_access_verified/BINARY_EVIDENCE",
+            "reason": "1 >= 1 is true"
+          },
+          {
+            "constraint_id": "HUMAN-OVERRIDE",
+            "hard": true,
+            "status": "SATISFIED",
+            "source": "candidate.outcomes:operations/human_override_verified/BINARY_EVIDENCE",
+            "reason": "1 >= 1 is true"
+          },
+          {
+            "constraint_id": "ROLLBACK-DRILL",
+            "hard": true,
+            "status": "VIOLATED",
+            "source": "candidate.outcomes:operations/rollback_drill_verified/BINARY_EVIDENCE",
+            "reason": "0 >= 1 is false"
+          }
+        ],
+        "input_sha256": "b4ba0652feb2781ad9241bc51309448fc39a32ca69ff56c76c499378cffa1f17"
+      },
+      "representation_gap": "Binary evidence does not encode drill scope, frequency, response time, authority chain, degraded-mode capacity, or cross-mode responsibility.",
+      "external_task": "Design one failure drill spanning rail, autonomous truck, warehouse, and low-altitude delivery with named stop and recovery authorities."
+    }
+  ]
+}
