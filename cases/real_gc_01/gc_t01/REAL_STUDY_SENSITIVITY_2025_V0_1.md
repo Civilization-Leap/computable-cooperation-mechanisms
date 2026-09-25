@@ -1,106 +1,85 @@
 # GC-T01 — 2025 Tariff Study Sensitivity Case V0.1
 
-**Target:** Fajgelbaum & Khandelwal, NBER Working Paper 35064 (2026), study of the 2025 U.S. tariffs  
+**Target:** Fajgelbaum & Khandelwal, *Tariffs in 2025: Short-Run Impacts on the US Economy*  
+**Verified source:** March 26–27, 2026 BPEA conference draft [S1 below]  
+**Original registry reference:** NBER Working Paper 35064; not independently refetched in this check  
 **Identity:** REAL_STUDY_SENSITIVITY_MAPPING  
 **As-of:** 2026-09-25  
-**Purpose:** identify which study assumptions/empirical uncertainties change the sign of the reported welfare result.
+**Purpose:** distinguish the study's reported empirical estimates from its assumption-dependent model results.
 
-## Published headline evidence
+**Source-verification amendment:** the NBER page/PDF returned 403 during this check. The readable BPEA draft is fixed explicitly; this note does not assume byte identity with the later NBER version. The earlier unqualified “tariff revenue around 1.2% of GDP” and foreign-export-price-only explanation are corrected below.
 
-The study reports, at headline level:
+## Verified study content
 
-- roughly 90% tariff pass-through into prices paid by U.S. importers;
-- tariff revenue around 1.2% of GDP;
-- aggregate welfare effects ranging from about **-0.13% to +0.10% of GDP** across scenarios;
-- the sign of the aggregate result depends importantly on whether the United
-  States obtains a terms-of-trade improvement.
+The BPEA draft reports:
 
-These are the study authors' estimates/model results. They are not CCM
-measurements and are not automatically transferable to another tariff episode.
+- baseline importer-price pass-through of about 90%;
+- short-run model welfare changes of **-0.13% / +0.10% GDP** without/with terms-of-trade adjustments, with labor fixed across sectors (Table 6);
+- a separate labor-mobility alternative of **-0.50% / +0.28% GDP** (Table A.8);
+- tariff-revenue counterfactual components of **1.08% / 1.15% GDP** in Table 6, not actual calendar-year tariff receipts.
+
+The last three bullets are author-model results, not CCM measurements. The two labor settings stay separate. The paired endpoints are scenario outputs, **not a confidence interval**, a probability distribution or a guarantee that realized welfare lies between them. The policy universe is the overall 2025 U.S. tariff episode modeled in the paper, not only bilateral U.S.–China measures.
 
 ## Sensitivity structure
 
-The headline range itself is evidence that a single-sign result is not robust
-to the study's plausible scenario structure:
+Within each specified model setting, alternative treatment of terms-of-trade adjustment produces reported changes on different sides of zero:
 
 ```
-scenario / empirical assumption set A
-    -> welfare effect < 0
-
-scenario / empirical assumption set B
-    -> welfare effect > 0
+fixed labor + terms-of-trade setting A -> -0.13% GDP
+fixed labor + terms-of-trade setting B -> +0.10% GDP
 ```
 
-Therefore CCM records:
+Therefore the existing classification label is scoped as:
 
 `headline_sign_status = SENSITIVE`
 
-not:
+`scope = VERIFIED_BPEA_FIXED_LABOR_SCENARIOS`
 
-`policy_effect = POSITIVE`
+This is a statement about the reported model outputs. It is not a verdict on a political choice or a new empirical frontier.
 
-and not:
+## Assumptions behind the difference
 
-`policy_effect = NEGATIVE`
+The study distinguishes foreign import-supply price responses from U.S. producer/export price and income adjustments. High importer pass-through alone does not identify the entire terms-of-trade contribution. In particular, the discussion of export-side effects and overall price/income adjustment matters to the difference between the two settings [S1, sections 5.2.2–5.3, printed pp. 26–31].
 
-## Sign-switch driver
-
-The key reported driver is the U.S. **terms-of-trade effect**: whether foreign
-export prices fall sufficiently relative to U.S. prices so that part of the
-tariff burden is shifted abroad.
-
-The study's high import-price pass-through finding constrains this mechanism:
-large pass-through to U.S. importers means a positive aggregate result cannot be
-assumed merely from the tariff rate itself.
-
-For CCM purposes the causal structure is:
+A useful inventory is:
 
 ```
-tariff
- -> importer price incidence
- -> tariff revenue / domestic reallocation
- -> foreign-price / terms-of-trade response
- -> retaliation and general-equilibrium responses
- -> aggregate welfare range
+tariff changes
+ -> importer prices and quantities
+ -> foreign supply and U.S. producer/export price responses
+ -> income, revenue and modeled retaliation
+ -> assumption-dependent model outcomes
 ```
 
-The final sign is therefore downstream of empirical quantities that are not
-known with certainty.
+This is not an additive formula. **Table 6 expressly says its four components are non-additive.** Sharing a paper, table and unit is not enough to justify adding reported components.
 
 ## CCM sensitivity disposition
 
 | Question | Disposition |
 |---|---|
-| Does the study report one invariant welfare sign? | NO |
-| Do plausible study scenarios cross zero? | YES |
-| Can CCM label the headline result ROBUST positive or ROBUST negative? | NO |
-| Appropriate CCM label | **SENSITIVE** |
-| Does SENSITIVE mean the policy has no effects? | NO |
-| Does this study establish S0/S1/S2/S3 ordering? | NO |
+| Does the fixed-labor comparison retain one sign across its two settings? | No; the author-reported outputs are on different sides of zero |
+| Are these endpoints statistical confidence bounds? | No; they are model-scenario outputs |
+| Does the full paper contain only this labor setting? | No; Table A.8 reports a separate labor-mobility exercise |
+| What does the current CCM fixture check? | The signs of supplied endpoints only |
+| Has CCM rerun the structural model or identified the realized terms-of-trade response? | No |
+| Does this identify a bilateral or joint-interest S0–S3 result? | No |
 
 ## Why this matters
 
-This is the first reality-grounded example in REAL GC 01 where the correct
-computational result is not a policy winner but a dependency statement:
-
-> the sign of the modeled aggregate welfare effect changes with the empirical
-> treatment of a material causal channel.
-
-That is precisely the class of case the CCM sensitivity gate is intended to
-preserve rather than collapse.
+A source-faithful dependency statement retains both the measured/estimated inputs and the assumptions needed to obtain each model result. It does not select a convenient endpoint or make a policy recommendation.
 
 ## Non-transfer rules
 
 Do not:
 
-- apply the -0.13%/+0.10% range to 2018;
-- combine it arithmetically with the 2018 Fajgelbaum et al. welfare dollars;
-- treat tariff revenue as a free social gain;
-- infer household, worker, sector, China-side, or third-country distribution
-  from the aggregate welfare range;
-- infer that a positive aggregate scenario satisfies channel-based
-  irreversibility constraints;
-- convert the study into a recommendation for or against tariffs.
+- transfer the 2025 model results to 2018;
+- combine Table 6 and Table A.8 into a statistical confidence interval;
+- present model tariff-revenue components as actual annual receipts;
+- add Table 6 components, which are explicitly non-additive;
+- mix vintages or splice these values into the 2018 welfare-dollar accounting;
+- infer household, worker, China-side or third-country distribution from a U.S. aggregate;
+- infer channel availability or irreversibility from a positive or negative aggregate number;
+- convert source results into a policy ranking or recommendation.
 
 ## Reproduction state
 
@@ -108,23 +87,21 @@ Do not:
 
 `sign_sensitivity_identified = true`
 
+`verified_vintage = BPEA_2026_MARCH_CONFERENCE_DRAFT`
+
+`nber_current_vintage_reverified = false`
+
 `full_structural_replication = false`
 
 `independent_validation = false`
 
 `policy_recommendation = false`
 
-## Next testable task
+The existing `real_study_sensitivity.py` fixture retains the two fixed-labor endpoints (-0.13 / +0.10 percent GDP). This amendment verifies their limited source scope; it neither changes the code nor promotes endpoint classification to structural replication or a validated multi-party frontier.
 
-Construct a minimal **study-faithful sensitivity fixture** with no invented
-policy conclusion:
+## Primary source and companion matrix
 
-- endpoint A = -0.13% GDP;
-- endpoint B = +0.10% GDP;
-- provenance = THIRD_PARTY_SOURCE;
-- evidence state = THIRD_PARTY_ESTIMATE;
-- sensitivity result = SENSITIVE because the declared plausible range crosses
-  zero.
+[S1] Fajgelbaum and Khandelwal, BPEA conference draft, March 26–27, 2026: abstract, sections 5.2.2–5.3, Table 6 (printed p. 32), Table A.8 (printed p. 64).  
+https://www.brookings.edu/wp-content/uploads/2026/03/1_Fajgelbaum-Khandelwal_unembargoed.pdf
 
-The fixture must test classification only. It must not claim to reproduce the
-paper's structural model.
+[Known, Unknown and Conditional Findings Matrix V0.1](KNOWN_UNKNOWN_CONDITIONAL_MATRIX_V0_1.md) gives the Chinese-language synthesis and correction record. The prior contents remain traceable in Git history.
