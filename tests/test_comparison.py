@@ -1,6 +1,6 @@
 import unittest
 
-from mechanism_ref.comparison import AssumptionVariant, ComparisonInputError, Plan, UnknownRange, assumption_reversal, compare_plans, dominates, unknown_dependency
+from mechanism_ref.comparison import AssumptionVariant, ChannelState, ComparisonInputError, Plan, UnknownRange, assumption_reversal, channel_boundary_flags, compare_plans, dominates, unknown_dependency
 
 
 class ComparisonTests(unittest.TestCase):
@@ -115,6 +115,32 @@ class ComparisonTests(unittest.TestCase):
             self.assertNotIn("preferred", result)
             self.assertNotIn("winner", result)
             self.assertNotIn("recommendation", result)
+
+    def test_last_channel_removed_is_flagged(self):
+        flags = channel_boundary_flags(
+            (ChannelState("subject-A", True, False, False),),
+            (ChannelState("subject-A", False, False, False),),
+        )
+        self.assertEqual(flags, ["subject-A:LAST_CHANNEL_REMOVED"])
+
+    def test_channel_substitution_is_not_flagged(self):
+        flags = channel_boundary_flags(
+            (ChannelState("subject-A", True, False, False),),
+            (ChannelState("subject-A", False, True, False),),
+        )
+        self.assertEqual(flags, [])
+
+    def test_subject_set_mismatch_fails_closed(self):
+        with self.assertRaises(ComparisonInputError):
+            channel_boundary_flags(
+                (ChannelState("subject-A", True, False, False),),
+                (ChannelState("subject-B", True, False, False),),
+            )
+
+    def test_no_numeric_threshold_in_channel_boundary(self):
+        state = ChannelState("subject-A", True, False, False)
+        self.assertFalse(hasattr(state, "risk_score"))
+        self.assertFalse(hasattr(state, "threshold"))
 
 if __name__ == "__main__":
     unittest.main()
