@@ -57,9 +57,12 @@ The branch now contains tested implementations for:
 
 These capabilities do not produce a winner, total score, preferred assumption variant, recommendation, or execution instruction.
 
+The branch now also implements:
+
+6. named-subject channel-criterion `boundary_flags`, triggered only when a candidate removes the subject's last correction/exit/recovery channel.
+
 Still missing for the frozen downstream contract:
 
-- channel-criterion `boundary_flags`;
-- a final JSON stdin/stdout export surface that projects only implemented semantics.
+- a final JSON stdin/stdout export surface that projects these implemented semantics into the Purpose Generation comparison schema.
 
 Do not remove these remaining gaps by returning empty arrays as success.
