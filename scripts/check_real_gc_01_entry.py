@@ -105,9 +105,15 @@ def check_example(text):
 
 def shell_command(command, cwd):
     print(f"\n$ {command}", flush=True)
-    shell = [os.environ.get("COMSPEC", "cmd.exe"), "/d", "/s", "/c"] if os.name == "nt" else ["bash", "-eo", "pipefail", "-c"]
-    result = subprocess.run(shell + [command], cwd=cwd, capture_output=True,
-                            text=True, encoding="utf-8", errors="replace", timeout=120)
+    # A Windows argv list applies CRT escaping to embedded quotes, which cmd
+    # does not undo. Pass the literal command string through the native shell.
+    options = dict(cwd=cwd, capture_output=True, text=True,
+                   encoding="utf-8", errors="replace", timeout=120)
+    if os.name == "nt":
+        result = subprocess.run(command, shell=True,
+                                executable=os.environ.get("COMSPEC", "cmd.exe"), **options)
+    else:
+        result = subprocess.run(["bash", "-eo", "pipefail", "-c", command], **options)
     print(result.stdout, end="", flush=True)
     print(result.stderr, end="", flush=True)
     require(result.returncode == 0, f"command failed ({result.returncode}): {command}")
