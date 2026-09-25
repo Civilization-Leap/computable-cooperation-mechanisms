@@ -11,3 +11,4 @@ license={text="Apache-2.0"}
 
 [project.scripts]
 mechanism-ref="mechanism_ref.cli:main"
+mechanism-ref-export="mechanism_ref.comparison_export_cli:main"
