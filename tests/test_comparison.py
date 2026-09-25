@@ -1,6 +1,6 @@
 import unittest
 
-from mechanism_ref.comparison import ComparisonInputError, Plan, UnknownRange, compare_plans, dominates, unknown_dependency
+from mechanism_ref.comparison import AssumptionVariant, ComparisonInputError, Plan, UnknownRange, assumption_reversal, compare_plans, dominates, unknown_dependency
 
 
 class ComparisonTests(unittest.TestCase):
@@ -74,6 +74,44 @@ class ComparisonTests(unittest.TestCase):
         )
         self.assertNotIn("preferred", dep)
         self.assertNotIn("winner", dep)
+
+    def test_assumption_reversal_reported_when_structure_changes(self):
+        plans = (
+            Plan("A", {"benefit": 5.0, "option": 5.0}),
+            Plan("B", {"benefit": 4.0, "option": 6.0}),
+        )
+        result = assumption_reversal(
+            plans,
+            (AssumptionVariant("opposite-estimate", "A", "option", 7.0),),
+        )
+        self.assertIsNotNone(result)
+        self.assertEqual(
+            result["effect"],
+            "comparison_structure_reverses_under_assumption_variant",
+        )
+
+    def test_stable_assumption_variant_not_reported_as_reversal(self):
+        plans = (
+            Plan("A", {"benefit": 10.0, "option": 10.0}),
+            Plan("B", {"benefit": 1.0, "option": 1.0}),
+        )
+        result = assumption_reversal(
+            plans,
+            (AssumptionVariant("opposite-estimate", "A", "option", 8.0),),
+        )
+        self.assertIsNone(result)
+
+    def test_assumption_reversal_has_no_preferred_variant(self):
+        result = assumption_reversal(
+            (
+                Plan("A", {"x": 1.0, "y": 1.0}),
+                Plan("B", {"x": 2.0, "y": 0.0}),
+            ),
+            (AssumptionVariant("v1", "A", "y", 3.0),),
+        )
+        self.assertNotIn("preferred", result)
+        self.assertNotIn("winner", result)
+        self.assertNotIn("recommendation", result)
 
 if __name__ == "__main__":
     unittest.main()
