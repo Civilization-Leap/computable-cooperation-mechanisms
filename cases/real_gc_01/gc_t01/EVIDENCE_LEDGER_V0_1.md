@@ -67,3 +67,58 @@ Before GC-T01 can calibrate even one conditional comparison, collect independent
 - preserved or lost exit/substitution channels.
 
 Until then, GC-T01 remains **EVIDENCE_INTAKE / NOT_CALIBRATED**.
+
+
+## Second evidence intake — tariff incidence, pass-through, retaliation, and diversion
+
+The following records concern the 2018–2021 tariff episode unless explicitly stated otherwise. Historical estimates are not treated as direct measurements of 2026 effects.
+
+| ID | Finding | Period / scope | Evidence state | Provenance | Source | Model-use boundary |
+|---|---|---|---|---|---|---|
+| T01-E016 | U.S. importers bore nearly the full cost of section 232/301 tariffs; import prices rose about 1% for each 1% tariff increase | 2018–2021, directly affected products | THIRD_PARTY_ESTIMATE | OFFICIAL_SOURCE | USITC, Inv. 332-591 | Retrospective econometric estimate; not proof of identical pass-through in 2026 |
+| T01-E017 | Section 301 tariffs reduced imports from China across affected sectors by about 13%, raised U.S. production value about 0.4%, and U.S. product prices about 0.2% | 2018–2021 | THIRD_PARTY_ESTIMATE | OFFICIAL_SOURCE | USITC | Sector-average estimate; distribution and general-equilibrium effects remain separate |
+| T01-E018 | For covered imports from China, a 1% tariff increase was associated with roughly a 2% decrease in import value and quantity | 2018–2021 | THIRD_PARTY_ESTIMATE | OFFICIAL_SOURCE | USITC full report | Econometric response, not a universal elasticity |
+| T01-E019 | U.S. tariffs in 2018–19 passed through fully and quickly to consumer-goods prices in the Fed study; 2025 China tariffs had partially passed through by March, with estimated +0.3% core-goods PCE and +0.1% core PCE | 2018–19 and Feb–Mar 2025 | THIRD_PARTY_ESTIMATE | OFFICIAL_SOURCE | Federal Reserve FEDS Note, 2025-05-09 | 2025 result is early-period evidence, not a final annual effect |
+| T01-E020 | Targeted imports fell 31.5% within products and targeted U.S. exports fell 11.0%; study estimated complete pass-through to import prices | 2018 trade-war study | THIRD_PARTY_ESTIMATE | THIRD_PARTY_SOURCE | Fajgelbaum et al., NBER WP 25638 | Working-paper model estimates; do not merge mechanically with USITC sector estimates |
+| T01-E021 | Same study estimated annual U.S. consumer/producer losses from higher import costs of USD 68.8bn and aggregate welfare loss of USD 7.8bn after tariff revenue and producer gains | 2018 episode | THIRD_PARTY_ESTIMATE | THIRD_PARTY_SOURCE | Fajgelbaum et al., NBER WP 25638 | Model-dependent welfare estimate; not an observed cash loss and not a current-policy estimate |
+| T01-E022 | China retaliated against July/August 2018 Section 301 tranches with 25% tariffs on USD 34bn then USD 16bn of U.S. imports; September tranche covered USD 60bn at 5–10%, later raised to 5–15% | 2018–2019 policy sequence | OBSERVED | OFFICIAL_SOURCE | Federal Reserve FEDS Note timeline | Action–counteraction chronology; does not by itself identify net welfare effect |
+| T01-E023 | China's U.S. import share fell from about 22% in 2017 to about 14% by Dec. 2023; substitution elasticity away from China rose meaningfully only after 3–4 years | 2017–2023 | THIRD_PARTY_ESTIMATE | OFFICIAL_SOURCE | Federal Reserve FEDS Note, 2024-04-12 | Long adjustment lag matters for T0/T1 separation |
+| T01-E024 | Fed analysis attributes 53% of Mexico's export gains to the U.S. in its decomposition to trade diversion following 2018–19 China tariffs | comparison of 2014–17 with 2021–24 | THIRD_PARTY_ESTIMATE | OFFICIAL_SOURCE | Federal Reserve FEDS Note, 2026-06-05 | Identification has stated caveats; not all diversion is Chinese production |
+| T01-E025 | Same analysis estimates direct China-to-Mexico-to-U.S. transshipment at less than 1 percentage point of Mexico's export gains and China's broader Mexico “backdoor” channel at about 14% of total Mexican export gains to the U.S. | 2021–24 vs pre-tariff baseline | THIRD_PARTY_ESTIMATE | OFFICIAL_SOURCE | Federal Reserve FEDS Note, 2026-06-05 | Informative bounds; authors explicitly note ownership/data limitations |
+| T01-E026 | Supply-chain exposure to U.S. import tariffs contributed materially to the 2018–19 slowdown in U.S. export growth | 2018–2019 | THIRD_PARTY_ESTIMATE | OFFICIAL_SOURCE | Federal Reserve FEDS Note, 2020-10-16 | Establishes a feedback channel; magnitude requires underlying study before calibration |
+
+### Causal-chain representation now supported by evidence
+
+The ledger can now support a **historical** action–response chain without claiming that the same magnitudes apply today:
+
+```
+U.S. tariff action
+  -> higher U.S. import prices / importer incidence
+  -> reduced covered imports from China
+  -> Chinese retaliatory tariffs on U.S. exports
+  -> substitution and third-country trade diversion
+  -> delayed supply-chain adjustment
+  -> downstream / export-side feedback to U.S. actors
+```
+
+Every arrow above has at least one cited empirical or policy source, but the chain is not yet a calibrated unified causal model. Estimates come from different designs, scopes, years, and units.
+
+### Evidence conflict / non-combinability rule
+
+T01-E016 through E026 must **not** be added together as if they were components of one welfare equation. USITC sector estimates, Federal Reserve event/econometric studies, and NBER general-equilibrium estimates answer different questions. Any later calibration must identify:
+
+- common period;
+- common tariff universe;
+- affected product/sector population;
+- price level used;
+- whether an estimate is partial-equilibrium or general-equilibrium;
+- whether retaliation is included;
+- whether third-country diversion is included.
+
+Until those dimensions match, the evidence is complementary but not arithmetically composable.
+
+### GC-T01 status after second intake
+
+**EVIDENCE_INTAKE / CAUSAL_CHANNELS_IDENTIFIED / NOT_CALIBRATED**
+
+The evidence is now sufficient to represent several historical causal channels. It is still insufficient to calculate a current U.S.–China competition/cooperation frontier.
