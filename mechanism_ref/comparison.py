@@ -129,3 +129,59 @@ def unknown_dependency(
         "low": {k: low_result[k] for k in keys},
         "high": {k: high_result[k] for k in keys},
     }
+
+
+@dataclass(frozen=True)
+class AssumptionVariant:
+    """One named alternative value for a project-estimated component."""
+
+    variant_id: str
+    plan_id: str
+    component: str
+    value: float
+
+
+def assumption_reversal(
+    plans: tuple[Plan, ...],
+    variants: Sequence[AssumptionVariant],
+) -> dict[str, object] | None:
+    """Detect whether alternative project-estimate values reverse comparison structure.
+
+    The baseline is the supplied plan set. Each variant changes exactly one
+    named component for one plan. A reversal is reported only when at least one
+    of non-dominated/dominated/incomparable differs from baseline. No variant is
+    preferred and no policy conclusion is produced.
+    """
+    baseline = compare_plans(plans)
+    keys = ("non_dominated", "dominated", "incomparable")
+    changed_variants: list[dict[str, object]] = []
+
+    ids = {p.plan_id for p in plans}
+    for variant in variants:
+        if variant.plan_id not in ids:
+            raise ComparisonInputError("assumption variant references unknown plan")
+        changed_plans = tuple(
+            _with_value(p, variant.component, variant.value)
+            if p.plan_id == variant.plan_id
+            else p
+            for p in plans
+        )
+        result = compare_plans(changed_plans)
+        if any(result[k] != baseline[k] for k in keys):
+            changed_variants.append(
+                {
+                    "variant_id": variant.variant_id,
+                    "plan_id": variant.plan_id,
+                    "component": variant.component,
+                    "value": variant.value,
+                    "comparison": {k: result[k] for k in keys},
+                }
+            )
+
+    if not changed_variants:
+        return None
+    return {
+        "effect": "comparison_structure_reverses_under_assumption_variant",
+        "baseline": {k: baseline[k] for k in keys},
+        "changed_variants": changed_variants,
+    }
