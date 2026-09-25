@@ -161,3 +161,77 @@ estimate most favorable to a preferred strategy.
 The next evidence priority is the Chinese-side and third-country distribution:
 firm adjustment, employment/consumer incidence, sourcing relocation, and which
 exit/substitution channels remained open or became costly to restore.
+
+
+## Fourth intake — China-side, third-country, and option-channel evidence
+
+This intake focuses on adjustment outside the U.S. aggregate. It remains
+historical evidence and does not establish a current bilateral policy frontier.
+
+| ID | Actor/class | Finding | Evidence state | Provenance | Source | Boundary |
+|---|---|---|---|---|---|---|
+| D25 | Chinese exporters to U.S. | During the trade war, Chinese export quantities and values to the U.S. fell while export prices showed little systematic decline, consistent with limited exporter-price absorption in the studied period | THIRD_PARTY_ESTIMATE | THIRD_PARTY_SOURCE | Cavallo et al., NBER WP 26396 | Historical product-level evidence; firm heterogeneity remains |
+| D26 | Chinese listed firms | U.S. tariffs and Chinese retaliatory tariffs raised measured trade-policy uncertainty; effects were stronger for smaller and less capital-intensive firms | THIRD_PARTY_ESTIMATE | THIRD_PARTY_SOURCE | Benguria et al., NBER WP 27920 | Uncertainty channel, not full welfare incidence |
+| D27 | Chinese exporters / firms | Higher U.S. tariff exposure was associated with export contraction and firm adjustment; trade-war exposure affected entry/exit and reallocation margins in Chinese customs/firm studies | THIRD_PARTY_ESTIMATE | THIRD_PARTY_SOURCE | peer-reviewed / working-paper China trade-war firm literature | Exact magnitude must be source-specific before calibration |
+| D28 | Vietnam and other alternative suppliers | U.S. imports shifted toward third countries after China tariffs; substitution strengthened with lag rather than immediately | THIRD_PARTY_ESTIMATE | OFFICIAL_SOURCE | Federal Reserve FEDS Note 2024-04-12 | Share gain is not automatically national welfare gain |
+| D29 | Mexico | A substantial portion of later Mexican export gains to the U.S. is attributed in Fed decomposition to trade diversion after 2018–19 tariffs | THIRD_PARTY_ESTIMATE | OFFICIAL_SOURCE | Federal Reserve FEDS Note 2026-06-05 | Benefits may coexist with dependency/concentration costs |
+| D30 | Mexico / Chinese-linked supply chain | Direct transshipment appears small in Fed estimates, while broader China-linked production/input channels are materially larger | THIRD_PARTY_ESTIMATE | OFFICIAL_SOURCE | Federal Reserve FEDS Note 2026-06-05 | Ownership/value-added attribution remains limited |
+| D31 | Global supply network | Post-tariff sourcing adjustment occurred over multiple years, showing that substitution capacity exists but is not frictionless or instantaneous | THIRD_PARTY_ESTIMATE | OFFICIAL_SOURCE | Federal Reserve FEDS Note 2024-04-12 | Supports option-value analysis; does not prove reversibility |
+| D32 | U.S./China/third-country firms | Re-routing production and sourcing can preserve access to markets while changing geography and dependency structure | DERIVED_FROM_EVIDENCE | MIXED_SOURCES | D25–D31 | Derived structural observation; magnitude UNKNOWN |
+| D33 | Workers/communities in receiving third countries | Trade diversion can increase production demand in receiving economies, but wage, employment, environmental, infrastructure, and distribution effects are not established by trade-share data alone | UNKNOWN | MIXED_SOURCES | gap identified from D28–D30 | Requires country/sector-specific evidence |
+
+## Option-value and channel inventory
+
+The evidence now supports distinguishing **existence of an alternative channel**
+from **costless reversibility**.
+
+| Channel ID | Protected capability | Evidence state | Current assessment |
+|---|---|---|---|
+| CH-SOURCE | Ability to substitute suppliers outside the incumbent bilateral route | THIRD_PARTY_ESTIMATE | EXISTS_WITH_LAG — substitution occurred, but meaningful adjustment took years |
+| CH-MARKET | Ability of exporters to redirect sales to alternative markets | UNKNOWN | Not yet established at comparable scale for affected actors |
+| CH-PRODUCTION | Ability to relocate or duplicate production across jurisdictions | THIRD_PARTY_ESTIMATE | EXISTS_BUT_COSTLY — observed restructuring, magnitude/cost heterogeneous |
+| CH-INPUT | Ability to replace tariffed intermediate inputs without major loss | UNKNOWN | Insufficient evidence for a general claim |
+| CH-REENTRY | Ability to restore a previously dismantled bilateral supply relationship | UNKNOWN | No basis yet to assume symmetry with exit |
+| CH-EMERGENCY | Ability to maintain critical supply during severe bilateral disruption | UNKNOWN | Requires sector-specific critical-supply evidence |
+
+### Channel rule
+
+A channel is not marked CLOSED merely because trade falls, and it is not marked
+OPEN merely because one substitution example exists.
+
+For an irreversible-boundary claim, later evidence must identify:
+
+1. the affected actor;
+2. the protected capability;
+3. the concrete channel;
+4. evidence that the channel remains usable or has been structurally removed;
+5. restoration conditions if removed;
+6. whether restoration is realistically available within the relevant horizon.
+
+Therefore the current evidence supports **switching friction and asymmetric
+transition costs**, but does not support declaring a general irreversible
+U.S.–China supply-chain closure.
+
+## Third-party accounting rule
+
+A third country's export gain is not automatically a common-interest gain.
+Later analysis must separately test:
+
+- domestic value added;
+- imported Chinese/U.S. inputs;
+- employment/wage incidence;
+- infrastructure/environmental burden;
+- new concentration/dependency;
+- ability to exit the newly created role.
+
+This prevents trade diversion from being counted as an unqualified third-party
+benefit.
+
+## Status after fourth intake
+
+**BILATERAL_AND_THIRD_PARTY_CHANNELS_MAPPED / OPTION_CHANNELS_IDENTIFIED / GENERAL_IRREVERSIBLE_CLOSURE_NOT_ESTABLISHED / NOT_CALIBRATED**
+
+The next admissible step is a compatibility audit: determine which evidence
+records share enough population, period, unit, and causal estimand to enter one
+conditional calculation, and which must remain separate. No empirical
+S0–S3 frontier should be calculated before that audit.
