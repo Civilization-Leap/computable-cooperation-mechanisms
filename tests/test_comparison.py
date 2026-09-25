@@ -1,6 +1,6 @@
 import unittest
 
-from mechanism_ref.comparison import ComparisonInputError, Plan, compare_plans, dominates
+from mechanism_ref.comparison import ComparisonInputError, Plan, UnknownRange, compare_plans, dominates, unknown_dependency
 
 
 class ComparisonTests(unittest.TestCase):
@@ -38,6 +38,42 @@ class ComparisonTests(unittest.TestCase):
         self.assertNotIn("recommended_goal", result)
         self.assertIn("capability_gaps", result)
 
+    def test_unknown_reported_only_when_comparison_changes(self):
+        plans = (
+            Plan("A", {"benefit": 5.0, "option": 5.0}),
+            Plan("B", {"benefit": 4.0, "option": 6.0}),
+        )
+        dep = unknown_dependency(
+            plans,
+            plan_id="A",
+            unknown=UnknownRange("option", 4.0, 7.0),
+        )
+        self.assertIsNotNone(dep)
+        self.assertEqual(dep["effect"], "comparison_structure_changes_across_range")
+
+    def test_unknown_not_reported_when_structure_is_stable(self):
+        plans = (
+            Plan("A", {"benefit": 10.0, "option": 10.0}),
+            Plan("B", {"benefit": 1.0, "option": 1.0}),
+        )
+        dep = unknown_dependency(
+            plans,
+            plan_id="A",
+            unknown=UnknownRange("option", 8.0, 12.0),
+        )
+        self.assertIsNone(dep)
+
+    def test_unknown_range_does_not_choose_endpoint(self):
+        dep = unknown_dependency(
+            (
+                Plan("A", {"x": 1.0, "y": 1.0}),
+                Plan("B", {"x": 2.0, "y": 0.0}),
+            ),
+            plan_id="A",
+            unknown=UnknownRange("y", -1.0, 3.0),
+        )
+        self.assertNotIn("preferred", dep)
+        self.assertNotIn("winner", dep)
 
 if __name__ == "__main__":
     unittest.main()
