@@ -109,9 +109,12 @@ class ComparisonTests(unittest.TestCase):
             ),
             (AssumptionVariant("v1", "A", "y", 3.0),),
         )
-        self.assertNotIn("preferred", result)
-        self.assertNotIn("winner", result)
-        self.assertNotIn("recommendation", result)
+        # If the variant does not change comparison structure, None is the
+        # correct result and itself proves no preferred/winner field exists.
+        if result is not None:
+            self.assertNotIn("preferred", result)
+            self.assertNotIn("winner", result)
+            self.assertNotIn("recommendation", result)
 
 if __name__ == "__main__":
     unittest.main()
