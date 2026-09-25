@@ -1,8 +1,9 @@
 """Multi-plan componentwise comparison for Purpose Generation integration.
 
 This module does not select a winner. It preserves componentwise incomparability.
-V0.1 intentionally excludes UNKNOWN dependency and assumption-reversal analysis;
-those remain explicit gaps rather than empty-success claims.
+The integration branch also implements comparison-sensitive UNKNOWN analysis,
+assumption-reversal analysis, and named-subject last-channel boundary flags
+without introducing a total score or recommendation.
 """
 
 from __future__ import annotations
