@@ -185,3 +185,50 @@ def assumption_reversal(
         "baseline": {k: baseline[k] for k in keys},
         "changed_variants": changed_variants,
     }
+
+
+@dataclass(frozen=True)
+class ChannelState:
+    """Availability of one correction/exit/recovery channel for one subject."""
+
+    subject_id: str
+    correction: bool
+    exit: bool
+    recovery: bool
+
+
+def channel_boundary_flags(
+    baseline: Sequence[ChannelState],
+    candidate: Sequence[ChannelState],
+) -> list[str]:
+    """Flag structural loss of the last available channel for a named subject.
+
+    This is a channel criterion, not a numerical risk threshold. A flag occurs
+    when a subject had at least one correction/exit/recovery channel in baseline
+    and the candidate removes all three. Subjects must be explicitly present in
+    both states; missing representation fails closed.
+    """
+    def index(states: Sequence[ChannelState]) -> dict[str, ChannelState]:
+        result: dict[str, ChannelState] = {}
+        for state in states:
+            if state.subject_id in result:
+                raise ComparisonInputError("duplicate channel subject")
+            result[state.subject_id] = state
+        return result
+
+    before = index(baseline)
+    after = index(candidate)
+    if set(before) != set(after):
+        raise ComparisonInputError(
+            "baseline/candidate channel subject sets must match exactly"
+        )
+
+    flags: list[str] = []
+    for subject_id in sorted(before):
+        b = before[subject_id]
+        a = after[subject_id]
+        had_channel = b.correction or b.exit or b.recovery
+        has_channel = a.correction or a.exit or a.recovery
+        if had_channel and not has_channel:
+            flags.append(f"{subject_id}:LAST_CHANNEL_REMOVED")
+    return flags
