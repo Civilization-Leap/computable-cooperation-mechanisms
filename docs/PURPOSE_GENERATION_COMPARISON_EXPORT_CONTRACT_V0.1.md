@@ -43,3 +43,23 @@ Manifestation UNKNOWN is not comparison UNKNOWN dependency.
 ## Next implementation gate
 
 Build the comparison capability in CCM itself, not in the Purpose Generation adapter. The downstream adapter may only transport and validate it.
+
+
+## Implemented comparison capabilities on this branch
+
+The branch now contains tested implementations for:
+
+1. strict Cartesian-product componentwise dominance;
+2. non-dominated / dominated sets;
+3. pairwise incomparability;
+4. comparison-sensitive UNKNOWN range analysis;
+5. explicit assumption-variant reversal analysis.
+
+These capabilities do not produce a winner, total score, preferred assumption variant, recommendation, or execution instruction.
+
+Still missing for the frozen downstream contract:
+
+- channel-criterion `boundary_flags`;
+- a final JSON stdin/stdout export surface that projects only implemented semantics.
+
+Do not remove these remaining gaps by returning empty arrays as success.
