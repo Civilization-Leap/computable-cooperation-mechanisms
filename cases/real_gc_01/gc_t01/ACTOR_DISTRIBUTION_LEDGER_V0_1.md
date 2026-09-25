@@ -95,3 +95,69 @@ are unresolved or not made commensurable:
 The next admissible step is to ingest distribution evidence for firms, workers,
 consumers, and retaliation-exposed sectors, preserving conflicting estimates
 rather than forcing a national aggregate.
+
+
+## Third intake — distribution magnitudes and heterogeneity
+
+These records refine who was affected in the historical 2018–2019 episode. They
+remain historical estimates, not direct measurements of 2026 policy effects.
+
+| ID | Actor/class | Finding | Evidence state | Provenance | Source | Boundary |
+|---|---|---|---|---|---|---|
+| D14 | U.S. importers and consumers | Tariffs were almost fully passed through to total prices paid by importers; retail-price pass-through was more mixed, consistent with some retailer-margin absorption | THIRD_PARTY_ESTIMATE | THIRD_PARTY_SOURCE | Cavallo et al., NBER WP 26396 | Separates border incidence from store-level incidence |
+| D15 | U.S. consumers and importing firms | Fajgelbaum et al. estimate USD 51bn loss to U.S. consumers/firms buying imports and USD 7.2bn aggregate real-income loss after tariff revenue and domestic-producer gains | THIRD_PARTY_ESTIMATE | THIRD_PARTY_SOURCE | NBER WP 25638 | Structural/general-equilibrium estimate, not observed cash loss |
+| D16 | U.S. counties highly exposed to Chinese retaliation | Upper-quartile exposed counties experienced about a 3.8 percentage-point decline in consumption growth; high-exposure counties also had about a 1 pp relative decline in overall employment and ~1.5 pp in goods-producing employment | THIRD_PARTY_ESTIMATE | THIRD_PARTY_SOURCE | Waugh, NBER WP 26353 / NBER Digest | Local difference-in-differences estimate; concentrated exposure, not national average |
+| D17 | U.S. manufacturing industries | Greater tariff exposure was associated with relative employment reductions because import-protection gains were offset by larger input-cost and retaliatory-tariff effects; producer prices rose with input costs | THIRD_PARTY_ESTIMATE | OFFICIAL_SOURCE | Federal Reserve FEDS 2019-086 | Industry-relative estimate; does not imply every protected industry lost employment |
+| D18 | U.S. firms exposed through imported inputs | Firms later exposed to tariffs represented 84% of U.S. exports and 65% of manufacturing employment in linked data; average affected firm implied new-duty cost about USD 900 per worker | THIRD_PARTY_ESTIMATE | THIRD_PARTY_SOURCE | Handley, Kamal & Monarch, NBER WP 26611 | Firm-linked historical exposure; not a worker wage loss measure |
+| D19 | U.S. exporters using tariffed inputs | Most-exposed products had lower export growth; 2019Q3 estimated effect equivalent to about a 2% ad-valorem export tariff for a typical product, up to 4% for above-average exposure | THIRD_PARTY_ESTIMATE | THIRD_PARTY_SOURCE | NBER WP 26611 | Supply-chain feedback estimate |
+| D20 | U.S. agriculture | Retaliatory tariffs covered U.S. agricultural/food products valued at USD 30.4bn in 2017, with tariff increases ranging from 2% to 140% | OBSERVED policy coverage | OFFICIAL_SOURCE | USDA ERS ERR-304 | Exposure base, not itself realized export loss |
+| D21 | U.S. local labor markets / agriculture | Detailed geographic study finds import tariffs did not measurably raise or lower employment in newly protected sectors to date, while retaliatory tariffs had clear negative employment effects, primarily in agriculture; compensation only partly mitigated harms | THIRD_PARTY_ESTIMATE | THIRD_PARTY_SOURCE | Autor et al., NBER WP 32082 | Historical causal estimate; compensation and political effects are separate dimensions |
+| D22 | U.S. firms linked to China | Firms importing from, exporting to, or selling in China had worse stock returns around tariff announcements; those differences forecast later declines in profits, sales, employment, and investment | THIRD_PARTY_ESTIMATE | THIRD_PARTY_SOURCE | Amiti et al., NBER WP 28758, rev. 2026 | Financial-event/firm heterogeneity evidence; welfare estimate remains model-dependent |
+| D23 | Chinese listed firms | U.S. tariff exposure and Chinese retaliatory-tariff exposure increased measured trade-policy uncertainty, with stronger effects for smaller and less capital-intensive firms | THIRD_PARTY_ESTIMATE | THIRD_PARTY_SOURCE | Benguria et al., NBER WP 27920 | Firm uncertainty effect; not a complete Chinese welfare measure |
+| D24 | U.S. consumers by income | Prior Fed synthesis notes evidence that existing import-tariff burdens tend to fall more heavily on lower-income households and that trade-related price changes can have group-specific real-income effects | THIRD_PARTY_ESTIMATE | OFFICIAL_SOURCE | Federal Reserve IFDP Note 2018-04-03 | General distribution mechanism; not specific magnitude for 2018 China tariffs |
+
+## Distributional implications for CCM representation
+
+The evidence rejects three simplifying representations:
+
+1. **One U.S. payoff.** Importers, protected producers, downstream manufacturers,
+   exporters, agricultural regions, consumers, and government revenue can move
+   in different directions.
+2. **One time effect.** Border incidence can appear quickly while supply-chain
+   substitution, employment, investment, and geographic adjustment evolve over
+   longer horizons.
+3. **Protection = employment gain.** Historical manufacturing evidence identifies
+   simultaneous protection, input-cost, and retaliation channels; the net
+   employment association can differ from the direct protected-sector channel.
+
+The model therefore must preserve at least:
+
+```
+actor/class × dimension × horizon × provenance × evidence_state
+```
+
+before asking whether one configuration dominates another.
+
+## Conflicting / complementary evidence rule
+
+D14–D24 are not treated as a vote count. Different papers identify different
+populations and mechanisms. In particular:
+
+- complete border pass-through can coexist with mixed retail pass-through;
+- protected-sector output gains can coexist with manufacturing employment losses
+  in industries exposed to input costs and retaliation;
+- national aggregate estimates can coexist with much larger local effects in
+  retaliation-exposed counties;
+- tariff revenue can coexist with private incidence and does not cancel it by
+  definition.
+
+A later calibration must preserve these distinctions rather than choose the
+estimate most favorable to a preferred strategy.
+
+## Status after third intake
+
+**DISTRIBUTION_EVIDENCE_INGESTED / HETEROGENEITY_CONFIRMED / CHINA_AND_THIRD_PARTY_DISTRIBUTION_STILL_THIN / NOT_CALIBRATED**
+
+The next evidence priority is the Chinese-side and third-country distribution:
+firm adjustment, employment/consumer incidence, sourcing relocation, and which
+exit/substitution channels remained open or became costly to restore.
