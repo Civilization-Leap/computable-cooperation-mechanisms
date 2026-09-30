@@ -1,0 +1,47 @@
+{
+  "experiment_id": "REAL_GC_01_AI_COMPUTE_PURPOSE_V0_1",
+  "base_commit": "e046f4032526e6b167fd9815a239dac603500119",
+  "evidence_class": "SYNTHETIC_MECHANISM_FIXTURE",
+  "pre_run_expectations": [
+    "Changing consequence eligibility may alter selected candidate purposes when local gain conflicts with another subject's channels.",
+    "Self-interest-first can preserve all channels in some finite contexts; this must be reported.",
+    "Others-first qualification can fail under inaccurate forecasts or simultaneous responses; this must be reported.",
+    "An empty admissible set is not a successful action and cannot be recorded as a safe solution.",
+    "No finite fixture proves or disproves a universal eventual-closure or unique-path claim."
+  ],
+  "fixed_across_policy_arms": [
+    "candidate purposes",
+    "initial resources",
+    "physical transition",
+    "local ranking",
+    "forecast information",
+    "forecast shocks",
+    "actual shocks",
+    "horizon"
+  ],
+  "only_policy_difference": "whether any named subject's forecast channel closure can disqualify a candidate purpose before selection",
+  "dimensions": {
+    "speed": [
+      1,
+      2,
+      4
+    ],
+    "initial_safety": [
+      0,
+      2,
+      6
+    ],
+    "pressure": [
+      1,
+      3
+    ],
+    "hidden_shock": [
+      0,
+      6
+    ],
+    "horizon": 6
+  },
+  "independent_validation": false,
+  "external_evidence_state_changed": false,
+  "real_world_execution_authority": false
+}
